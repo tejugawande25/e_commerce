@@ -8,7 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
+
 export default function Header() {
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{background:"#EEEEFF"}}>
@@ -26,10 +28,10 @@ export default function Header() {
             Cart
           </Typography>
           <ul style={{display:"flex",color:"#2C3539",gap:"50px",textDecoration:"none",listStyleType:"none",cursor:"pointer"}}>
-            <li>Home</li>
-            <li>About</li>
-            <li>Products</li>
-            <li style={{marginRight:"60px"}}>Contacts</li>
+            <li><a href="home" style={{textDecoration:"none",color:"#2C3539"}}>Home</a></li>
+            <li><a href="about" style={{textDecoration:"none",color:"#2C3539"}}>About</a></li>
+            <li><a href="product" style={{textDecoration:"none",color:"#2C3539"}}>Products</a></li>
+            <li style={{marginRight:"60px"}}><a href="contact" style={{textDecoration:"none",color:"#2C3539"}}>Contact</a></li>
           </ul>
           <Button style={{color:"#2C3539",display:"flex",alignItems:"center",background:"#9bddff",marginRight:"40px"}}>Login</Button>
           <ShoppingCartIcon style={{color:"#2C3539",marginRight:"10px",cursor:"pointer"}}/>
