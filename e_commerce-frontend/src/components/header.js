@@ -25,12 +25,12 @@ export default function Header() {
           >
           </IconButton>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }} style={{color:"#2C3539",fontWeight:"600",marginLeft:"30px"}}>
-            Cart
+          <NavLink to="/" style={{textDecoration:"none",color:"#2C3539"}}>Cart</NavLink>
           </Typography>
           <ul style={{display:"flex",color:"#2C3539",gap:"50px",textDecoration:"none",listStyleType:"none",cursor:"pointer"}}>
             <li><NavLink to="/" style={{textDecoration:"none",color:"#2C3539"}}>Home</NavLink></li>
             <li><NavLink to="about" style={{textDecoration:"none",color:"#2C3539"}}>About</NavLink></li>
-            <li><NavLink to="products" style={{textDecoration:"none",color:"#2C3539"}}>Products</NavLink></li>
+            <li><NavLink to="product" style={{textDecoration:"none",color:"#2C3539"}}>Products</NavLink></li>
             <li style={{marginRight:"60px"}}><NavLink to="contact" style={{textDecoration:"none",color:"#2C3539"}}>Contacts</NavLink></li>
           </ul>
           <Button style={{color:"#2C3539",display:"flex",alignItems:"center",background:"#9bddff",marginRight:"40px"}}>Login</Button>
