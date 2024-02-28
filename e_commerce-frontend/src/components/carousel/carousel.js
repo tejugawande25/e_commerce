@@ -38,19 +38,19 @@ function MainCarousel() {
           </div>
         </div>
         <div>
-          <div className="carousel-div">
-            <div className="carousel-inner">
+          <div className="carousel-div" style={{background:" #E7F2F7 "}}>
+            <div className="carousel-inner" >
               <img
                 className="carousel-img"
-                src="https://rukminim2.flixcart.com/image/832/832/xif0q/jacket/t/o/t/m-no-rm001-hibok-original-imagm8dgqcdsxn4c.jpeg?q=70&crop=true"
+                src="https://rukminim2.flixcart.com/image/832/832/xif0q/jacket/4/w/b/l-1-no-1737-nuevosporta-original-imagteumk9dssvaq.jpeg?q=70&crop=true"
               />
-              <div className="carousel-desc">
-                <h1 style={{ color: "#50404d" }}>Bullmer</h1>
+              <div className="carousel-desc" style={{background:" #ADD8E6 "}}>
+                <h1 style={{ color: "#50404d" }}>NUEVOSPORTA</h1>
                 <h2 style={{ color: "#50404d", fontFamily: "arial" }}>
                   Just ₹299/-
                 </h2>
                 <p style={{ fontFamily: "arial", color: "#50404d" }}>
-                  Men Printed, Typography Round Neck Cotton Blend White T-Shirt
+                  Men solid Denim 
                 </p>
                 <p style={{ fontFamily: "arial", color: "#50404d" }}>
                   Combo Offer Buy 2 or more items save 10% See all products

@@ -7,6 +7,7 @@
     align-items: center;
     justify-content: center;
     background: #fffafa;
+    height: 440px;
 }
 .carousel-inner{
     width: 40%;
@@ -19,4 +20,5 @@
     justify-content: center;
     align-items: center;
     background-color: #fffafa;
+    color: #dadaf8;
 }

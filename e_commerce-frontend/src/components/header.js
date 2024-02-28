@@ -13,8 +13,8 @@ import {NavLink} from "react-router-dom";
 export default function Header() {
   
   return (
-    <Box sx={{ flexGrow: 2}} >
-      <AppBar position="static" style={{background:"#EEEEFF",boxShadow:"none"}}>
+    <Box sx={{ flexGrow: 2, marginBottom:"40px"}} >
+      <AppBar position="static" style={{background:"#d6d6f8",height:"80px",display:"flex",justifyContent:"center"}}>
         <Toolbar>
           <IconButton
             size="large"
