@@ -17,48 +17,29 @@ function MainCarousel() {
       >
         <div>
           <div className="carousel-div">
-            <div className="carousel-inner">
-              <img
-                className="carousel-img"
-                src="https://rukminim2.flixcart.com/image/416/416/xif0q/t-shirt/q/t/3/xxl-bul-23bds-2icc-bullmer-original-imagrhfnffpewys4.jpeg?q=70&crop=true"
-              />
-              <div className="carousel-desc">
-                <h1 style={{ color: "#50404d" }}>Bullmer</h1>
-                <h2 style={{ color: "#50404d", fontFamily: "arial" }}>
-                  Just ₹299/-
-                </h2>
-                <p style={{ fontFamily: "arial", color: "#50404d" }}>
-                  Men Printed, Typography Round Neck Cotton Blend White T-Shirt
-                </p>
-                <p style={{ fontFamily: "arial", color: "#50404d" }}>
-                  Combo Offer Buy 2 or more items save 10% See all products
-                </p>
-              </div>
+            <div className="image-div">
+                 <img  className="carousel-image" src="https://img.freepik.com/free-photo/stylish-tender-young-woman-sunglasses-looking-dreamy_176420-21453.jpg?t=st=1709150431~exp=1709154031~hmac=a3e063db3cd3da636acbaa9f242827ea4d9b2a2851918062285a873d5901b036&w=996" alt="image"/>
+            </div>
+            <div className="image-desc">
+                <p style={{fontSize:"40px", fontWeight:"500", color:"#4F4F4F",marginBottom:"10px"}}>T-SHIRTS & TOPS</p>
+                <p style={{marginTop:"0",fontSize:"26px", fontWeight:"400", color:"#4F4F4F",display:"flex",alignItems:"start",marginLeft:"70px"}}>under ₹600/-</p>
+                <div style={{borderTop:"1px solid #4F4F4F", width:"80%",height:"100px",marginLeft:"50px", marginTop:"10px"}}></div>
             </div>
           </div>
         </div>
         <div>
-          <div className="carousel-div" style={{background:" #E7F2F7 "}}>
-            <div className="carousel-inner" >
-              <img
-                className="carousel-img"
-                src="https://rukminim2.flixcart.com/image/832/832/xif0q/jacket/4/w/b/l-1-no-1737-nuevosporta-original-imagteumk9dssvaq.jpeg?q=70&crop=true"
-              />
-              <div className="carousel-desc" style={{background:" #ADD8E6 "}}>
-                <h1 style={{ color: "#50404d" }}>NUEVOSPORTA</h1>
-                <h2 style={{ color: "#50404d", fontFamily: "arial" }}>
-                  Just ₹299/-
-                </h2>
-                <p style={{ fontFamily: "arial", color: "#50404d" }}>
-                  Men solid Denim 
-                </p>
-                <p style={{ fontFamily: "arial", color: "#50404d" }}>
-                  Combo Offer Buy 2 or more items save 10% See all products
-                </p>
-              </div>
+          <div className="carousel-div">
+            <div className="image-div">
+                 <img  className="carousel-image" src="https://as2.ftcdn.net/v2/jpg/02/66/27/27/1000_F_266272744_dTgjpEkQLE0Y1AcBM5z9yiOnlKPC6WZZ.jpg" alt="image"/>
+            </div>
+            <div className="image-desc">
+                <p style={{fontSize:"40px", fontWeight:"500", color:"#4F4F4F",marginBottom:"10px"}}>T-SHIRTS & TOPS</p>
+                <p style={{marginTop:"0",fontSize:"26px", fontWeight:"400", color:"#4F4F4F",display:"flex",alignItems:"start",marginLeft:"70px"}}>under ₹600/-</p>
+                <div style={{borderTop:"1px solid #4F4F4F", width:"80%",height:"100px",marginLeft:"50px", marginTop:"10px"}}></div>
             </div>
           </div>
         </div>
+            
       </Carousel>
     </>
   );
