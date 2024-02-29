@@ -8,7 +8,7 @@ function MainCarousel() {
     <>
       <Carousel
         interval={3000}
-        autoPlay={false}
+        autoPlay={true}
         showThumbs={false}
         infiniteLoop={true}
         stopOnHover={false}
@@ -33,13 +33,12 @@ function MainCarousel() {
                  <img  className="carousel-image" src="https://as2.ftcdn.net/v2/jpg/02/66/27/27/1000_F_266272744_dTgjpEkQLE0Y1AcBM5z9yiOnlKPC6WZZ.jpg" alt="image"/>
             </div>
             <div className="image-desc">
-                <p style={{fontSize:"40px", fontWeight:"500", color:"#4F4F4F",marginBottom:"10px"}}>T-SHIRTS & TOPS</p>
-                <p style={{marginTop:"0",fontSize:"26px", fontWeight:"400", color:"#4F4F4F",display:"flex",alignItems:"start",marginLeft:"70px"}}>under ₹600/-</p>
+                <p style={{fontSize:"40px", fontWeight:"500", color:"#4F4F4F",marginBottom:"10px",fontFamily:"orpheus italic"}}>DENIMS & JEANS</p>
+                <p style={{marginTop:"0",fontSize:"26px", fontWeight:"400", color:"#4F4F4F",display:"flex",alignItems:"start",marginLeft:"70px"}}>under ₹1200/-</p>
                 <div style={{borderTop:"1px solid #4F4F4F", width:"80%",height:"100px",marginLeft:"50px", marginTop:"10px"}}></div>
             </div>
           </div>
-        </div>
-            
+        </div>   
       </Carousel>
     </>
   );

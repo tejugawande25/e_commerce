@@ -1,0 +1,15 @@
+.items-div{
+    height:400px;
+    width: 100%;
+    background-color: #F0F8FF;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.items{
+    height: 280px;
+    width: 230px;
+    border: 1px solid black;
+}
