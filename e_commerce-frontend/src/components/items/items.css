@@ -18,6 +18,7 @@
     justify-content: center;
     gap: 5px;
     background: #FFFAFA;
+    border-radius: 5px;
 }
 .item-image{
     height: 70%;
