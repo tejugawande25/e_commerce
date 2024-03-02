@@ -42,8 +42,8 @@
 .side-items{
     height: 95%;
     width: 40%;
-    border: 1px solid black;
     margin-left: 32px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .side-image{
     height: 100%;
