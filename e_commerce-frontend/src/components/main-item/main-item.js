@@ -4,8 +4,11 @@ import "./main-item.css";
 function MainItem() {
   return (
     <>
-      <div className="main-item">
+      <div className="main-item" style={{border:"1px solid red"}}>
         <div className="side-item">
+          <div className="heading-side">
+            Most Viewed Items
+          </div>
           <div className="inside-side">
             <div className="side-items">
                 <img className="side-image" src="https://rukminim2.flixcart.com/image/832/832/kjhgzgw0-0/jacket/n/g/t/xxl-12288660-roadster-original-imafzfnjresfydba.jpeg?q=70&crop=true" />

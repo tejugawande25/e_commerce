@@ -1,5 +1,5 @@
 .main-item{
-    height: 500px;
+    height: 600px;
     max-width: 100%;
     display: flex;
     margin-top: 40px;
@@ -10,6 +10,7 @@
     width:35%;
     display: flex;
     flex-direction: column;
+    border: 1px solid green;
 }
 .main-image-div{
     height: 100%;
@@ -34,10 +35,17 @@
     height: 100%;
     width: 100%;
 }
-.inside-side{
-    height: 50%;
+.heading-side{
+    height:10%;
     width: 100%;
     display: flex;
+    align-items: center;
+}
+.inside-side{
+    height: 45%;
+    width: 100%;
+    display: flex;
+    border: 1px solid black;
 }
 .side-items{
     height: 95%;
