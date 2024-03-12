@@ -89,6 +89,11 @@
     align-items: center;
     justify-content: center;
 }
+.main-image-title:hover{
+    scale: 1.25;
+    transition: 0.6s;
+}
+
 .main-image-title p{
     font-size: 32px;
     margin: 0px;

@@ -1,7 +1,12 @@
 import React from "react";
 import "./footer.css";
+import {Link} from "react-router-dom";
 
 function Footer() {
+
+  const handleEmail = () =>{
+   window.open("mailto:tejugawande25@gmail.com?subject=SendMail&body=Description")
+  }
   return (
     <>
       <div className="footer">
@@ -33,8 +38,12 @@ function Footer() {
         </div>
         <div className="footer-item">
           <p className="sub-heading">LINKS</p>
-          <p className="p-text">Instagram: _tejasgawande_</p>
-          <p className="p-text">Whatsapp: 8482978893</p>
+          <p className="p-text" style={{cursor:"pointer"}}>Instagram: <a href="https://www.instagram.com/_tejasgawande_/" style={{fontSize:"16px",color:"rgb(196, 193, 193)", textDecoration:"none"}}>_tejasgawande_</a></p>
+          <p className="p-text" style={{cursor:"pointer"}}>Whatsapp: 8482978893</p>
+          <p className="p-text" style={{cursor:"pointer"}}>Email: <a
+          onClick={handleEmail}
+          style={{fontSize:"16px",color:"rgb(196, 193, 193)", textDecoration:"none"}}
+          > tejugawande25@gmail.com </a></p>
         </div>
       </div>
     </>
