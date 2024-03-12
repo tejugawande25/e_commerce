@@ -4,7 +4,7 @@ import "./main-item.css";
 function MainItem() {
   return (
     <>
-      <div className="main-item" style={{border:"1px solid red"}}>
+      <div className="main-item">
         <div className="side-item">
           <div className="heading-side">
             <p>Most Viewed Items</p>
@@ -27,6 +27,17 @@ function MainItem() {
           </div>
         </div>
         <div className="main-image-div">
+          <div className="main-image-title">
+            <p>T</p>
+            <p>R</p>
+            <p>E</p>
+            <p>N</p>
+            <p>D</p>
+            <p>I</p>
+            <p>N</p>
+            <p>G</p>
+          </div>
+          <div className="main-image-heading"></div>
           <div className="men-jacket">
             <img
               className="jacket-image"

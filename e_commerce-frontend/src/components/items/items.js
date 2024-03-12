@@ -5,6 +5,10 @@ function Items() {
   return (
     <>
       <div className="items-div">
+        <div className="items-heading">
+             <p>Top Selling Items</p>
+        </div>
+        <div style={{display:"flex",gap:"75px"}}>
         <div className="items">
           <img
             className="item-image"
@@ -49,6 +53,7 @@ function Items() {
           />
           <p className="heading-p">KOTTY</p>
           <p className="subheading-p">From ₹459</p>
+        </div>
         </div>
       </div>
     </>

@@ -4,9 +4,23 @@
     background-color: #F0F8FF;
     margin-top: 40px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 20px;
+}
+.items-heading{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin-top: 0;
+}
+.items-heading p{
+    font-size: 30px;
+    margin-left: 25px;
+    font-weight: 500;
+    color:#474b4f;
 }
 .items{
     height: 280px;

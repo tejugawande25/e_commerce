@@ -18,17 +18,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 15px;
 }
 .men-jacket{
     height: 80%;
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin: 0px;
 }
 .women-jacket{
     height: 80%;
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-right: 50px;
 }
 .jacket-image{
     height: 100%;
@@ -53,15 +55,29 @@
 }
 .side-image{
     height: 100%;
-    width: 100%;
-    
+    width: 100%;   
 }
-.heading-side{
-    
-}
+
 .heading-side p{
     margin-left: 35px;
     font-size: 26px;
-    font-weight: 400;
-
+    font-weight: 500;
+    color: #474b4f;
+}
+.main-image-title{
+    height: 100%;
+    width: 10%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.main-image-title p{
+    font-size: 32px;
+    margin: 0px;
+    font-weight: 600;
+    font-family: italic;
+    color: #494F55;
 }
