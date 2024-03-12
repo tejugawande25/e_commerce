@@ -7,7 +7,7 @@ function MainItem() {
       <div className="main-item" style={{border:"1px solid red"}}>
         <div className="side-item">
           <div className="heading-side">
-            Most Viewed Items
+            <p>Most Viewed Items</p>
           </div>
           <div className="inside-side">
             <div className="side-items">

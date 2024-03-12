@@ -10,7 +10,6 @@
     width:35%;
     display: flex;
     flex-direction: column;
-    border: 1px solid green;
 }
 .main-image-div{
     height: 100%;
@@ -45,7 +44,6 @@
     height: 45%;
     width: 100%;
     display: flex;
-    border: 1px solid black;
 }
 .side-items{
     height: 95%;
@@ -57,4 +55,13 @@
     height: 100%;
     width: 100%;
     
+}
+.heading-side{
+    
+}
+.heading-side p{
+    margin-left: 35px;
+    font-size: 26px;
+    font-weight: 400;
+
 }
