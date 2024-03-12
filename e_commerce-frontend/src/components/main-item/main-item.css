@@ -25,12 +25,22 @@
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin: 0px;
+    cursor: pointer;
+}
+.men-jacket:hover{
+    scale: 1.05;
+    transition: 0.6s;
+}
+.women-jacket:hover{
+    scale: 1.05;
+    transition: 0.6s;
 }
 .women-jacket{
     height: 80%;
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin-right: 50px;
+    cursor: pointer;
 }
 .jacket-image{
     height: 100%;
@@ -55,7 +65,12 @@
 }
 .side-image{
     height: 100%;
-    width: 100%;   
+    width: 100%; 
+    cursor: pointer;  
+}
+.side-image:hover{
+    scale: 1.05;
+    transition: 0.6s;
 }
 
 .heading-side p{
