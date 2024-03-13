@@ -4,19 +4,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #F0F8FF;
+    
 }
 .cart-name{
     height: 100%;
-    width: 20%;
-    border: 1px solid black;
+    width: 16%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.logo-image{
+    height: 3.5rem;
+    width: 6rem;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .footer-li{
     height: 100%;
     width: 50%;
-    border: 1px solid black;
+    display: flex;
+    align-items: center;
 }
 .footer-copyright{
     height: 100%;
     width: 30%;
-    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+.c-footer-li{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    list-style: none;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
 }

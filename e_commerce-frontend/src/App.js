@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import About from "./pages/about";
 import Contact from "./pages/contact";
 import Product from "./pages/product";
-import Header from "./components/header";
+import Header from "./components/header/header";
 
 function App(){
   return(

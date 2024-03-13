@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {NavLink} from "react-router-dom";
+import Logo from "./logo.png";
+
 
 
 
@@ -25,7 +27,9 @@ export default function Header() {
           >
           </IconButton>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }} style={{color:"#2C3539",fontWeight:"600",marginLeft:"30px"}}>
-          <NavLink to="/" style={{textDecoration:"none",color:"#2C3539",fontSize:"34px"}}>Cart</NavLink>
+          <NavLink to="/" style={{textDecoration:"none",color:"#2C3539",fontSize:"34px"}}>
+           <img src={Logo} style={{height:"3.5rem",width:'6rem',marginTop:"10px",borderRadius:"5px",marginLeft:'20px'}}/>
+          </NavLink>
           </Typography>
           <ul style={{display:"flex",color:"#2C3539",gap:"50px",textDecoration:"none",listStyleType:"none",cursor:"pointer"}}>
             <li><NavLink to="/" style={{textDecoration:"none",color:"#2C3539",fontSize:"19px"}}>Home</NavLink></li>
