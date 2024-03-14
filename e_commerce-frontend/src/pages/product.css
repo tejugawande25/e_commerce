@@ -5,7 +5,19 @@
     gap: 35px;
 }
 .product-section{
-    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    height: 22rem;
     width: 100%;
     border: 1px solid black;
+}
+.product-section-heading{
+    height: 3rem;
+    width: 100%;
+    border: 1px solid red;
+}
+.product-section-div{
+    height: 100%;
+    width: 100%;
+    border: 1px solid green;
 }
