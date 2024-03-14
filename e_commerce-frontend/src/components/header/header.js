@@ -28,7 +28,7 @@ export default function Header() {
           </IconButton>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }} style={{color:"#2C3539",fontWeight:"600",marginLeft:"30px"}}>
           <NavLink to="/" style={{textDecoration:"none",color:"#2C3539",fontSize:"34px"}}>
-           <img src={Logo} style={{height:"3.5rem",width:'6rem',marginTop:"10px",borderRadius:"5px",marginLeft:'20px'}}/>
+           <img src={Logo} style={{height:"3.5rem",width:'6rem',marginTop:"10px",borderRadius:"5px",marginLeft:'20px',boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"}}/>
           </NavLink>
           </Typography>
           <ul style={{display:"flex",color:"#2C3539",gap:"50px",textDecoration:"none",listStyleType:"none",cursor:"pointer"}}>

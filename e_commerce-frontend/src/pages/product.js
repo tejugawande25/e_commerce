@@ -1,8 +1,22 @@
 import React from "react";
+import "./product.css";
 
 function Product(){
     return<>
-    <h1>This is the Product Section.</h1>
+    <div className="products">
+        <div className="product-section">
+
+        </div>
+        <div className="product-section">
+
+        </div>
+        <div className="product-section">
+
+        </div>
+        <div className="product-section">
+
+        </div>
+    </div>
     </>
 }
 
