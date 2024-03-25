@@ -6,8 +6,27 @@ function Contact() {
   return (
     <>
       <div className="contact">
+        <div style={{width:"40%",height:"3rem",marginLeft:"13.1rem",fontSize:"22px",display:"flex",alignItems:"center",fontWeight:"500",color:"gray"}}>Contact Us</div>
         <div className="contact-main">
-          <div className="contact-freq"></div>
+          <div className="contact-freq">
+          <div className="contact-freq-heading">
+             What issues are you facing?
+          </div>
+          <div className="contact-freq-questions">
+          <div className="contact-freq-subquestion">
+             
+          </div>
+          <div className="contact-freq-subquestion">
+            
+          </div>
+          <div className="contact-freq-subquestion">
+            
+          </div>
+          <div className="contact-freq-subquestion">
+            
+          </div>
+          </div>
+          </div>
           <div className="contact-form" >
             <label>Name: </label>
             <input type="text" className="user-input" />
