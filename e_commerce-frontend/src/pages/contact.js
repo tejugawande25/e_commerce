@@ -8,17 +8,17 @@ function Contact() {
       <div className="contact">
         <div className="contact-main">
           <div className="contact-freq"></div>
-          <div className="contact-form">
+          <div className="contact-form" >
             <label>Name: </label>
-            <input type="text" className="username-input" />
+            <input type="text" className="user-input" />
             <label>Contact: </label>
-            <input type="number" className="usercontact-input" />
+            <input type="text" className="user-input" />
 
             <label>Email: </label>
-            <input type="text" className="useremail-input" />
+            <input type="text" className="user-input" />
 
             <label>Enter your problem: </label>
-            <input type="text" className="problem-text" />
+            <textarea type="text" className="problem-text" />
 
             <button type="submit" className="submit-button">
               Submit
