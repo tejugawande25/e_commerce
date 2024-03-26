@@ -12,6 +12,7 @@ import Modal from "@mui/material/Modal";
 import LoginImg from "./login.png";
 import styled from '@emotion/styled';
 import { TextField } from '@mui/material';
+import {useState} from "react";
 
 const NumberDiv = styled(TextField)`
 height:15%;
@@ -25,10 +26,13 @@ justify-content:center;
 
 `;
 export default function Header() {
-  const[open, setOpen] = React.useState(false);
+  const[open, setOpen] = useState(false);
+  const[input, setInput] = useState("");
+  const[activeScreen, setActiveScreen] = useState("ScreenOne");
   const handleClose =()=>{
     setOpen(false);
   }
+  console.log(input);
   return (
     <Box sx={{ flexGrow: 2, marginBottom:"40px"}} >
       <AppBar position="static" style={{background:"#d6d6f8",height:"80px",display:"flex",justifyContent:"center"}}>
@@ -69,15 +73,33 @@ export default function Header() {
               <img src={LoginImg} style={{height:"20rem",width:"20rem",marginTop:"1rem"}} />
             </div>
           </div>
-          <div style={{background:"white",width:"100%",border:"1px solid black",display:"flex", flexDirection:"column"}}>
+          <div style={{background:"white",width:"100%",display:"flex", flexDirection:"column"}}>
              <NumberDiv 
+             multiline
+             id="filled-multiline-flexible"
              variant='standard'
               sx={{ input: { color: "#fff" } }}
              label="Enter Email/Mobile number"
              display="flex"
-             alignItems="center"
-             
+             alignitems="center"
+             inputProps={{
+              style:{
+                textAlign:"start",
+                color:"black",
+              }
+             }}
+             value={input}
+             onChange={(event) =>{
+              setInput(event.target.value);
+             }}
              />
+             <div style={{height:"2rem", width:"80%",marginLeft:"3.5rem"}}>
+              <p style={{fontSize:"13px"}}>By continuing,you agree to Cart's Terms of Use and privacy policy.</p>
+             </div>
+             <button style={{width:"75%",height:"2.7rem",marginLeft:"3.5rem",marginTop:"2.5rem",fontSize:"15px",fontWeight:"500",background:"#FFA500",border:"none",borderRadius:"5px",cursor:"pointer"}}
+
+             >Request OTP</button>
+             <div style={{marginTop:"14rem",marginLeft:"6.5rem",cursor:"pointer",}}><NavLink style={{textDecoration:"none"}}>New to Cart? Create an account</NavLink></div>
           </div>
         </div>
         </Modal>
