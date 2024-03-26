@@ -13,7 +13,7 @@
 }
 .contact-freq{
     width: 40%;
-    height: 30rem;
+    height: 20rem;
     border: 1px solid black;
 }
 .contact-form{
@@ -72,12 +72,25 @@ label{
 .contact-freq-questions{
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 0.65rem;
 }
 .contact-freq-subquestion{
-    border: 1px solid red;
-    height: 4rem;
+    height: 3rem;
     margin-top: 1rem;
+    display: flex;
+    cursor: pointer;
+}
+.contact-freq-subquestion:hover{
+    background-color: #DFF2FF;
+}
+.upper-p{
+    margin: 0px;
+    font-size: 16px;
     margin-left: 1.8rem;
-    width: 90%;
+}
+.lower-p{
+    margin: 0px;
+    margin-left: 1.8rem;
+    font-size: 13px;
+    color: rgb(73, 73, 73);
 }
