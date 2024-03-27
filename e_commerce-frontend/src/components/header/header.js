@@ -31,6 +31,7 @@ export default function Header() {
   const [activeScreen, setActiveScreen] = useState("ScreenOne");
   const handleClose = () => {
     setOpen(false);
+    setActiveScreen("ScreenOne"); 
   };
   console.log(input);
   return (
