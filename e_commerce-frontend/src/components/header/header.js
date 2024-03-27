@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import Modal from "@mui/material/Modal";
 import LoginImg from "./login.png";
@@ -57,7 +57,7 @@ export default function Header() {
             sx={{ flexGrow: 1 }}
             style={{ color: "#2C3539", fontWeight: "600", marginLeft: "30px" }}
           >
-            <NavLink
+            <Link
               to="/"
               style={{
                 textDecoration: "none",
@@ -77,7 +77,7 @@ export default function Header() {
                     "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
                 }}
               />
-            </NavLink>
+            </Link>
           </Typography>
           <ul
             style={{
@@ -90,7 +90,7 @@ export default function Header() {
             }}
           >
             <li>
-              <NavLink
+              <Link
                 to="/"
                 style={{
                   textDecoration: "none",
@@ -99,10 +99,10 @@ export default function Header() {
                 }}
               >
                 Home
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 to="about"
                 style={{
                   textDecoration: "none",
@@ -111,10 +111,10 @@ export default function Header() {
                 }}
               >
                 About
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 to="product"
                 style={{
                   textDecoration: "none",
@@ -123,10 +123,10 @@ export default function Header() {
                 }}
               >
                 Products
-              </NavLink>
+              </Link>
             </li>
             <li style={{ marginRight: "60px" }}>
-              <NavLink
+              <Link
                 to="contact"
                 style={{
                   textDecoration: "none",
@@ -135,7 +135,7 @@ export default function Header() {
                 }}
               >
                 Contacts
-              </NavLink>
+              </Link>
             </li>
           </ul>
           <Button
@@ -233,7 +233,6 @@ function ScreenOne({setActiveScreen, input , setInput}) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          border: "1px solid red",
         }}
       >
         <NumberDiv
@@ -251,9 +250,10 @@ function ScreenOne({setActiveScreen, input , setInput}) {
             },
           }}
         
-        />
+        >
+        </NumberDiv>
         <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
-          <p style={{ fontSize: "13px" }}>
+          <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.
           </p>
         </div>
@@ -283,9 +283,9 @@ function ScreenOne({setActiveScreen, input , setInput}) {
             cursor: "pointer",
           }}
         >
-          <NavLink style={{ textDecoration: "none" }}>
+          <Link style={{ textDecoration: "none" }}>
             New to Cart? Create an account
-          </NavLink>
+          </Link>
         </div>
       </div>
     </>
@@ -294,11 +294,11 @@ function ScreenOne({setActiveScreen, input , setInput}) {
 
 function ScreenTwo({}) {
   return <>
-      <div style={{border:"1px solid green",width:"100%", height:"100%",background:"white",display:"flex",flexDirection:"column", alignItems:"center", gap:"1.5rem"}}>
-            <div style={{height:"15%",width:"75%",border:"1px solid red",marginTop:"2rem",display:"flex", justifyContent:"center"}}>
+      <div style={{width:"100%", height:"100%",background:"white",display:"flex",flexDirection:"column", alignItems:"center", gap:"1.5rem"}}>
+            <div style={{height:"15%",width:"75%",marginTop:"2.5rem",display:"flex", justifyContent:"center"}}>
                 <p style={{fontSize:"17px"}}>Please enter the OTP sent to number.</p>
             </div>
-            <div style={{height:"10%",width:"60%",display:"flex", flexDirection:"row",gap:"2rem",alignItems:"center",marginTop:"1.5rem"}}>
+            <div style={{height:"10%",width:"60%",display:"flex", flexDirection:"row",gap:"2rem",alignItems:"center",marginTop:"0.6rem"}}>
               <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} />
 
               <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} />
@@ -307,9 +307,9 @@ function ScreenTwo({}) {
               <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} /> 
               <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} />
             </div>
-            <button style={{fontSize:"17px",height:"2.5rem",width:"80%",fontWeight:"500"}} >Verify</button>
-            <div style={{height:"2rem", width:"80%",border:"1px solid red", display:"flex", justifyContent:"center"}}>
-                <p>Not received your code? Resend code</p>
+            <button style={{fontSize:"17px",height:"2.5rem",width:"80%",fontWeight:"500",background: "#FFA500",border:"none",borderRadius:"5px",cursor:"pointer"}} >Verify</button>
+            <div style={{height:"2rem", width:"80%", display:"flex", justifyContent:"center",margin:"0px"}}>
+                <p>Not received your code? <Link style={{textDecoration:"none", fontWeight:"500"}}>Resend code </Link></p>
             </div>
       </div>
   </>;
