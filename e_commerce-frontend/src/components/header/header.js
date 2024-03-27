@@ -225,7 +225,7 @@ export default function Header() {
                 setLogin={setLogin}
               />
             ) : activeScreen === "ScreenTwo" ? (
-              <ScreenTwo setActiveScreen={setActiveScreen} input={input} />
+              <ScreenTwo setActiveScreen={setActiveScreen} input={input} handleClose={handleClose} />
             ) : (
               <ScreenThree  input={input} setInput={setInput} setActiveScreen={setActiveScreen} setLogin={setLogin}/>
             )}
@@ -312,7 +312,7 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
   );
 }
 
-function ScreenTwo({}) {
+function ScreenTwo({handleClose}) {
   return (
     <>
       <div
@@ -397,6 +397,7 @@ function ScreenTwo({}) {
             }}
           />
         </div>
+        
         <button
           style={{
             fontSize: "17px",
@@ -407,6 +408,9 @@ function ScreenTwo({}) {
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
+          }}
+          onClick={()=>{
+            handleClose(true);
           }}
         >
           Verify
