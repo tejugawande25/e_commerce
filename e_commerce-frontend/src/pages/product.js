@@ -4,10 +4,13 @@ import CFooter from "../components/c-footer/c-footer";
 import { AnimatePresence, motion } from "framer-motion";
 
 function Product() {
+  
+  const [isHovered, setIsHovered] = useState(false);
+
+
   const text = "Roadster".split(" ");
   const newtext = "Men Solid Jacket".split(" ");
 
-  const [isHovered, setIsHovered] = useState(false);
   return (
     <>
       <div className="products">
