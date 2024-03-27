@@ -26,6 +26,7 @@ const NumberDiv = styled(TextField)`
 `;
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const[login, setLogin] = useState(true);
   const [input, setInput] = useState("");
   const [activeScreen, setActiveScreen] = useState("ScreenOne");
   const handleClose = () => {
@@ -196,12 +197,13 @@ export default function Header() {
                   gap: "1rem",
                   marginLeft: "3rem",
                   marginTop: "3rem",
+                  width:"80%"
                 }}
               >
                 <p
                   style={{ fontSize: "26px", fontWeight: "500", margin: "0px" }}
                 >
-                  Login
+                  {login === true ? "Login":"Look's like you're new here!"}
                 </p>
                 <p style={{ margin: "0px", fontSize: "17px" }}>
                   Get access to your <br />
@@ -215,7 +217,18 @@ export default function Header() {
                 />
               </div>
             </div>
-            {activeScreen === "ScreenOne" ? <ScreenOne setActiveScreen={setActiveScreen} input={input} setInput ={setInput} /> : <ScreenTwo setActiveScreen={setActiveScreen} input={input} />}
+            {activeScreen === "ScreenOne" ? (
+              <ScreenOne
+                setActiveScreen={setActiveScreen}
+                input={input}
+                setInput={setInput}
+                setLogin={setLogin}
+              />
+            ) : activeScreen === "ScreenTwo" ? (
+              <ScreenTwo setActiveScreen={setActiveScreen} input={input} />
+            ) : (
+              <ScreenThree  input={input} setInput={setInput} setActiveScreen={setActiveScreen} setLogin={setLogin}/>
+            )}
           </div>
         </Modal>
       </AppBar>
@@ -223,7 +236,7 @@ export default function Header() {
   );
 }
 
-function ScreenOne({setActiveScreen, input , setInput}) {
+function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
   return (
     <>
       {" "}
@@ -249,9 +262,10 @@ function ScreenOne({setActiveScreen, input , setInput}) {
               color: "black",
             },
           }}
-        
-        >
-        </NumberDiv>
+          onChange={(event) => {
+            setInput(event.target.value);
+          }}
+        ></NumberDiv>
         <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
           <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.
@@ -263,15 +277,16 @@ function ScreenOne({setActiveScreen, input , setInput}) {
             height: "2.7rem",
             marginLeft: "3.5rem",
             marginTop: "2.5rem",
-            fontSize: "15px",
+            fontSize: "17px",
             fontWeight: "500",
             background: "#FFA500",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
           }}
-          onClick={() =>{
-            setActiveScreen("ScreenTwo")
+          onClick={() => {
+            setActiveScreen("ScreenTwo");
           }}
         >
           Request OTP
@@ -283,7 +298,12 @@ function ScreenOne({setActiveScreen, input , setInput}) {
             cursor: "pointer",
           }}
         >
-          <Link style={{ textDecoration: "none" }}>
+          <Link style={{ textDecoration: "none" }}
+          onClick={() =>{
+            setActiveScreen("ScreenThree");
+            setLogin(false);
+          }}
+          >
             New to Cart? Create an account
           </Link>
         </div>
@@ -293,24 +313,200 @@ function ScreenOne({setActiveScreen, input , setInput}) {
 }
 
 function ScreenTwo({}) {
-  return <>
-      <div style={{width:"100%", height:"100%",background:"white",display:"flex",flexDirection:"column", alignItems:"center", gap:"1.5rem"}}>
-            <div style={{height:"15%",width:"75%",marginTop:"2.5rem",display:"flex", justifyContent:"center"}}>
-                <p style={{fontSize:"17px"}}>Please enter the OTP sent to number.</p>
-            </div>
-            <div style={{height:"10%",width:"60%",display:"flex", flexDirection:"row",gap:"2rem",alignItems:"center",marginTop:"0.6rem"}}>
-              <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} />
+  return (
+    <>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          background: "white",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "1.5rem",
+        }}
+      >
+        <div
+          style={{
+            height: "15%",
+            width: "75%",
+            marginTop: "2.5rem",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <p style={{ fontSize: "17px" }}>
+            Please enter the OTP sent to number.
+          </p>
+        </div>
+        <div
+          style={{
+            height: "10%",
+            width: "60%",
+            display: "flex",
+            flexDirection: "row",
+            gap: "2rem",
+            alignItems: "center",
+            marginTop: "0.6rem",
+          }}
+        >
+          <input
+            style={{
+              height: "80%",
+              width: "16%",
+              border: "none",
+              outline: "none",
+              borderBottom: "1px solid gray",
+              fontSize: "24px",
+              fontWeight: "400",
+            }}
+          />
 
-              <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} />
-              
+          <input
+            style={{
+              height: "80%",
+              width: "16%",
+              border: "none",
+              outline: "none",
+              borderBottom: "1px solid gray",
+              fontSize: "24px",
+              fontWeight: "400",
+            }}
+          />
 
-              <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} /> 
-              <input style={{height:"80%", width:"16%",border:"none",outline:"none",borderBottom:"1px solid gray",fontSize:"24px",fontWeight:"400"}} />
-            </div>
-            <button style={{fontSize:"17px",height:"2.5rem",width:"80%",fontWeight:"500",background: "#FFA500",border:"none",borderRadius:"5px",cursor:"pointer"}} >Verify</button>
-            <div style={{height:"2rem", width:"80%", display:"flex", justifyContent:"center",margin:"0px"}}>
-                <p>Not received your code? <Link style={{textDecoration:"none", fontWeight:"500"}}>Resend code </Link></p>
-            </div>
+          <input
+            style={{
+              height: "80%",
+              width: "16%",
+              border: "none",
+              outline: "none",
+              borderBottom: "1px solid gray",
+              fontSize: "24px",
+              fontWeight: "400",
+            }}
+          />
+          <input
+            style={{
+              height: "80%",
+              width: "16%",
+              border: "none",
+              outline: "none",
+              borderBottom: "1px solid gray",
+              fontSize: "24px",
+              fontWeight: "400",
+            }}
+          />
+        </div>
+        <button
+          style={{
+            fontSize: "17px",
+            height: "2.5rem",
+            width: "80%",
+            fontWeight: "500",
+            background: "#FFA500",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Verify
+        </button>
+        <div
+          style={{
+            height: "2rem",
+            width: "80%",
+            display: "flex",
+            justifyContent: "center",
+            margin: "0px",
+          }}
+        >
+          <p>
+            Not received your code?{" "}
+            <Link style={{ textDecoration: "none", fontWeight: "500" }}>
+              Resend code{" "}
+            </Link>
+          </p>
+        </div>
       </div>
-  </>;
+    </>
+  );
+}
+
+function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
+  return (
+    <>
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          background: "white",
+        }}
+      >
+        <NumberDiv
+          multiline
+          id="filled-multiline-flexible"
+          variant="standard"
+          sx={{ input: { color: "#fff" } }}
+          label="Enter Email/Mobile number"
+          display="flex"
+          alignitems="center"
+          inputProps={{
+            style: {
+              textAlign: "start",
+              color: "black",
+            },
+          }}
+          onChange={(event) => {
+            setInput(event.target.value);
+          }}
+        ></NumberDiv>
+        <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
+          <p style={{ fontSize: "14px" }}>
+            By continuing,you agree to Cart's Terms of Use and privacy policy.
+          </p>
+        </div>
+        <button
+          style={{
+            width: "75%",
+            height: "2.7rem",
+            marginLeft: "3.5rem",
+            marginTop: "2.5rem",
+            fontSize: "17px",
+            fontWeight: "500",
+            background: "#FFA500",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          }}
+          onClick={() =>{
+            setActiveScreen("ScreenTwo")
+          }}
+        >
+          Continue
+        </button>
+        <button
+          style={{
+            width: "75%",
+            height: "2.7rem",
+            marginLeft: "3.5rem",
+            fontSize: "16px",
+            fontWeight: "500",
+            background:"white",
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            marginTop:"1rem",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+          onClick={() =>{
+            setActiveScreen("ScreenOne")
+            setLogin(true)
+          }}
+        >
+          Existing User? Log in
+        </button>
+      </div>
+    </>
+  );
 }
