@@ -5,6 +5,7 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 import Product from "./pages/product";
 import Header from "./components/header/header";
+import Cart from "./pages/cart.js";
 
 function App(){
   return(
@@ -16,6 +17,7 @@ function App(){
       <Route path="about" element={<About />}/>
       <Route path="contact" element={<Contact />}/>
       <Route path="product" element={<Product />} />
+      <Route path="cart" element={<Cart />} />
     </Routes>
     </BrowserRouter>
     </>

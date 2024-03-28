@@ -3,14 +3,92 @@ import "./product.css";
 import CFooter from "../components/c-footer/c-footer";
 import { AnimatePresence, motion } from "framer-motion";
 
+
+const TshirtProducts = [
+  {
+    id:1,
+    src:"https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/2/g/v/l-ts12-vebnor-original-imagymzpht8j8zau.jpeg?q=70&crop=true",
+    alt:"blue-tshirt",
+    text:"Roadster.".split(" "),
+    newtext:"Men Solid Jacket".split(" "),
+  },
+  {
+    id:2,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/r/f/d/s-mens-hiltop-lycra-t-shirt-sti-original-imagx8n8pzxs5bad.jpeg?q=70",
+    alt:"gray-tshirt",
+    text:"Roadster.".split(" "),
+    newtext:"Men Solid Jacket".split(" "),
+  },
+  {
+    id:3,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/4/y/7/s-togrrn-d141-tripr-original-imagxqfkypubyggk.jpeg?q=70",
+    alt:"green-tshirt",
+    text:"Roadster.".split(" "),
+    newtext:"Men Solid Jacket".split(" "),
+  },
+  {
+    id:4,
+    src:"https://rukminim2.flixcart.com/image/1600/1600/xif0q/t-shirt/a/0/w/xl-rzw01blackprint-rodzen-original-imagmptnzzgha3w3.jpeg?q=70&crop=false",
+    alt:"blue-tshirt",
+    text:"Roadster.".split(" "),
+    newtext:"Men Solid Jacket".split(" "),
+  },
+  {
+    id:5,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/c/q/d/l-rzw01skullblack-rodzen-original-imagnemfy9fckzuq.jpeg?q=70",
+    alt:"black-tshirt",
+    text:"Roadster.".split(" "),
+    newtext:"Men Solid Jacket".split(" "),
+  },
+  {
+    id:6,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/3/q/e/s-3813-the-dry-state-original-imagpghuhhqyeeza.jpeg?q=70",
+    alt:"pink-tshirt",
+    text:"Roadster.".split(" "),
+    newtext:"Men Solid Jacket".split(" "),
+  }
+]; 
+
+const JeansProducts = [
+  {
+    id:1,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jean/w/v/e/-original-imagj4qqzenj3hmh.jpeg?q=70",
+    alt:"blue-jeans"
+  },
+  { 
+    id:2,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jean/p/t/i/26-9344-fashionfibre-original-imagrb6bmzxfycht.jpeg?q=70",
+    alt:"gray-jeans"
+  },
+  {
+    id:3,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jean/u/e/o/30-g2-mj-gr-103-comfits-original-imagrquh8vqz9znc.jpeg?q=70",
+    alt:"green-jeans"
+  },
+  {
+    id:4,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jean/r/b/p/32-basic-jns-15-blue-justfaith-original-imafs2z6kzqjmeet-bb.jpeg?q=70",
+    alt:"blue-jeans"
+  },
+  {
+    id:5,
+    src:"https://rukminim2.flixcart.com/image/612/612/ky0g58w0/shopsy-jean/8/p/y/28-black-knee-cut-jeans-comfits-original-imagaccjjya9gqzn.jpeg?q=70",
+    alt:"black-jeans"
+  },
+  {
+    id:6,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jean/9/a/y/28-2322605-roadster-original-imafgmqfbqykzzag-bb.jpeg?q=70",
+    alt:"pink-jeans"
+  }
+]
+
 function Product() {
   
   const [isHovered, setIsHovered] = useState(false);
-
-
   const text = "Roadster".split(" ");
   const newtext = "Men Solid Jacket".split(" ");
 
+   
   return (
     <>
       <div className="products">
@@ -19,49 +97,17 @@ function Product() {
             <p>Trending T-Shirt's</p>
           </div>
           <div className="product-section-div">
-            <div className="product-section-item">
+             {TshirtProducts.map((item,i) =>{
+              return(
+              <div className="product-section-item">
               <img
                 className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/2/g/v/l-ts12-vebnor-original-imagymzpht8j8zau.jpeg?q=70&crop=true"
-                alt="blue-tshirt"
+                src={item.src}
+                alt={item.alt}
               />
             </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/r/f/d/s-mens-hiltop-lycra-t-shirt-sti-original-imagx8n8pzxs5bad.jpeg?q=70"
-                alt="gray-tshirt"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/4/y/7/s-togrrn-d141-tripr-original-imagxqfkypubyggk.jpeg?q=70"
-                alt="green-tshirt"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                style={{ width: "14.24rem" }}
-                src="https://rukminim2.flixcart.com/image/1600/1600/xif0q/t-shirt/a/0/w/xl-rzw01blackprint-rodzen-original-imagmptnzzgha3w3.jpeg?q=70&crop=false"
-                alt="blue-tshirt"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/c/q/d/l-rzw01skullblack-rodzen-original-imagnemfy9fckzuq.jpeg?q=70"
-                alt="black-tshirt"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/3/q/e/s-3813-the-dry-state-original-imagpghuhhqyeeza.jpeg?q=70"
-                alt="pink-tshirt"
-              />
-            </div>
+              )
+             })}
           </div>
         </div>
         <div className="product-section">
@@ -150,49 +196,17 @@ function Product() {
             <p>Jeans</p>
           </div>
           <div className="product-section-div">
-            <div className="product-section-item">
+          {JeansProducts.map((item,i) =>{
+              return(
+              <div className="product-section-item">
               <img
                 className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/jean/w/v/e/-original-imagj4qqzenj3hmh.jpeg?q=70"
-                alt="blue-jeans"
+                src={item.src}
+                alt={item.alt}
               />
             </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/jean/p/t/i/26-9344-fashionfibre-original-imagrb6bmzxfycht.jpeg?q=70"
-                alt="gray-jeans"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/jean/u/e/o/30-g2-mj-gr-103-comfits-original-imagrquh8vqz9znc.jpeg?q=70"
-                alt="green-jeans"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                style={{ width: "14.24rem" }}
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/jean/r/b/p/32-basic-jns-15-blue-justfaith-original-imafs2z6kzqjmeet-bb.jpeg?q=70"
-                alt="blue-jeans"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/ky0g58w0/shopsy-jean/8/p/y/28-black-knee-cut-jeans-comfits-original-imagaccjjya9gqzn.jpeg?q=70"
-                alt="black-jeans"
-              />
-            </div>
-            <div className="product-section-item">
-              <img
-                className="product-section-image"
-                src="https://rukminim2.flixcart.com/image/612/612/xif0q/jean/9/a/y/28-2322605-roadster-original-imafgmqfbqykzzag-bb.jpeg?q=70"
-                alt="pink-jeans"
-              />
-            </div>
+              )
+             })}
           </div>
         </div>
         <CFooter />

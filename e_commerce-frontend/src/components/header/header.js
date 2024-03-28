@@ -155,6 +155,7 @@ export default function Header() {
           >
             Login
           </Button>
+          <Link to="cart">
           <ShoppingCartIcon
             style={{
               color: "#2C3539",
@@ -163,6 +164,7 @@ export default function Header() {
               fontSize: "24px",
             }}
           />
+          </Link>
         </Toolbar>
         <Modal
           open={open}
