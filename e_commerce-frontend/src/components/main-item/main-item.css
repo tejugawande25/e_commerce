@@ -21,7 +21,7 @@
     gap: 15px;
 }
 .men-jacket{
-    height: 80%;
+    height: 100%;
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin: 0px;
@@ -36,7 +36,7 @@
     transition: 0.6s;
 }
 .women-jacket{
-    height: 80%;
+    height: 100%;
     width: 40%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     margin-right: 50px;
@@ -59,8 +59,8 @@
 }
 .side-items{
     height: 95%;
-    width: 40%;
-    margin-left: 32px;
+    width: 85%;
+    margin-left: 30px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .side-image{
@@ -100,4 +100,11 @@
     font-weight: 600;
     font-family: italic;
     color: #494F55;
+}
+.main-image-heading{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    height: 80%;
+    width: 100%;
 }

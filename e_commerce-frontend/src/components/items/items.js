@@ -63,7 +63,6 @@ function Items() {
         </Link>
           )
         })}
-        
         </div>
       </div>
     </>
