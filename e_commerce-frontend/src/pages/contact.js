@@ -2,6 +2,7 @@ import React from "react";
 import "./contact.css";
 import CFooter from "../components/c-footer/c-footer";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Checkbox } from "@mui/material";
 
 function Contact() {
   return (
@@ -33,7 +34,7 @@ function Contact() {
                 <p className="lower-p">View,cancel or return an order</p>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                <ArrowForwardIosIcon style={{fontSize:"14px",color:"black",marginLeft:"22rem"}} />
+                <Checkbox style={{marginLeft:"20rem"}}/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
@@ -42,7 +43,7 @@ function Contact() {
                 <p className="lower-p">Manage and track returns</p>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                <ArrowForwardIosIcon style={{fontSize:"14px",color:"black",marginLeft:"19rem"}} />
+                <Checkbox style={{marginLeft:"16.8rem"}}/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
@@ -51,7 +52,7 @@ function Contact() {
                 <p className="lower-p">Offers,payment,Cart Plus & all other issues</p>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                <ArrowForwardIosIcon style={{fontSize:"14px",color:"black",marginLeft:"18.8rem"}} />
+                <Checkbox style={{marginLeft:"16.7rem"}}/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
@@ -59,7 +60,7 @@ function Contact() {
                 <p className="upper-p">I want to contact with seller</p>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                <ArrowForwardIosIcon style={{fontSize:"14px",color:"black",marginLeft:"22rem"}} />
+                <Checkbox style={{marginLeft:"19.7rem"}}/>
                 </div>
               </div>
             </div>
