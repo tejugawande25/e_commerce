@@ -5,7 +5,7 @@ import CFooter from "../components/c-footer/c-footer";
 function Cart() {
   return (
     <>
-      <div className="cart-container">
+      <div className="cart-container" >
         <div className="cart-item">
           <div className="cart-item-product">
             <div className="cart-product-image">
