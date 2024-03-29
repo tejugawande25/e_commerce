@@ -48,6 +48,38 @@ const TshirtProducts = [
     newtext:"Men Solid Jacket".split(" "),
   }
 ]; 
+const JacketProducts =[
+  {
+    id:1,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jacket/s/y/f/-original-imagyj95afhctgfh.jpeg?q=70",
+    alt:"blue-denim",
+  },
+  {
+    id:2,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jacket/j/0/y/xxl-1-no-mntnw-4023-montrez-original-imag7cp8ggyzn5by-bb.jpeg?q=70",
+    alt:"gray-denim",
+  },
+  {
+    id:3,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jacket/t/d/n/l-kttmensdenimjacket87-kotty-original-imafng4uh2dh8xsx-bb.jpeg?q=70",
+    alt:"green-denim",
+  },
+  {
+    id:4,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jacket/m/z/7/xl-2437-buynewtrend-original-imag4dnvmzckrcp6-bb.jpeg?q=70",
+    alt:"blue-denim",
+  },
+  {
+    id:5,
+    src:"https://rukminim2.flixcart.com/image/612/612/kjhgzgw0-0/jacket/n/g/t/xxl-12288660-roadster-original-imafzfnjresfydba.jpeg?q=70",
+    alt:"black-denim",
+  },
+  {
+    id:6,
+    src:"https://rukminim2.flixcart.com/image/612/612/xif0q/jacket/u/m/f/34-denim-jacket-rohan-fashion-hub-original-imafv82ggqqgc9uf-bb.jpeg?q=70",
+    alt:"pink-denim",
+  }
+]
 
 const JeansProducts = [
   {
