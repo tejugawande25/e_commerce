@@ -54,8 +54,10 @@ function MainItem() {
           <div className="inside-side">
             {SideItemsUpper.map((item,i) =>{
               return(
-                <Link to="productdetails" style={{height:"100%",width:"100%"}}>
-                <div className="side-items">
+                <Link to="productdetails" style={{height:"100%",width:"100%"}}
+                key={item.id}
+                >
+                <div className="side-items" key={item.id}>
                 <img className="side-image" src={item.src} alt={item.alt} />
             </div>
               </Link>
@@ -65,7 +67,7 @@ function MainItem() {
           <div className="inside-side">
           {SideItemsLower.map((item,i) =>{
               return(
-                <Link to="productdetails" style={{height:"100%", width:"100%"}}>
+                <Link to="productdetails" style={{height:"100%", width:"100%"}} key={item.id}>
                 <div className="side-items">
                 <img className="side-image" src={item.src} alt={item.alt} />
             </div>
@@ -89,11 +91,12 @@ function MainItem() {
           <div className="men-jacket">
            {RightItemOne.map((item,i) =>{
             return(
-              <Link to="productdetails">
+              <Link to="productdetails" key={item.id}>
               <img
               className="jacket-image"
               src={item.src}
               alt={item.alt}
+          
             />
             </Link>
             )
@@ -102,7 +105,7 @@ function MainItem() {
           <div className="women-jacket">
            {RightItemSecond.map((item,i) =>{
             return(
-              <Link to="productdetails">
+              <Link to="productdetails"  key={item.id}>
              <img
              className="jacket-image"
              src={item.src}
