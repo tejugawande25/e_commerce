@@ -9,11 +9,11 @@ const productSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-    text:{
+    heading:{
         type:String,
         require:true
     },
-    newtext:{
+    subheading:{
         type:String,
         require:true
     },

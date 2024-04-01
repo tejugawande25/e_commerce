@@ -7,9 +7,12 @@ const jwt = require("jsonwebtoken");
 
 
 router.get("/items",async(req,res) =>{
-    products.find({})
+    const {size} = req.query;
+
+    products.aggregate().sort({'views':-1}).limit(Number(size))
     .then((items) => {
         res.json(items)
+        console.log(items);
     })
     .catch((error) =>{
         console.log(error);
@@ -107,4 +110,60 @@ router.post("/contact", async(req,res) =>{
     }
 })
 
+//route for the inserting the product
+router.post("/products",async(req,res) =>{
+    try{
+        console.log(req.body);
+        await products.insertMany(req.body);
+        res.status(200).json({
+            message:"products inserted.",
+        })
+    }catch(error){
+        console.log(error);
+    }
+})
+
+//updating the product item
+router.post("/updateProduct",async(req,res) =>{
+   try{
+    console.log(req.body);
+    const updateProduct = await products.findOneAndUpdate(
+        {_id:req.body.id},
+        req.body
+    );
+    console.log("updateProduct: ", updateProduct)
+     res.status(200).json({
+        message:"product updated.",
+     })
+   }catch(error){
+    console.log(error);
+   }
+})
+
+//deleting the product item
+router.post("/deleteProduct",async(req, res)=>{
+    try{
+    console.log(req.body);
+     const{productID} = req.body; 
+     await products.findOneAndDelete(productID);
+     res.status(200).json({
+        message:"product deleted.",
+     })
+    }catch(error){
+        console.log(error);
+    }
+})
+
+//product/id
+router.get("/product/:id", async(req,res) =>{
+    try{
+    console.log(req.params.id);
+    res.status(200).json({
+        message:"product id selected.",
+        id:req.params.id,
+    })
+    }catch(error){
+        console.log(error);
+    }
+})
 module.exports = router;
