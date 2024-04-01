@@ -72,7 +72,6 @@ function Items() {
         </div>
         <div style={{ display: "flex", gap: "75px" }}>
           {items.map((item, i) => {
-    
             return (
               <Link
                 to="productdetails"
