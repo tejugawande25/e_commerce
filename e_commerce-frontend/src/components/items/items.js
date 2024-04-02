@@ -62,7 +62,7 @@ function Items() {
       console.log(error);
     })
   }
-  
+  // console.log(items);
   return (
     <>
       <div className="items-div">
@@ -73,7 +73,7 @@ function Items() {
           {items.map((item, i) => {
             return (
               <Link
-                to="productdetails"
+                to={`products/${item._id}`}
                 style={{ textDecoration: "none", color: "black" }}
                 key={`yuggi-${i}`}
               >

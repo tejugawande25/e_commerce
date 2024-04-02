@@ -4,12 +4,12 @@ const products = require("../models/products.js");
 const users = require("../models/users.js");
 const contacts = require("../models/contact.js");
 const jwt = require("jsonwebtoken");
+const { default: mongoose } = require("mongoose");
 
 
 router.get("/items",async(req,res) =>{
     const {size} = req.query;
-
-    products.aggregate().sort({'views':-1}).limit(Number(size))
+    await products.aggregate().sort({'views':-1}).limit(Number(size))
     .then((items) => {
         res.json(items)
         console.log(items);
@@ -155,13 +155,13 @@ router.post("/deleteProduct",async(req, res)=>{
 })
 
 //product/id
-router.get("/product/:id", async(req,res) =>{
+router.get("/products/:id", async(req,res) =>{
     try{
-    console.log(req.params.id);
-    res.status(200).json({
-        message:"product id selected.",
-        id:req.params.id,
-    })
+   const id = req.params.id;
+   const RequireProduct = await products.findById(id).exec();
+   res.status(200).json({
+    RequireProduct:RequireProduct,
+   })
     }catch(error){
         console.log(error);
     }

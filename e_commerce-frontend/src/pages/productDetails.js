@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./productDetails.css";
 import CFooter from "../components/c-footer/c-footer";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 
 function ProductDetails(){
-   
+    const[oneProduct, setOneProduct] = useState([]);
+   const params = useParams();
+   console.log(params.id);
+
+   useEffect(() =>{
+   getProduct();
+   },[]);
+
+   const getProduct = () =>{
+    axios.get(`http://localhost:4000/user/products/${params.id}`,{
+    })
+    .then((product) =>{
+        setOneProduct(product.data);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+}
+console.log(oneProduct);
+
     return(
-        
         <>
-        <div className="product-details-container">
+        <div className="product-details-container"> 
+            
             <div className="product-image">
                 <div className="product-image-upper">
                      <img className="product-item-image" src="https://rukminim2.flixcart.com/image/612/612/kjhgzgw0-0/jacket/t/z/q/m-12279410-roadster-original-imafzfnhskjpkwww.jpeg?q=70" alt="jacket-women-image" />
@@ -23,8 +44,7 @@ function ProductDetails(){
                         </Link>
                         <Link to="/cart" style={{width:"45%",textDecoration:"none"}}>
                      <button className="product-add-cart"style={{background:"#ff8f00"}}> <FlashOnIcon />BUY NOW</button>
-                     </Link>
-                     
+                     </Link>   
                 </div>
             </div>
             <div className="product-description">
@@ -59,7 +79,7 @@ function ProductDetails(){
                     </div>
                 </div>
             </div>
-           
+         
         </div>
         <CFooter />
         </>
