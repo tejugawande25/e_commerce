@@ -63,6 +63,8 @@ function Items() {
     })
   }
   // console.log(items);
+  
+
   return (
     <>
       <div className="items-div">
