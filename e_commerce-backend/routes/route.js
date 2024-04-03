@@ -12,12 +12,60 @@ router.get("/items",async(req,res) =>{
     await products.aggregate().sort({'views':-1}).limit(Number(size))
     .then((items) => {
         res.json(items)
-        console.log(items);
+        // console.log(items);
     })
     .catch((error) =>{
         console.log(error);
     });
 });
+
+//route for sideUpper items
+router.get("/items/sideupper",async(req,res) =>{
+    const{size} = req.query;
+    await products.aggregate([{$match:{views:8}}]).limit(Number(size))
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+});
+
+//route for sidelower items
+router.get("/items/sidelower",async(req,res) =>{
+    const{size} = req.query;
+    await products.aggregate([{$match:{views:7}}]).limit(Number(size))
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+});
+
+//route for  rightone 
+router.get("/items/rightone",async(req,res) =>{
+    const{size} = req.query;
+    await products.aggregate([{$match:{views:9}}]).sort({'views':1}).limit(Number(size))
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+});
+
+//route for rightSecond 
+router.get("/items/rightsecond",async(req, res) =>{
+    const{size} = req.query;
+    await products.aggregate([{$match:{views:6}}]).limit(Number(size))
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+})
 
 // route for the usersignup
 router.post("/signup",async(req,res) =>{
