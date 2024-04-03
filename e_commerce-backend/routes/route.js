@@ -67,6 +67,18 @@ router.get("/items/rightsecond",async(req, res) =>{
     })
 })
 
+//route for product page
+router.get("/item/products",async(req,res) =>{
+    const{size} = req.query;
+    await products.aggregate([{$match:{views:1}}]).limit(Number(size))
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+})
+
 // route for the usersignup
 router.post("/signup",async(req,res) =>{
     try{
@@ -214,4 +226,6 @@ router.get("/products/:id", async(req,res) =>{
         console.log(error);
     }
 })
+
+
 module.exports = router;

@@ -1,53 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./product.css";
 import CFooter from "../components/c-footer/c-footer";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const TshirtProducts = [
-  {
-    id: 1,
-    src: "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/2/g/v/l-ts12-vebnor-original-imagymzpht8j8zau.jpeg?q=70&crop=true",
-    alt: "blue-tshirt",
-    text: "Roadster.".split(" "),
-    newtext: "Men Solid Jacket".split(" "),
-  },
-  {
-    id: 2,
-    src: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/r/f/d/s-mens-hiltop-lycra-t-shirt-sti-original-imagx8n8pzxs5bad.jpeg?q=70",
-    alt: "gray-tshirt",
-    text: "Roadster.".split(" "),
-    newtext: "Men Solid Jacket".split(" "),
-  },
-  {
-    id: 3,
-    src: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/4/y/7/s-togrrn-d141-tripr-original-imagxqfkypubyggk.jpeg?q=70",
-    alt: "green-tshirt",
-    text: "Roadster.".split(" "),
-    newtext: "Men Solid Jacket".split(" "),
-  },
-  {
-    id: 4,
-    src: "https://rukminim2.flixcart.com/image/1600/1600/xif0q/t-shirt/a/0/w/xl-rzw01blackprint-rodzen-original-imagmptnzzgha3w3.jpeg?q=70&crop=false",
-    alt: "blue-tshirt",
-    text: "Roadster.".split(" "),
-    newtext: "Men Solid Jacket".split(" "),
-  },
-  {
-    id: 5,
-    src: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/c/q/d/l-rzw01skullblack-rodzen-original-imagnemfy9fckzuq.jpeg?q=70",
-    alt: "black-tshirt",
-    text: "Roadster.".split(" "),
-    newtext: "Men Solid Jacket".split(" "),
-  },
-  {
-    id: 6,
-    src: "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/3/q/e/s-3813-the-dry-state-original-imagpghuhhqyeeza.jpeg?q=70",
-    alt: "pink-tshirt",
-    text: "Roadster.".split(" "),
-    newtext: "Men Solid Jacket".split(" "),
-  },
-];
+
+//  
 const JacketProducts = [
   {
     id: 1,
@@ -116,8 +75,26 @@ const JeansProducts = [
 
 function Product() {
   const [isHovered, setIsHovered] = useState(false);
+  const[tshirt, setTshirts] = useState([]);
   const text = "Roadster".split(" ");
   const newtext = "Men Solid Jacket".split(" ");
+  
+  useEffect(() =>{
+    getTshirts();
+  },[]);
+
+
+  const getTshirts = () =>{
+    axios.get("http://localhost:4000/user/item/products?size=6")
+    .then((item) =>{
+      setTshirts(item.data);
+      console.log(item.data);
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  };
+
 
   return (
     <>
@@ -127,10 +104,10 @@ function Product() {
             <p>Trending T-Shirt's</p>
           </div>
           <div className="product-section-div">
-            {TshirtProducts.map((item, i) => {
+            {tshirt.map((item, i) => {
               return (
-                <div className="product-section-item">
-                  <Link to="productdetails">
+                <div className="product-section-item"  key={`tshinkj-${i}`}>
+                  <Link to={`/products/${item._id}`}>
                     <img
                       className="product-section-image"
                       src={item.src}
@@ -231,8 +208,8 @@ function Product() {
           <div className="product-section-div">
             {JeansProducts.map((item, i) => {
               return (
-                <div className="product-section-item">
-                  <Link to="productdetails">
+                <div className="product-section-item" key={`fusnl-${i}`}>
+                  <Link to="productdetails" >
                     <img
                       className="product-section-image"
                       src={item.src}
