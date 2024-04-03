@@ -3,47 +3,6 @@ import "./main-item.css";
 import {Link} from "react-router-dom";
 import axios from "axios";
 
-// const SideItemsUpper=[
-//   {
-//     id:1,
-//     src:"https://rukminim2.flixcart.com/image/832/832/kjhgzgw0-0/jacket/n/g/t/xxl-12288660-roadster-original-imafzfnjresfydba.jpeg?q=70&crop=true",
-//     alt:"blue-denim",
-//   },
-//   {
-//     id:2,
-//     src:"https://rukminim2.flixcart.com/image/832/832/kxp0mfk0/shrug/9/q/n/m-1-seq-bow-shrug-moshe-original-imaga3dq3pvkyg5v.jpeg?q=70&crop=true",
-//     alt:"black-tshirt",
-//   },
-// ];
-// const SideItemsLower =[
-//   {
-//     id:1,
-//     src:"https://rukminim2.flixcart.com/image/832/832/xif0q/sweatshirt/c/e/q/xl-single-ziper-hoodies-prachi-k-fashions-original-imagj9fhjagm3qya.jpeg?q=70&crop=true",
-//     alt:"hoodies",
-//   },
-//   {
-//     id:2,
-//     src:"https://rukminim2.flixcart.com/image/832/832/xif0q/jacket/i/7/3/xl-1-no-12bq-blaq-ash-original-imagu4jfzrhrxumg.jpeg?q=70&crop=true",
-//     alt:"jacket",
-//   }
-// ];
-
-const RightItemOne = [
-  {
-    id:1,
-    src:"https://rukminim2.flixcart.com/image/832/832/xif0q/jacket/a/e/t/m-no-cr-cb-jkt-21-grey-caraba-original-imagxz8tqmdarh5f.jpeg?q=70&crop=true",
-    alt:"left-jacket",
-  }
-];
-
-const RightItemSecond = [
-  {
-    id:1,
-    src:"https://rukminim2.flixcart.com/image/832/832/kvtuxe80/jacket/y/9/t/xs-no-14355272-roadster-original-imag8nyxbectb9f7.jpeg?q=70&crop=true",
-    alt:"right-jacket",
-  }
-]
-
 function MainItem() {
   const[sideUpper, setSideUpper] = useState([]);
   const[sideLower, setSideLower] = useState([]);
@@ -109,7 +68,7 @@ function MainItem() {
           <div className="inside-side">
             {sideUpper.map((item,i) =>{
               return(
-                <Link to="products" style={{height:"100%",width:"100%"}}
+                <Link to={`products/${item._id}`} style={{height:"100%",width:"100%"}}
                  key={`thbjib-${i}`}
                 >
                 <div className="side-items" key={item.id}>
@@ -122,7 +81,7 @@ function MainItem() {
           <div className="inside-side">
           {sideLower.map((item,i) =>{
               return(
-                <Link to="productdetails" style={{height:"100%", width:"100%"}} key={`uhtnp-${i}`}>
+                <Link to={`products/${item._id}`} style={{height:"100%", width:"100%"}} key={`uhtnp-${i}`}>
                 <div className="side-items">
                 <img className="side-image" src={item.src} alt={item.alt} />
             </div>
@@ -146,7 +105,7 @@ function MainItem() {
           <div className="men-jacket">
            {rightOne.map((item,i) =>{
             return(
-              <Link to="productdetails" key={`yndro-${i}`}>
+              <Link to={`products/${item._id}`} key={`yndro-${i}`}>
               <img
               className="jacket-image"
               src={item.src}
@@ -160,7 +119,7 @@ function MainItem() {
           <div className="women-jacket">
            {rightSecond.map((item,i) =>{
             return(
-              <Link to="productdetails"  key={`tsozn-${i}`}>
+              <Link to={`products/${item._id}`}  key={`tsozn-${i}`}>
              <img
              className="jacket-image"
              src={item.src}
