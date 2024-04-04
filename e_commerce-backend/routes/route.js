@@ -268,14 +268,25 @@ router.get("/cart/items",async(req,res) =>{
    await cart.find({})
    .then((items) =>{
     res.json(items);
-    console.log(items);
    })
    .catch((error) =>{
     console.log(error);
    })
 });
 
-
+//deleting the particular item from the cart
+router.delete("/cart/items/:id",async(req,res) =>{
+   const id = req.params.id;
+   await cart.findOneAndDelete(id)
+   .then((items) =>{
+    res.status(200).json({
+        message:"cart item deleted",
+    })
+   })
+   .catch((error) =>{
+    console.log(error);
+   })
+})
 
 
 

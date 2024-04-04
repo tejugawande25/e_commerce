@@ -4,23 +4,30 @@ import CFooter from "../components/c-footer/c-footer";
 import axios from "axios";
 
 
-
 function Cart() {
   const[cart,setCart] = useState([]);
-
+ 
   useEffect(() =>{
       cartProduct();
-  },[])
+  },[]);
 
   const cartProduct = () =>{
     axios.get("http://localhost:4000/user/cart/items")
     .then((item) =>{
       setCart(item.data);
-      console.log(item.data);
     })
     .catch((error) =>{
       console.log(error);
     })
+  }
+  const deleteItem = (id) =>{
+     axios.delete(`http://localhost:4000/user/cart/items/:${id}`)
+     .then((item) =>{
+      console.log("successfully deleted !");
+     })
+     .catch((error) =>{
+      console.log(error);
+     })
   }
 
   console.log(cart);
@@ -44,7 +51,7 @@ function Cart() {
             </div>
             <div className="cart-product-price">
               <p className="cart-product-price-text">{item.subheading} /-</p>
-              <button className="cart-product-price-sub">-</button>
+              <button className="cart-product-price-sub"  onClick={() => deleteItem(item.id)}>-</button>
             </div>
           </div>
           })}

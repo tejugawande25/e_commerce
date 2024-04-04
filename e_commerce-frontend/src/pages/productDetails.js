@@ -6,6 +6,7 @@ import FlashOnIcon from '@mui/icons-material/FlashOn';
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import toast,{Toaster} from "react-hot-toast";
 
 
 function ProductDetails(){
@@ -34,6 +35,7 @@ const mydata = Object.keys(oneProduct).map(key =>{
     axios.post(`http://localhost:4000/user/cart/add/${params.id}`)
     .then((product) =>{
        console.log(product);
+       toast.success("Successfully added to cart!");
     })
     .catch((error) =>{
         console.log(error);
@@ -42,6 +44,13 @@ const mydata = Object.keys(oneProduct).map(key =>{
 
     return(
         <>
+         <Toaster position="top-right" reverseOrder={false} 
+         toastOptions={{
+            success:{
+                duration:4000,
+            }
+         }}
+         />
         <div className="product-details-container"> 
             {mydata.map((item,i) =>{
                 return(
@@ -54,7 +63,7 @@ const mydata = Object.keys(oneProduct).map(key =>{
                                 <button className="product-add-cart" onClick={addToCart}>
                                     <ShoppingCartIcon style={{ height: "1.4rem" }}/> ADD TO CART</button>
                             </Link>
-                            <Link to={`/cart/${item._id}`} style={{ width: "45%", textDecoration: "none" }}>
+                            <Link to={`/cart`} style={{ width: "45%", textDecoration: "none" }}>
                                 <button className="product-add-cart" style={{ background: "#ff8f00" }}> <FlashOnIcon />BUY NOW</button>
                             </Link>
                         </div>
