@@ -292,8 +292,9 @@ router.get("/cart/items/sum",async(req,res) =>{
     })
 })
 
-router.post("/cart/items/quantity",async(req,res) =>{
+router.post("/cart/items/:id",async(req,res) =>{
    console.log(req.body);
+   console.log(req.params.id);
    await cart.findOneAndUpdate(
     {_id:req.body.id},
      req.body

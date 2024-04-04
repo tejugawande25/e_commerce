@@ -6,6 +6,7 @@ import axios from "axios";
 function Cart() {
   const [cart, setCart] = useState([]);
   const [sum, setSum] = useState([]);
+  const[quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     cartProduct();
@@ -32,6 +33,22 @@ function Cart() {
         console.log(error);
       });
   };
+
+
+  const increaseQuantity = (id) =>{
+    axios
+    .post(`http://localhost:4000/user/cart/items/:${id}`,{
+      quntity:quantity,
+    })
+    .then((item) =>{
+      console.log("quantity updated successfully !");
+    })
+    .catch((error) =>{
+      console.log(error);
+    });
+  };
+ 
+  console.log(quantity);
 
   const getTotalSum = () => {
     axios
@@ -64,7 +81,7 @@ function Cart() {
                 </div>
                 <div className="cart-product-price">
                   <p className="cart-product-price-text">{item.price} /-</p>
-                  <button className="cart-product-price-add">+</button>
+                  <button className="cart-product-price-add" onClick={() => increaseQuantity(item.id)}>+</button>
                   <button
                     className="cart-product-price-sub"
                     onClick={() => deleteItem(item.id)}
