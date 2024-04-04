@@ -293,20 +293,20 @@ router.get("/cart/items/sum",async(req,res) =>{
 })
 
 router.post("/cart/items/:id",async(req,res) =>{
-   console.log(req.body);
-   console.log(req.params.id);
+   const id = req.params.id;
+   console.log(id);
    await cart.findOneAndUpdate(
-    {_id:req.body.id},
-     req.body
+    {_id:id},
+    req.body,
    )
    .then((item) =>{
     res.status(200).json({
-        message:"quantity increased by 1"
+        message:"sucessfully updated !"
     })
    })
    .catch((error) =>{
     console.log(error);
-   })
+})
 })
 
 //deleting the particular item from the cart

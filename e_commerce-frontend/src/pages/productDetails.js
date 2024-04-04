@@ -47,14 +47,14 @@ const mydata = Object.keys(oneProduct).map(key =>{
          <Toaster position="top-right" reverseOrder={false} 
          toastOptions={{
             success:{
-                duration:4000,
+                duration:2000,
             }
          }}
          />
-        <div className="product-details-container"> 
+        <div className="product-details-container" > 
             {mydata.map((item,i) =>{
                 return(
-            <><div className="product-image" >
+            <><div className="product-image" key={`rhjii-${i}`}>
                         <div className="product-image-upper">
                             <img className="product-item-image" src={item.src} alt={item.alt} />
                         </div>

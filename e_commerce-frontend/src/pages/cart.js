@@ -25,7 +25,7 @@ function Cart() {
   };
   const deleteItem = (id) => {
     axios
-      .delete(`http://localhost:4000/user/cart/items/:${id}`)
+      .delete(`http://localhost:4000/user/cart/items/${id}`)
       .then((item) => {
         console.log("successfully deleted !");
       })
@@ -35,20 +35,20 @@ function Cart() {
   };
 
 
-  const increaseQuantity = (id) =>{
-    axios
-    .post(`http://localhost:4000/user/cart/items/:${id}`,{
-      quntity:quantity,
-    })
-    .then((item) =>{
-      console.log("quantity updated successfully !");
-    })
-    .catch((error) =>{
-      console.log(error);
-    });
-  };
+  // const increaseQuantity = (id) =>{
+  //   setQuantity(quantity + 1);
+  //   axios
+  //     .post(`http://localhost:4000/user/cart/items/${id}`,{
+  //       quantity:quantity
+  //     })
+  //   .then((item) =>{
+  //     console.log("quantity updated successfully !");
+  //   })
+  //   .catch((error) =>{
+  //     console.log(error);
+  //   });
+  // };
  
-  console.log(quantity);
 
   const getTotalSum = () => {
     axios
@@ -81,7 +81,11 @@ function Cart() {
                 </div>
                 <div className="cart-product-price">
                   <p className="cart-product-price-text">{item.price} /-</p>
-                  <button className="cart-product-price-add" onClick={() => increaseQuantity(item.id)}>+</button>
+                  <button className="cart-product-price-add"
+                    // onClick={() => increaseQuantity(item.id)}
+                  >
+                    +
+                  </button>
                   <button
                     className="cart-product-price-sub"
                     onClick={() => deleteItem(item.id)}
