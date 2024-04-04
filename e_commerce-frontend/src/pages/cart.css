@@ -87,6 +87,16 @@
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
+.cart-product-price-add{
+    height: 2rem;
+    width: 3rem;
+    font-size: 22px;
+    border-radius: 5px;
+    background-color: rgb(61, 164, 61);
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
 .cart-payment-address{
     height: 30%;
     width: 90%;

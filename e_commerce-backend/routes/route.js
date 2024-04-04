@@ -274,6 +274,40 @@ router.get("/cart/items",async(req,res) =>{
    })
 });
 
+router.get("/cart/items/sum",async(req,res) =>{
+    await cart.aggregate([{
+        $group:{
+            _id:{},
+            totalAmount:{$sum:{$multiply:["$price","$quantity"]}}
+        }
+    }])
+    .then((totalamount) =>{
+        res.status(200).json({
+            totalAmount:totalamount,
+            message:"added successfully !"
+        })
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+})
+
+router.post("/cart/items/quantity",async(req,res) =>{
+   console.log(req.body);
+   await cart.findOneAndUpdate(
+    {_id:req.body.id},
+     req.body
+   )
+   .then((item) =>{
+    res.status(200).json({
+        message:"quantity increased by 1"
+    })
+   })
+   .catch((error) =>{
+    console.log(error);
+   })
+})
+
 //deleting the particular item from the cart
 router.delete("/cart/items/:id",async(req,res) =>{
    const id = req.params.id;
