@@ -4,6 +4,7 @@ import CFooter from "../components/c-footer/c-footer";
 import axios from "axios";
 
 
+
 function Cart() {
   const[cart,setCart] = useState([]);
  
@@ -50,7 +51,7 @@ function Cart() {
               <p className="cart-product-desc-text">{item.alt}</p>
             </div>
             <div className="cart-product-price">
-              <p className="cart-product-price-text">{item.subheading} /-</p>
+              <p className="cart-product-price-text">{item.price} /-</p>
               <button className="cart-product-price-sub"  onClick={() => deleteItem(item.id)}>-</button>
             </div>
           </div>

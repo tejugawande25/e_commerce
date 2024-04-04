@@ -16,14 +16,13 @@ function Items() {
   const getItems =() =>{
     axios.get("http://localhost:4000/user/items?size=5")
     .then((item) => {
-      // console.log(item);
       setItems(item.data);
     })
     .catch((error) => {
       console.log(error);
     })
   }
-  // console.log(items);
+  
 
   return (
     <>

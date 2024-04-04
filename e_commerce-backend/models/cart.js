@@ -20,6 +20,10 @@ const cartSchema = new mongoose.Schema({
     views:{
         type:Number,
         require:true
+    },
+    price:{
+        type:Number,
+        require:true
     }
 });
 
