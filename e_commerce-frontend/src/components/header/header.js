@@ -155,7 +155,7 @@ export default function Header() {
           >
             Login
           </Button>
-          <Link to="cart">
+          <Link to="/cart">
           <ShoppingCartIcon
             style={{
               color: "#2C3539",

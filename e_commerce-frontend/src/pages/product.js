@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 
-//  
 const JacketProducts = [
   {
     id: 1,
@@ -75,26 +74,39 @@ const JeansProducts = [
 
 function Product() {
   const [isHovered, setIsHovered] = useState(false);
-  const[tshirt, setTshirts] = useState([]);
+  const [tshirt, setTshirts] = useState([]);
+  const [jeans, setJeans] = useState([]);
+
   const text = "Roadster".split(" ");
   const newtext = "Men Solid Jacket".split(" ");
-  
-  useEffect(() =>{
+
+  useEffect(() => {
     getTshirts();
-  },[]);
+    getJeans();
+  }, []);
 
-
-  const getTshirts = () =>{
-    axios.get("http://localhost:4000/user/item/products?size=6")
-    .then((item) =>{
-      setTshirts(item.data);
-      console.log(item.data);
-    })
-    .catch((error) =>{
-      console.log(error);
-    })
+  const getTshirts = () => {
+    axios
+      .get("http://localhost:4000/user/item/tshirtproducts?size=6")
+      .then((item) => {
+        setTshirts(item.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
+  const getJeans = () => {
+    axios
+      .get("http://localhost:4000/user/item/jeansproducts?size=6")
+      .then((item) => {
+        setJeans(item.data);
+        console.log(item.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -106,13 +118,14 @@ function Product() {
           <div className="product-section-div">
             {tshirt.map((item, i) => {
               return (
-                <div className="product-section-item"  key={`tshinkj-${i}`}>
+                <div className="product-section-item" key={`tshinkj-${i}`}>
                   <Link to={`/products/${item._id}`}>
                     <img
                       className="product-section-image"
                       src={item.src}
                       alt={item.alt}
                     />
+                    
                   </Link>
                 </div>
               );
@@ -206,10 +219,10 @@ function Product() {
             <p>Jeans</p>
           </div>
           <div className="product-section-div">
-            {JeansProducts.map((item, i) => {
+            {jeans.map((item, i) => {
               return (
                 <div className="product-section-item" key={`fusnl-${i}`}>
-                  <Link to="productdetails" >
+                  <Link to={`/products/${item._id}`}>
                     <img
                       className="product-section-image"
                       src={item.src}

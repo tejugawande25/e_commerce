@@ -1,33 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./cart.css";
 import CFooter from "../components/c-footer/c-footer";
+import axios from "axios";
+
+
 
 function Cart() {
+  const[cart,setCart] = useState([]);
+
+  useEffect(() =>{
+      cartProduct();
+  },[])
+
+  const cartProduct = () =>{
+    axios.get("http://localhost:4000/user/cart/items")
+    .then((item) =>{
+      setCart(item.data);
+      console.log(item.data);
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
+
+  console.log(cart);
   return (
     <>
       <div className="cart-container">
         <div className="cart-item">
-          <div className="cart-item-product">
+          {cart.map((item, i) =>{
+
+         return <div className="cart-item-product" key={`fjnvj-${i}`}>
             <div className="cart-product-image">
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDaj-3v3uVOaSF6qTEErBsx6_JZAvHyjgkqA&usqp=CAU"
-                alt="cart-image"
+                src={item.src}
+                alt={item.alt}
                 className="cart-p-image"
               />
             </div>
             <div className="cart-product-desc">
-              <p className="cart-product-desc-heading">Roadster</p>
-              <p className="cart-product-desc-text">Modern T-shirt</p>
+              <p className="cart-product-desc-heading">{item.heading}</p>
+              <p className="cart-product-desc-text">{item.alt}</p>
             </div>
             <div className="cart-product-price">
-              <p className="cart-product-price-text">₹500 /-</p>
+              <p className="cart-product-price-text">{item.subheading} /-</p>
               <button className="cart-product-price-sub">-</button>
             </div>
           </div>
-          <div className="cart-item-product"></div>
-
-          <div className="cart-item-product"></div>
-          <div className="cart-item-product"></div>
+          })}
         </div>
         <div className="cart-payment">
           <div className="cart-payment-address">

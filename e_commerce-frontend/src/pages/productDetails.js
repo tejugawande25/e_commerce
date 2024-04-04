@@ -9,7 +9,7 @@ import axios from "axios";
 
 
 function ProductDetails(){
-    const[oneProduct, setOneProduct] = useState([]);
+   const[oneProduct, setOneProduct] = useState([]);
    const params = useParams();
    console.log(params.id);
 
@@ -18,8 +18,7 @@ function ProductDetails(){
    },[]);
 
    const getProduct = () =>{
-    axios.get(`http://localhost:4000/user/products/${params.id}`,{
-    })
+    axios.get(`http://localhost:4000/user/products/${params.id}`)
     .then((product) =>{
         setOneProduct(product.data);
     })
@@ -30,23 +29,32 @@ function ProductDetails(){
 const mydata = Object.keys(oneProduct).map(key =>{
     return oneProduct[key];
 })
+    
+   const addToCart = () =>{
+    axios.post(`http://localhost:4000/user/cart/add/${params.id}`)
+    .then((product) =>{
+       console.log(product);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+   }
 
-console.log(mydata);
     return(
         <>
         <div className="product-details-container"> 
             {mydata.map((item,i) =>{
                 return(
-            <><div className="product-image">
+            <><div className="product-image" >
                         <div className="product-image-upper">
                             <img className="product-item-image" src={item.src} alt={item.alt} />
                         </div>
                         <div className="product-image-lower">
-                            <Link to="/cart" style={{ width: "45%", textDecoration: "none" }}>
-                                <button className="product-add-cart">
-                                    <ShoppingCartIcon style={{ height: "1.4rem" }} /> ADD TO CART</button>
+                            <Link style={{ width: "45%", textDecoration: "none" }}>
+                                <button className="product-add-cart" onClick={addToCart}>
+                                    <ShoppingCartIcon style={{ height: "1.4rem" }}/> ADD TO CART</button>
                             </Link>
-                            <Link to="/cart" style={{ width: "45%", textDecoration: "none" }}>
+                            <Link to={`/cart/${item._id}`} style={{ width: "45%", textDecoration: "none" }}>
                                 <button className="product-add-cart" style={{ background: "#ff8f00" }}> <FlashOnIcon />BUY NOW</button>
                             </Link>
                         </div>

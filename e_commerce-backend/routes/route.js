@@ -3,6 +3,7 @@ const router = express.Router();
 const products = require("../models/products.js");
 const users = require("../models/users.js");
 const contacts = require("../models/contact.js");
+const cart = require("../models/cart.js");
 const jwt = require("jsonwebtoken");
 const { default: mongoose } = require("mongoose");
 
@@ -67,8 +68,8 @@ router.get("/items/rightsecond",async(req, res) =>{
     })
 })
 
-//route for product page
-router.get("/item/products",async(req,res) =>{
+//route for product page tshirts
+router.get("/item/tshirtproducts",async(req,res) =>{
     const{size} = req.query;
     await products.aggregate([{$match:{views:1}}]).limit(Number(size))
     .then((items) =>{
@@ -77,7 +78,25 @@ router.get("/item/products",async(req,res) =>{
     .catch((error) =>{
         console.log(error);
     })
+});
+
+//route for the product page denims
+router.get("./item/denimproducts",(req,res) =>{
+
 })
+
+//route for product page jeans
+router.get("/item/jeansproducts",async(req,res) =>{
+    const{size} = req.query;
+    await products.aggregate([{$match:{views:2}}]).limit(Number(size))
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+})
+
 
 // route for the usersignup
 router.post("/signup",async(req,res) =>{
@@ -226,6 +245,38 @@ router.get("/products/:id", async(req,res) =>{
         console.log(error);
     }
 })
+
+
+//cart routes
+//adding the element to the cart
+router.post("/cart/add/:id",async(req,res) =>{
+    try{
+    const id = req.params.id;
+    const product = await products.findById(id).exec();
+    cart.insertMany(product);
+    res.status(200).json({
+        product:product,
+    })
+    }catch(error){
+        console.log(error);
+    }
+});
+
+
+// displaying the cart item
+router.get("/cart/items",async(req,res) =>{
+   await cart.find({})
+   .then((items) =>{
+    res.json(items);
+    console.log(items);
+   })
+   .catch((error) =>{
+    console.log(error);
+   })
+});
+
+
+
 
 
 module.exports = router;
