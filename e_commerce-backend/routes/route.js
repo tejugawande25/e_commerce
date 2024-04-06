@@ -5,7 +5,7 @@ const users = require("../models/users.js");
 const contacts = require("../models/contact.js");
 const cart = require("../models/cart.js");
 const jwt = require("jsonwebtoken");
-const { default: mongoose } = require("mongoose");
+const { default: mongoose, Query } = require("mongoose");
 
 
 router.get("/items",async(req,res) =>{
@@ -293,11 +293,11 @@ router.get("/cart/items/sum",async(req,res) =>{
 })
 
 router.post("/cart/items/:id",async(req,res) =>{
-   const id = req.params.id;
+   const id = req.body.id;
    console.log(id);
    await cart.findOneAndUpdate(
-    {_id:id},
-    req.body,
+    {_id:req.body.id},
+        req.body,
    )
    .then((item) =>{
     res.status(200).json({
