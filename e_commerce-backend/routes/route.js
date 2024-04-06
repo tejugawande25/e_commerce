@@ -179,8 +179,7 @@ router.post("/login", async(req, res) =>{
 //route for the user-contact
 router.post("/contact", async(req,res) =>{
     try{
-       console.log(req.body);
-       await contacts.insertMany(req.body);
+       await contacts.insertMany(req.body.userProblem);
        res.status(200).json({
         message:"contact successful.",
        })

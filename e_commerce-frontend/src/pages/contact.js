@@ -1,10 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import "./contact.css";
 import CFooter from "../components/c-footer/c-footer";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Checkbox } from "@mui/material";
+import axios from "axios";
 
 function Contact() {
+
+  const[userProblem, setUserProblem] = useState({
+    name:"",
+    contact:"",
+    email:"",
+    problem:""
+  });
+
+  const handleInput = (e) =>{
+
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setUserProblem({
+      ...userProblem,
+      [name] : value,
+    })
+  }
+
+  const handleUserProblem = () =>{
+    axios
+    .post("http://localhost:4000/user/contact",{
+      userProblem:userProblem,
+    })
+    .then((data) =>{
+      console.log(data);
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
   return (
     <>
       <div className="contact">
@@ -67,17 +99,33 @@ function Contact() {
           </div>
           <div className="contact-form">
             <label>Name: </label>
-            <input type="text" className="user-input" />
+            <input type="text" className="user-input" 
+            name="name"
+            value={userProblem.name}
+            onChange={handleInput}
+            />
             <label>Contact: </label>
-            <input type="text" className="user-input" />
+            <input type="text" className="user-input" 
+            name="contact"
+            value={userProblem.contact}
+            onChange={handleInput}
+            />
 
             <label>Email: </label>
-            <input type="text" className="user-input" />
+            <input type="text" className="user-input" 
+            name="email"
+            value={userProblem.email}
+            onChange={handleInput}
+            />
 
             <label>Enter your problem: </label>
-            <textarea type="text" className="problem-text" />
+            <textarea type="text" className="problem-text" 
+            name="problem"
+            value={userProblem.problem}
+            onChange={handleInput}
+            />
 
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" onClick={handleUserProblem}>
               Submit
             </button>
           </div>
