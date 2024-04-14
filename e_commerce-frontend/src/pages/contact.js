@@ -14,6 +14,8 @@ function Contact() {
     problem:""
   });
 
+  const[defaultChecked , setDefaultChecked] = useState(false);
+
   const handleInput = (e) =>{
 
     let name = e.target.name;
@@ -66,7 +68,7 @@ function Contact() {
                 <p className="lower-p">View,cancel or return an order</p>
                 </div>
                 <div style={{display:"flex",alignItems:"center"}}>
-                <Checkbox style={{marginLeft:"20rem"}}/>
+                <Checkbox style={{marginLeft:"20rem"}} defaultChecked={false} />
                 </div>
               </div>
               <div className="contact-freq-subquestion">
