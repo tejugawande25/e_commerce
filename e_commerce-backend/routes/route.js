@@ -21,6 +21,7 @@ router.get("/items",async(req,res) =>{
 });
 
 //route for sideUpper items
+//this is the route for the sideupper items
 router.get("/items/sideupper",async(req,res) =>{
     const{size} = req.query;
     await products.aggregate([{$match:{views:8}}]).limit(Number(size))
