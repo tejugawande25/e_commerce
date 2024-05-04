@@ -11,6 +11,7 @@ import toast,{Toaster} from "react-hot-toast";
 
 function ProductDetails(){
    const[oneProduct, setOneProduct] = useState([]);
+   const[rating, setRating] = useState(0);
    const params = useParams();
    console.log(params.id);
 
@@ -42,6 +43,7 @@ const mydata = Object.keys(oneProduct).map(key =>{
     })
    }
 
+   console.log(rating);
     return(
         <>
          <Toaster position="top-right" reverseOrder={false} 
@@ -92,10 +94,10 @@ const mydata = Object.keys(oneProduct).map(key =>{
                                 <p className="product-rating-review">Rating & Reviews</p>
                                 <p className="product-question">What your customers felt:</p>
                                 <div className="rating-emoji">
-                                    <div className="emoji" style={{ background: "#ff4949" }}>Bad</div>
-                                    <div className="emoji" style={{ background: "#ff8f00" }}>Average</div>
-                                    <div className="emoji" style={{ background: "#93e9be" }}>Good</div>
-                                    <div className="emoji" style={{ background: "green" }}>Excellent</div>
+                                    <button className="emoji" style={{ background: "#ff4949" }} onClick={() =>{setRating(rating-1)}}>Bad</button>
+                                    <button className="emoji" style={{ background: "#ff8f00",}} onClick={() =>{setRating(rating+0)}}>Average</button>
+                                    <button className="emoji" style={{ background: "#93e9be" }} onClick={() =>{setRating(rating+1)}}>Good</button>
+                                    <button className="emoji" style={{ background: "green" }} onClick={() =>{setRating(rating+2)}}>Excellent</button>
                                 </div>
                             </div>
                         </div></>

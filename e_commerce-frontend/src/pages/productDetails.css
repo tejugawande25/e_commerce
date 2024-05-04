@@ -131,6 +131,8 @@
     height: 40%;
     width: 20%;
     border-radius: 3px;
+    border: none;
+    outline: none;
     display: flex;
     align-items: center;
     justify-content: center;
