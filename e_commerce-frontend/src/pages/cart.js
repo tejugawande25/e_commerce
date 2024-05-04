@@ -88,7 +88,7 @@ function Cart() {
                   </button>
                   <button
                     className="cart-product-price-sub"
-                    onClick={() => deleteItem(item.id)}
+                    onClick={() => deleteItem(item._id)}
                   >
                     -
                   </button>

@@ -312,7 +312,7 @@ router.post("/cart/items/:id",async(req,res) =>{
 //deleting the particular item from the cart
 router.delete("/cart/items/:id",async(req,res) =>{
    const id = req.params.id;
-   await cart.findOneAndDelete(id)
+   await cart.findByIdAndDelete(id)
    .then((items) =>{
     res.status(200).json({
         message:"cart item deleted",
@@ -321,6 +321,7 @@ router.delete("/cart/items/:id",async(req,res) =>{
    .catch((error) =>{
     console.log(error);
    })
+  
 })
 
 
