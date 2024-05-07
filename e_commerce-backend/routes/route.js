@@ -295,7 +295,7 @@ router.get("/cart/items/sum",async(req,res) =>{
 
 
 //increasing the quantity for the product
-router.post("/cart/items/quantity/:id",async(req,res) =>{
+router.post("/cart/items/increaseQuantity/:id",async(req,res) =>{
    const id = req.params.id;
    console.log(id);
    console.log(req.body);
@@ -306,12 +306,31 @@ router.post("/cart/items/quantity/:id",async(req,res) =>{
    )
    .then((item) =>{
     res.status(200).json({
-        message:"sucessfully updated !"
+        message:"sucessfully increase !"
     })
    })
    .catch((error) =>{
     console.log(error);
 })
+})
+
+//decreasing the quantity for the product
+router.post("/cart/items/decreaseQuantity/:id",async(req,res) =>{
+    const id = req.params.id;
+    await cart.findOneAndUpdate(
+        {_id:id},
+        req.body,
+        {upsert:true}
+    )
+    .then((item) =>{
+        res.status(200).json({
+            message:"successfully decrease !"
+        })
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+
 })
 
 //deleting the particular item from the cart

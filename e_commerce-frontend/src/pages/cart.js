@@ -39,11 +39,25 @@ function Cart() {
   const increaseQuantity = (id,pquantity) =>{
     console.log(id);
     axios
-    .post(`http://localhost:4000/user/cart/items/quantity/${id}`,{
+    .post(`http://localhost:4000/user/cart/items/increaseQuantity/${id}`,{
       quantity:pquantity+1,
     })
     .then((item) =>{
       console.log("successfully increases !");
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
+
+  const decreaseQuantity = (id,pquantity) =>{
+    console.log(id);
+    axios
+    .post(`http://localhost:4000/user/cart/items/decreaseQuantity/${id}`,{
+      quantity:pquantity-1,
+    })
+    .then((item) =>{
+      console.log("successfully decreases !");
     })
     .catch((error) =>{
       console.log(error);
@@ -79,6 +93,7 @@ function Cart() {
                   <p className="cart-product-desc-heading">{item.heading}</p>
                   <p className="cart-product-desc-text">{item.alt}</p>
                   <div className="cart-product-quantity">{item.quantity}</div>
+                  <div className="cart-product-remove"  onClick={() => deleteItem(item._id)}>REMOVE</div>
                 </div>
                 <div className="cart-product-price">
                   <p className="cart-product-price-text">{item.price} /-</p>
@@ -89,7 +104,7 @@ function Cart() {
                   </button>
                   <button
                     className="cart-product-price-sub"
-                    onClick={() => deleteItem(item._id)}
+                   onClick={() => decreaseQuantity(item._id,item.quantity)}
                   >
                     -
                   </button>

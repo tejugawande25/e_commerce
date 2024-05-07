@@ -74,6 +74,11 @@
     justify-content: center;
     font-weight: 500;
 }
+.cart-product-remove{
+    font-weight: 500;
+    margin-top: 1rem;
+    cursor: pointer;
+}
 .cart-product-price{
     height: 80%;
     width: 20%;
