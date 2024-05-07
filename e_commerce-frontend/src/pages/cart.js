@@ -6,8 +6,8 @@ import axios from "axios";
 function Cart() {
   const [cart, setCart] = useState([]);
   const [sum, setSum] = useState([]);
-  const[quantity, setQuantity] = useState(1);
-
+  const [productQuantity, setProductQuantity] = useState();
+  
   useEffect(() => {
     cartProduct();
     getTotalSum();
@@ -34,36 +34,36 @@ function Cart() {
       });
   };
 
-
-  // const increaseQuantity = (id) =>{
-  //   setQuantity(quantity + 1);
-  //   axios
-  //     .post(`http://localhost:4000/user/cart/items/${id}`,{
-  //       quantity:quantity
-  //     })
-  //   .then((item) =>{
-  //     console.log("quantity updated successfully !");
-  //   })
-  //   .catch((error) =>{
-  //     console.log(error);
-  //   });
-  // };
  
 
+  const increaseQuantity = (id) =>{
+    console.log(id);
+    axios
+    .post(`http://localhost:4000/user/cart/items/quantity/${id}`,{
+     quantity:setProductQuantity(productQuantity+1),
+    })
+    .then((item) =>{
+      console.log("successfully increases !");
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
+ 
+  
   const getTotalSum = () => {
     axios
       .get("http://localhost:4000/user/cart/items/sum")
       .then((item) => {
-        setSum(item.data);
-        console.log(item.data.totalAmount[0].totalAmount);
+        setSum(item.data.totalAmount);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  
 
-  console.log(sum);
+ 
+
 
   return (
     <>
@@ -78,11 +78,12 @@ function Cart() {
                 <div className="cart-product-desc">
                   <p className="cart-product-desc-heading">{item.heading}</p>
                   <p className="cart-product-desc-text">{item.alt}</p>
+                  <div className="cart-product-quantity">{item.quantity}</div>
                 </div>
                 <div className="cart-product-price">
                   <p className="cart-product-price-text">{item.price} /-</p>
                   <button className="cart-product-price-add"
-                    // onClick={() => increaseQuantity(item.id)}
+                   onClick={() => increaseQuantity(item._id)}
                   >
                     +
                   </button>
@@ -108,7 +109,7 @@ function Cart() {
           <div className="cart-payment-section">
             <div className="cart-payment-section-price">
               <p className="cart-payment-section-price-text">Price (1 item)</p>
-              <p className="cart-product-price-text">₹500 /-</p>
+              <p className="cart-product-price-text">₹ {sum} /-</p>
             </div>
             <div className="cart-payment-section-delivery">
               <p className="cart-payment-section-price-text">
@@ -120,7 +121,7 @@ function Cart() {
             </div>
             <div className="cart-payment-section-price">
               <p className="cart-payment-section-price-text">Total Payable</p>
-              <p className="cart-product-price-text">₹500 /-</p>
+              <p className="cart-product-price-text">₹ {sum}/-</p>
             </div>
             <div className="place-order-div">
               <button className="place-order">PLACE ORDER</button>

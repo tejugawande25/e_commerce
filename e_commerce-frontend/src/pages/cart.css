@@ -63,6 +63,17 @@
     margin: 0;
     margin-top: 0.2rem;
 }
+.cart-product-quantity{
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid gray;
+    margin-top: 1.2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
 .cart-product-price{
     height: 80%;
     width: 20%;

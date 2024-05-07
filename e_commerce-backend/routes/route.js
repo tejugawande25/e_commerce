@@ -274,6 +274,7 @@ router.get("/cart/items",async(req,res) =>{
    })
 });
 
+//geting the sum aggregate for all the products in the cart
 router.get("/cart/items/sum",async(req,res) =>{
     await cart.aggregate([{
         $group:{
@@ -283,7 +284,7 @@ router.get("/cart/items/sum",async(req,res) =>{
     }])
     .then((totalamount) =>{
         res.status(200).json({
-            totalAmount:totalamount,
+            totalAmount:totalamount[0].totalAmount,
             message:"added successfully !"
         })
     })
@@ -292,12 +293,13 @@ router.get("/cart/items/sum",async(req,res) =>{
     })
 })
 
-router.post("/cart/items/:id",async(req,res) =>{
-   const id = req.body.id;
-   console.log(id);
+
+//increasing the quantity for the product
+router.post("/cart/items/quantity/:id",async(req,res) =>{
+   const id = req.params.id;
    await cart.findOneAndUpdate(
-    {_id:req.body.id},
-        req.body,
+    {_id:id},
+    {quantity:req.body.quantity}
    )
    .then((item) =>{
     res.status(200).json({
