@@ -6,10 +6,10 @@ import axios from "axios";
 function Cart() {
   const [cart, setCart] = useState([]);
   const [sum, setSum] = useState([]);
-  const [productQuantity, setProductQuantity] = useState();
   
   useEffect(() => {
     cartProduct();
+    increaseQuantity();
     getTotalSum();
   }, []);
 
@@ -36,11 +36,11 @@ function Cart() {
 
  
 
-  const increaseQuantity = (id) =>{
+  const increaseQuantity = (id,pquantity) =>{
     console.log(id);
     axios
     .post(`http://localhost:4000/user/cart/items/quantity/${id}`,{
-     quantity:setProductQuantity(productQuantity+1),
+      quantity:pquantity+1,
     })
     .then((item) =>{
       console.log("successfully increases !");
@@ -83,7 +83,7 @@ function Cart() {
                 <div className="cart-product-price">
                   <p className="cart-product-price-text">{item.price} /-</p>
                   <button className="cart-product-price-add"
-                   onClick={() => increaseQuantity(item._id)}
+                   onClick={() => increaseQuantity(item._id,item.quantity)}
                   >
                     +
                   </button>
