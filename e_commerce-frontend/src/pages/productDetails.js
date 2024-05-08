@@ -62,7 +62,7 @@ const mydata = Object.keys(oneProduct).map(key =>{
                         </div>
                         <div className="product-image-lower">
                             <Link style={{ width: "45%", textDecoration: "none" }}>
-                                <button className="product-add-cart" onClick={addToCart}>
+                                <button className="product-add-cart" onClick={addToCart} >
                                     <ShoppingCartIcon style={{ height: "1.4rem" }}/> ADD TO CART</button>
                             </Link>
                             <Link to={`/cart`} style={{ width: "45%", textDecoration: "none" }}>

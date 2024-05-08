@@ -252,6 +252,12 @@ router.get("/products/:id", async(req,res) =>{
 router.post("/cart/add/:id",async(req,res) =>{
     try{
     const id = req.params.id;
+    const productExit = await cart.findById(id).exec();
+    if(productExit){
+        return res.status(200).json({
+            message:"product already exits in the cart!"
+        })
+    }
     const product = await products.findById(id).exec();
     cart.insertMany(product);
     res.status(200).json({
