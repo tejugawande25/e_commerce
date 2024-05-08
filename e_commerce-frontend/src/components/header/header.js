@@ -21,7 +21,6 @@ const NumberDiv = styled(TextField)`
   display: flex;
   margin-top: 3rem;
   margin-left: 3.5rem;
-  display: flex;
   justify-content: center;
 `;
 export default function Header() {
@@ -249,16 +248,17 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
+          alignitems:"center",
         }}
       >
         <NumberDiv
-          multiline
-          id="filled-multiline-flexible"
+          required
+          id="standard-basic"
           variant="standard"
           sx={{ input: { color: "#fff" } }}
-          label="Enter Email/Mobile number"
+          label="Mobile number"
           display="flex"
-          alignitems="center"
+          alignitems="start"
           inputProps={{
             style: {
               textAlign: "start",
@@ -269,6 +269,7 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
             setInput(event.target.value);
           }}
         ></NumberDiv>
+        
         <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
           <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.

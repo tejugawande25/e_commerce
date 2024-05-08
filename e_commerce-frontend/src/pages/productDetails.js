@@ -12,6 +12,7 @@ import toast,{Toaster} from "react-hot-toast";
 function ProductDetails(){
    const[oneProduct, setOneProduct] = useState([]);
    const[rating, setRating] = useState(0);
+   const[isClicked, setIsClicked] = useState(false);
    const params = useParams();
    console.log(params.id);
 
@@ -33,6 +34,7 @@ const mydata = Object.keys(oneProduct).map(key =>{
 })
     
    const addToCart = () =>{
+    setIsClicked(true);
     axios.post(`http://localhost:4000/user/cart/add/${params.id}`)
     .then((product) =>{
        console.log(product);
@@ -62,7 +64,7 @@ const mydata = Object.keys(oneProduct).map(key =>{
                         </div>
                         <div className="product-image-lower">
                             <Link style={{ width: "45%", textDecoration: "none" }}>
-                                <button className="product-add-cart" onClick={addToCart} >
+                                <button className="product-add-cart" onClick={addToCart} disabled={isClicked} >
                                     <ShoppingCartIcon style={{ height: "1.4rem" }}/> ADD TO CART</button>
                             </Link>
                             <Link to={`/cart`} style={{ width: "45%", textDecoration: "none" }}>
