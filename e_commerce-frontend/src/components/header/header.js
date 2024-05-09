@@ -13,6 +13,9 @@ import LoginImg from "./login.png";
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const NumberDiv = styled(TextField)`
   height: 15%;
@@ -238,6 +241,14 @@ export default function Header() {
 }
 
 function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <>
       {" "}
@@ -256,7 +267,7 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
           id="standard-basic"
           variant="standard"
           sx={{ input: { color: "#fff" } }}
-          label="Mobile number"
+          label="Enter Mobile number"
           display="flex"
           alignitems="start"
           inputProps={{
@@ -275,9 +286,9 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
           id="standard-basic"
           variant="standard"
           sx={{ input: { color: "#fff" } }}
-          label="Mobile number"
+          label="Enter Password"
           display="flex"
-          alignitems="start"
+          alignitems="center"
           inputProps={{
             style: {
               textAlign: "start",
@@ -288,7 +299,33 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
             setInput(event.target.value);
           }}
         ></NumberDiv>
-        
+        <div>
+      <Button
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        style={{color:"black",marginLeft:"7.2rem"}}
+        required
+      
+      >
+        Role
+      <ArrowDropDownIcon />
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleClose}>Customer</MenuItem>
+        <MenuItem onClick={handleClose}>Seller</MenuItem>
+      </Menu>
+    </div>
         <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
           <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.
@@ -312,7 +349,7 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
             setActiveScreen("ScreenTwo");
           }}
         >
-          Request OTP
+           Login
         </button>
         <div
           style={{
@@ -460,6 +497,54 @@ function ScreenTwo({handleClose}) {
 }
 
 function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const[signupUser, setSignupUser] = useState({
+    username:"",
+    password:"",
+    confirmpassword:"",
+    mobileno:"",
+  });
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleInput = (e) =>{
+    let name = e.target.name;
+    let value = e.target.value;
+  
+    setSignupUser({
+      ...signupUser,
+      [name] : value,
+    });
+  }
+
+ const handleCustomerClick = (e) =>{
+  let name = e.target.value;
+
+  setSignupUser({
+    ...signupUser,
+    [name]:"customer",
+  })
+ }
+
+ const handleSellerClick = (e) =>{
+  let name = e.target.value;
+
+  setSignupUser({
+    ...signupUser,
+    [name]:"seller",
+  })
+ }
+
+
+ 
+  console.log(signupUser);
+
   return (
     <>
       <div
@@ -471,10 +556,14 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
       >
         <NumberDiv
           multiline
+          required
           id="filled-multiline-flexible"
           variant="standard"
+          style={{marginTop:"0px"}}
           sx={{ input: { color: "#fff" } }}
-          label="Enter Email/Mobile number"
+          label="Enter Username"
+          name="username"
+          value={signupUser.username}
           display="flex"
           alignitems="center"
           inputProps={{
@@ -483,11 +572,93 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
               color: "black",
             },
           }}
-          onChange={(event) => {
-            setInput(event.target.value);
-          }}
+          onChange={handleInput}
         ></NumberDiv>
-        <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
+        <NumberDiv
+          multiline
+          required
+          id="filled-multiline-flexible"
+          variant="standard"
+          sx={{ input: { color: "#fff" } }}
+          label="Enter Password"
+          name="password"
+          value={signupUser.password}
+          display="flex"
+          alignitems="center"
+          inputProps={{
+            style: {
+              textAlign: "start",
+              color: "black",
+            },
+          }}
+          onChange={handleInput}
+        ></NumberDiv>
+        <NumberDiv
+          multiline
+          required
+          id="filled-multiline-flexible"
+          variant="standard"
+          sx={{ input: { color: "#fff" } }}
+          label="Confirm Password"
+          name="confirmpassword"
+          value={signupUser.confirmpassword}
+          display="flex"
+          alignitems="center"
+          inputProps={{
+            style: {
+              textAlign: "start",
+              color: "black",
+            },
+          }}
+          onChange={handleInput}
+        ></NumberDiv>
+         <NumberDiv
+          multiline
+          required
+          id="filled-multiline-flexible"
+          variant="standard"
+          sx={{ input: { color: "#fff",height:"1rem"} }}
+          label="Enter Mobile Number"
+          name="mobileno"
+          value={signupUser.mobileno}
+          display="flex"
+          alignitems="center"
+          inputProps={{
+            style: {
+              textAlign: "start",
+              color: "black",
+            },
+          }}
+          onChange={handleInput}
+        ></NumberDiv>
+         <div>
+      <Button
+        id="basic-button"
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        style={{color:"black",marginLeft:"7.2rem",marginBottom:"0px"}}
+        required
+      
+      >
+        Role
+      <ArrowDropDownIcon />
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={handleCustomerClick} name="role" >Customer</MenuItem>
+        <MenuItem onClick={handleSellerClick} name="role">Seller</MenuItem>
+      </Menu>
+    </div>
+        <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem",marginTop:"0px"}}>
           <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.
           </p>
@@ -497,7 +668,7 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
             width: "75%",
             height: "2.7rem",
             marginLeft: "3.5rem",
-            marginTop: "2.5rem",
+            marginTop: "1rem",
             fontSize: "17px",
             fontWeight: "500",
             background: "#FFA500",
@@ -521,7 +692,7 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
             fontWeight: "500",
             background:"white",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            marginTop:"1rem",
+            marginTop:"0.5rem",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
