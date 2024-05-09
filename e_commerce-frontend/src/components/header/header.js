@@ -19,7 +19,6 @@ const NumberDiv = styled(TextField)`
   width: 75%;
   border: 1xp solid black;
   display: flex;
-  margin-top: 3rem;
   margin-left: 3.5rem;
   justify-content: center;
 `;
@@ -248,10 +247,30 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
+          gap:"0px",
           alignitems:"center",
         }}
       >
         <NumberDiv
+          required
+          id="standard-basic"
+          variant="standard"
+          sx={{ input: { color: "#fff" } }}
+          label="Mobile number"
+          display="flex"
+          alignitems="start"
+          inputProps={{
+            style: {
+              textAlign: "start",
+              color: "black",
+            },
+          }}
+          style={{marginTop:"3.5rem"}}
+          onChange={(event) => {
+            setInput(event.target.value);
+          }}
+        ></NumberDiv>
+         <NumberDiv
           required
           id="standard-basic"
           variant="standard"
@@ -297,7 +316,7 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
         </button>
         <div
           style={{
-            marginTop: "14rem",
+            marginTop: "4rem",
             marginLeft: "6.5rem",
             cursor: "pointer",
           }}
