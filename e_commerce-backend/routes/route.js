@@ -102,29 +102,30 @@ router.get("/item/jeansproducts",async(req,res) =>{
 // route for the usersignup
 router.post("/signup",async(req,res) =>{
     try{
-       const {username,password,confirmPassword,mobileNo,role} = req.body;
 
+       console.log(req.body.users);
+       const {username,password,confirmPassword,mobileNo} = req.body.users;
        if(!username){
         return res.status(400).json({message:"Username is required"});
        }
        
        if(!password){
-        return res.status(400).json({message:"Username is required"});
+        return res.status(400).json({message:"Password is required"});
        }
        if(!confirmPassword){
-        return res.status(400).json({message:"Username is required"});
+        return res.status(400).json({message:"Confirmpassword is required"});
        }
        if(!mobileNo){
-        return res.status(400).json({message:"Username is required"});
+        return res.status(400).json({message:"mobileNo is required"});
        }
-       if(!role){
-        return res.status(400).json({message:"Username is required"});
-       }
+    //    if(!0){
+    //     return res.status(400).json({message:" role is required"});
+    //    }
        if(password !== confirmPassword){
         return res.status(200).json({message:"Password dosen't match"});
        }
 
-      const saveUser =  await users.insertMany(req.body);
+      const saveUser =  await users.insertMany(req.body.users);
 
       if(!saveUser){
         return res.status(500).json({message:"Registrain failed"});

@@ -16,6 +16,7 @@ import { useState } from "react";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import axios from "axios";
 
 const NumberDiv = styled(TextField)`
   height: 15%;
@@ -242,6 +243,11 @@ export default function Header() {
 
 function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const[loginUser, setLoginUser] = useState({
+    mobileNo:"",
+    password:"",
+  });
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -249,6 +255,16 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleInput =(e) =>{
+    let name = e.target.mobileNo;
+    let value = e.target.value;
+
+    setLoginUser({
+      ...loginUser,
+      [name]:value,
+    })
+  }
   return (
     <>
       {" "}
@@ -501,8 +517,8 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
   const[signupUser, setSignupUser] = useState({
     username:"",
     password:"",
-    confirmpassword:"",
-    mobileno:"",
+    confirmPassword:"",
+    mobileNo:"",
   });
 
   const open = Boolean(anchorEl);
@@ -541,6 +557,18 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
   })
  }
 
+const handleSignup = () =>{
+  axios
+  .post("http://localhost:4000/user/signup",{
+    users:signupUser
+  })
+  .then((item) =>{
+    console.log("user signup successfully!")
+  })
+  .catch((error) =>{
+    console.log(error);
+  })
+}
 
  
   console.log(signupUser);
@@ -600,8 +628,8 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
           variant="standard"
           sx={{ input: { color: "#fff" } }}
           label="Confirm Password"
-          name="confirmpassword"
-          value={signupUser.confirmpassword}
+          name="confirmPassword"
+          value={signupUser.confirmPassword}
           display="flex"
           alignitems="center"
           inputProps={{
@@ -619,8 +647,8 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
           variant="standard"
           sx={{ input: { color: "#fff",height:"1rem"} }}
           label="Enter Mobile Number"
-          name="mobileno"
-          value={signupUser.mobileno}
+          name="mobileNo"
+          value={signupUser.mobileNo}
           display="flex"
           alignitems="center"
           inputProps={{
@@ -678,10 +706,11 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
           onClick={() =>{
-            setActiveScreen("ScreenTwo")
+            // setActiveScreen("ScreenTwo");
+            handleSignup();
           }}
         >
-          Continue
+          Signup
         </button>
         <button
           style={{

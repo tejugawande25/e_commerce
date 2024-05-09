@@ -5,7 +5,7 @@ const signUpSchema = new mongoose.Schema({
         type:String,
         require:true
     },
-    role:{
+    0:{
         type:String,
         require:true
     },
