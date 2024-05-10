@@ -13,10 +13,11 @@ import LoginImg from "./login.png";
 import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import axios from "axios";
+import toast,{Toaster} from "react-hot-toast";
 
 const NumberDiv = styled(TextField)`
   height: 15%;
@@ -26,14 +27,16 @@ const NumberDiv = styled(TextField)`
   margin-left: 3.5rem;
   justify-content: center;
 `;
+const RoleDiv = styled(TextField)`
+`
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const[login, setLogin] = useState(true);
+  const [login, setLogin] = useState(true);
   const [input, setInput] = useState("");
   const [activeScreen, setActiveScreen] = useState("ScreenOne");
   const handleClose = () => {
     setOpen(false);
-    setActiveScreen("ScreenOne"); 
+    setActiveScreen("ScreenOne");
   };
   console.log(input);
   return (
@@ -158,14 +161,14 @@ export default function Header() {
             Login
           </Button>
           <Link to="/cart">
-          <ShoppingCartIcon
-            style={{
-              color: "#2C3539",
-              marginRight: "10px",
-              cursor: "pointer",
-              fontSize: "24px",
-            }}
-          />
+            <ShoppingCartIcon
+              style={{
+                color: "#2C3539",
+                marginRight: "10px",
+                cursor: "pointer",
+                fontSize: "24px",
+              }}
+            />
           </Link>
         </Toolbar>
         <Modal
@@ -202,13 +205,13 @@ export default function Header() {
                   gap: "1rem",
                   marginLeft: "3rem",
                   marginTop: "3rem",
-                  width:"80%"
+                  width: "80%",
                 }}
               >
                 <p
                   style={{ fontSize: "26px", fontWeight: "500", margin: "0px" }}
                 >
-                  {login === true ? "Login":"Look's like you're new here!"}
+                  {login === true ? "Login" : "Look's like you're new here!"}
                 </p>
                 <p style={{ margin: "0px", fontSize: "17px" }}>
                   Get access to your <br />
@@ -228,11 +231,22 @@ export default function Header() {
                 input={input}
                 setInput={setInput}
                 setLogin={setLogin}
+                setOpen={setOpen}
               />
             ) : activeScreen === "ScreenTwo" ? (
-              <ScreenTwo setActiveScreen={setActiveScreen} input={input} handleClose={handleClose} />
+              <ScreenTwo
+                setActiveScreen={setActiveScreen}
+                input={input}
+                handleClose={handleClose}
+              />
             ) : (
-              <ScreenThree  input={input} setInput={setInput} setActiveScreen={setActiveScreen} setLogin={setLogin}/>
+              <ScreenThree
+                input={input}
+                setInput={setInput}
+                setActiveScreen={setActiveScreen}
+                setLogin={setLogin}
+                setOpen={setOpen}
+              />
             )}
           </div>
         </Modal>
@@ -241,11 +255,12 @@ export default function Header() {
   );
 }
 
-function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
+function ScreenOne({ setActiveScreen, input, setInput, setLogin,setOpen }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const[loginUser, setLoginUser] = useState({
-    mobileNo:"",
-    password:"",
+  const[role,setRole] = useState("");
+  const [loginUser, setLoginUser] = useState({
+    mobileNo: "",
+    password: "",
   });
 
   const open = Boolean(anchorEl);
@@ -256,17 +271,70 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
     setAnchorEl(null);
   };
 
-  const handleInput =(e) =>{
-    let name = e.target.mobileNo;
+
+  const handleInput = (e) => {
+    let name = e.target.name;
     let value = e.target.value;
 
     setLoginUser({
       ...loginUser,
-      [name]:value,
+      [name]: value,
+    });
+  };
+
+  const handleCustomerRole = (e) =>{
+    setRole("Customer")
+    handleClose();
+    let name = e.target.value;
+    
+    setLoginUser({
+     ...loginUser,
+     [name]:"customer"
     })
-  }
+ }
+ const handleSellerRole = (e) =>{
+  setRole("Seller")
+  handleClose();
+  let name = e.target.value;
+
+  setLoginUser({
+    ...loginUser,
+    [name]:"seller"
+  })
+ };
+
+const handleLogin = () =>{
+  
+  axios
+  .post("http://localhost:4000/user/login",{
+    user:loginUser,
+  })
+  .then((item) =>{
+    setOpen(false)
+    console.log("user login successfully!")
+  })
+  .catch((error) =>{
+    setOpen(true)
+    console.log(error);
+    toast.error("Invalid Credentials!")
+  })
+}
+
+  console.log(loginUser);
+
+
+
+
+  
   return (
     <>
+     <Toaster position="top-right" reverseOrder={false} 
+         toastOptions={{
+            success:{
+                duration:2000,
+            }
+         }}
+         />
       {" "}
       <div
         style={{
@@ -274,8 +342,8 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          gap:"0px",
-          alignitems:"center",
+          gap: "0px",
+          alignitems: "center",
         }}
       >
         <NumberDiv
@@ -284,6 +352,8 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
           variant="standard"
           sx={{ input: { color: "#fff" } }}
           label="Enter Mobile number"
+          name="mobileNo"
+          value={loginUser.mobileNo}
           display="flex"
           alignitems="start"
           inputProps={{
@@ -292,17 +362,17 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
               color: "black",
             },
           }}
-          style={{marginTop:"3.5rem"}}
-          onChange={(event) => {
-            setInput(event.target.value);
-          }}
+          style={{ marginTop: "3.5rem" }}
+          onChange={handleInput}
         ></NumberDiv>
-         <NumberDiv
+        <NumberDiv
           required
           id="standard-basic"
           variant="standard"
           sx={{ input: { color: "#fff" } }}
           label="Enter Password"
+          name="password"
+          value={loginUser.password}
           display="flex"
           alignitems="center"
           inputProps={{
@@ -311,37 +381,42 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
               color: "black",
             },
           }}
-          onChange={(event) => {
-            setInput(event.target.value);
-          }}
+          onChange={handleInput}
         ></NumberDiv>
         <div>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        style={{color:"black",marginLeft:"7.2rem"}}
-        required
-      
-      >
-        Role
-      <ArrowDropDownIcon />
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleClose}>Customer</MenuItem>
-        <MenuItem onClick={handleClose}>Seller</MenuItem>
-      </Menu>
-    </div>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+              style={{ color: "black", marginLeft: "6rem" }}
+              required
+            >
+              Role
+              <ArrowDropDownIcon />
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleCustomerRole} name="role">Customer</MenuItem>
+              <MenuItem onClick={handleSellerRole} name="role">Seller</MenuItem>
+            </Menu>
+            <div
+              style={{width: "8rem",height:"2rem",marginLeft:"1rem",border:"1px solid gray",display:"flex",justifyContent:"center",alignitems:"end",padding:"0px", fontSize:"17px"}}
+              value={role}
+              name="role"
+            >{role}</div>
+          </div>
+        </div>
+
         <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
           <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.
@@ -359,13 +434,14 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"
+            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
           onClick={() => {
-            setActiveScreen("ScreenTwo");
+            // setActiveScreen("ScreenTwo");
+            handleLogin();
           }}
         >
-           Login
+          Login
         </button>
         <div
           style={{
@@ -374,11 +450,12 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
             cursor: "pointer",
           }}
         >
-          <Link style={{ textDecoration: "none" }}
-          onClick={() =>{
-            setActiveScreen("ScreenThree");
-            setLogin(false);
-          }}
+          <Link
+            style={{ textDecoration: "none" }}
+            onClick={() => {
+              setActiveScreen("ScreenThree");
+              setLogin(false);
+            }}
           >
             New to Cart? Create an account
           </Link>
@@ -388,7 +465,7 @@ function ScreenOne({ setActiveScreen, input, setInput,setLogin}) {
   );
 }
 
-function ScreenTwo({handleClose}) {
+function ScreenTwo({ handleClose }) {
   return (
     <>
       <div
@@ -473,7 +550,7 @@ function ScreenTwo({handleClose}) {
             }}
           />
         </div>
-        
+
         <button
           style={{
             fontSize: "17px",
@@ -485,7 +562,7 @@ function ScreenTwo({handleClose}) {
             borderRadius: "5px",
             cursor: "pointer",
           }}
-          onClick={()=>{
+          onClick={() => {
             handleClose(true);
           }}
         >
@@ -512,13 +589,14 @@ function ScreenTwo({handleClose}) {
   );
 }
 
-function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
+function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const[signupUser, setSignupUser] = useState({
-    username:"",
-    password:"",
-    confirmPassword:"",
-    mobileNo:"",
+  const[role,setRole] = useState("");
+  const [signupUser, setSignupUser] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    mobileNo: "",
   });
 
   const open = Boolean(anchorEl);
@@ -529,48 +607,52 @@ function ScreenThree({input, setInput,setActiveScreen,setLogin}) {
     setAnchorEl(null);
   };
 
-  const handleInput = (e) =>{
+  const handleInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-  
+
     setSignupUser({
       ...signupUser,
-      [name] : value,
+      [name]: value,
     });
-  }
+  };
 
- const handleCustomerClick = (e) =>{
-  let name = e.target.value;
+  const handleCustomerRole = (e) => {
+    setRole("Customer");
+    handleClose();
+    let name = e.target.value;
 
-  setSignupUser({
-    ...signupUser,
-    [name]:"customer",
-  })
- }
+    setSignupUser({
+      ...signupUser,
+      [name]: "customer",
+    });
+  };
 
- const handleSellerClick = (e) =>{
-  let name = e.target.value;
+  const handleSellerRole = (e) => {
+    setRole("Seller");
+    handleClose();
+    let name = e.target.value;
 
-  setSignupUser({
-    ...signupUser,
-    [name]:"seller",
-  })
- }
+    setSignupUser({
+      ...signupUser,
+      [name]: "seller",
+    });
+  };
 
-const handleSignup = () =>{
-  axios
-  .post("http://localhost:4000/user/signup",{
-    users:signupUser
-  })
-  .then((item) =>{
-    console.log("user signup successfully!")
-  })
-  .catch((error) =>{
-    console.log(error);
-  })
-}
+  const handleSignup = () => {
+    setOpen(false);
+    axios
+      .post("http://localhost:4000/user/signup", {
+        user: signupUser,
+      })
+      .then((item) => {
+        console.log("user signup successfully!");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
- 
   console.log(signupUser);
 
   return (
@@ -587,7 +669,7 @@ const handleSignup = () =>{
           required
           id="filled-multiline-flexible"
           variant="standard"
-          style={{marginTop:"0px"}}
+          style={{ marginTop: "0px" }}
           sx={{ input: { color: "#fff" } }}
           label="Enter Username"
           name="username"
@@ -640,12 +722,12 @@ const handleSignup = () =>{
           }}
           onChange={handleInput}
         ></NumberDiv>
-         <NumberDiv
+        <NumberDiv
           multiline
           required
           id="filled-multiline-flexible"
           variant="standard"
-          sx={{ input: { color: "#fff",height:"1rem"} }}
+          sx={{ input: { color: "#fff", height: "1rem" } }}
           label="Enter Mobile Number"
           name="mobileNo"
           value={signupUser.mobileNo}
@@ -659,34 +741,55 @@ const handleSignup = () =>{
           }}
           onChange={handleInput}
         ></NumberDiv>
-         <div>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
-        style={{color:"black",marginLeft:"7.2rem",marginBottom:"0px"}}
-        required
-      
-      >
-        Role
-      <ArrowDropDownIcon />
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem onClick={handleCustomerClick} name="role" >Customer</MenuItem>
-        <MenuItem onClick={handleSellerClick} name="role">Seller</MenuItem>
-      </Menu>
-    </div>
-        <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem",marginTop:"0px"}}>
+        <div>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+            style={{
+              color: "black",
+              marginLeft: "7.2rem",
+              marginBottom: "0px",
+            }}
+            required
+          >
+            Role
+            <ArrowDropDownIcon />
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleCustomerRole} name="role">
+              Customer
+            </MenuItem>
+            <MenuItem onClick={handleSellerRole} name="role">
+              Seller
+            </MenuItem>
+          </Menu>
+          <div
+              style={{width: "8rem",height:"2rem",marginLeft:"1rem",border:"1px solid gray",display:"flex",justifyContent:"center",alignitems:"end",padding:"0px", fontSize:"17px"}}
+              value={role}
+              name="role"
+            >{role}</div>
+        </div>
+        </div>
+        <div
+          style={{
+            height: "2rem",
+            width: "80%",
+            marginLeft: "3.5rem",
+            marginTop: "0px",
+          }}
+        >
           <p style={{ fontSize: "14px" }}>
             By continuing,you agree to Cart's Terms of Use and privacy policy.
           </p>
@@ -705,7 +808,7 @@ const handleSignup = () =>{
             cursor: "pointer",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
-          onClick={() =>{
+          onClick={() => {
             // setActiveScreen("ScreenTwo");
             handleSignup();
           }}
@@ -719,16 +822,16 @@ const handleSignup = () =>{
             marginLeft: "3.5rem",
             fontSize: "16px",
             fontWeight: "500",
-            background:"white",
+            background: "white",
             boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            marginTop:"0.5rem",
+            marginTop: "0.5rem",
             border: "none",
             borderRadius: "5px",
             cursor: "pointer",
           }}
-          onClick={() =>{
-            setActiveScreen("ScreenOne")
-            setLogin(true)
+          onClick={() => {
+            setActiveScreen("ScreenOne");
+            setLogin(true);
           }}
         >
           Existing User? Log in

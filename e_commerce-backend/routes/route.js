@@ -103,8 +103,8 @@ router.get("/item/jeansproducts",async(req,res) =>{
 router.post("/signup",async(req,res) =>{
     try{
 
-       console.log(req.body.users);
-       const {username,password,confirmPassword,mobileNo} = req.body.users;
+       console.log(req.body.user);
+       const {username,password,confirmPassword,mobileNo} = req.body.user;
        if(!username){
         return res.status(400).json({message:"Username is required"});
        }
@@ -118,11 +118,11 @@ router.post("/signup",async(req,res) =>{
        if(!mobileNo){
         return res.status(400).json({message:"mobileNo is required"});
        }
-    //    if(!0){
-    //     return res.status(400).json({message:" role is required"});
-    //    }
+       if(!req.body.user[0]){
+        return res.status(400).json({message:" role is required"});
+       }
        if(password !== confirmPassword){
-        return res.status(200).json({message:"Password dosen't match"});
+        return res.status(400).json({message:"Password dosen't match"});
        }
 
       const saveUser =  await users.insertMany(req.body.users);
@@ -144,26 +144,25 @@ router.post("/signup",async(req,res) =>{
 //route for the userlogin
 router.post("/login", async(req, res) =>{
     try{
-        const{username,password,role} = req.body;
-        
+       const{mobileNo, password} = req.body.user;  
        const userExit = await users.findOne({
-        username:username,
-        role:role
+        mobileNo:mobileNo,
+      
     });
 
        console.log(userExit);
 
        if(!userExit){
-        return res.status(400).json({message:"Invalid Credentials."});
+        return res.status(400).json({message:"Invalid Credentials(username)."});
        }
-
-       if(userExit.password !== parseInt(req.body.password)){
-       return res.json({message:"Invalid credentials"});
+       console.log(userExit.password);
+       if(userExit.password !== parseInt(password)){
+       return res.status(400).json({message:"Invalid credentials(password)"});
        }
        
         const payload = {
             user_id: req.body.username,
-            role:role,
+            role:req.body.user[0],
         };  
         const secreteKey = `ebhjbahbhibfuiwbf`;
         const expiresIn= '1d';
@@ -177,6 +176,21 @@ router.post("/login", async(req, res) =>{
         console.log(error);
     }
 });
+
+//getting the particular user from the users database
+router.post("/getUsers",async(req,res) =>{
+    console.log(req.body.id);
+    try{
+        const userId = req.body.id;
+        const user = await users.findById(userId).exec();
+        console.log(user);
+        res.status(200).json({
+            user: user[0],
+        })
+    }catch(error){
+        console.log(error);
+    }
+})
 
 //route for the user-contact
 router.post("/contact", async(req,res) =>{
