@@ -5,7 +5,9 @@ const users = require("../models/users.js");
 const contacts = require("../models/contact.js");
 const cart = require("../models/cart.js");
 const jwt = require("jsonwebtoken");
+const cookie = require("cookie");
 const { default: mongoose, Query } = require("mongoose");
+
 
 
 router.get("/items",async(req,res) =>{
@@ -161,7 +163,7 @@ router.post("/login", async(req, res) =>{
        }
        
         const payload = {
-            user_id: req.body.username,
+            user_id: req.body.user.mobileNo,
             role:req.body.user[0],
         };  
         const secreteKey = `ebhjbahbhibfuiwbf`;
@@ -169,9 +171,16 @@ router.post("/login", async(req, res) =>{
         
         const token = jwt.sign(payload,secreteKey,{expiresIn});
         console.log(token);
-        res.status(200).json({
-            message:token,
-        })
+        // res.status(200).json({
+        //     message:token,
+
+        // })
+        res.cookie("jwt",token,{
+            httpOnly:true,
+            secure:true,
+            maxAge:3600000
+        });
+        console.log(cookie);
     }catch(error){
         console.log(error);
     }

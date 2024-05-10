@@ -28,6 +28,12 @@ function Contact() {
   }
 
   const handleUserProblem = () =>{
+    setUserProblem({
+      name:"",
+      contact:"",
+      email:"",
+      problem:""
+    })
     axios
     .post("http://localhost:4000/user/contact",{
       userProblem:userProblem,

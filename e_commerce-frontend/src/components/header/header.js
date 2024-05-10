@@ -304,13 +304,12 @@ function ScreenOne({ setActiveScreen, input, setInput, setLogin,setOpen }) {
  };
 
 const handleLogin = () =>{
-  
   axios
   .post("http://localhost:4000/user/login",{
     user:loginUser,
   })
   .then((item) =>{
-    setOpen(false)
+    setOpen(false);
     console.log("user login successfully!")
   })
   .catch((error) =>{
@@ -322,10 +321,6 @@ const handleLogin = () =>{
 
   console.log(loginUser);
 
-
-
-
-  
   return (
     <>
      <Toaster position="top-right" reverseOrder={false} 
@@ -640,16 +635,20 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
   };
 
   const handleSignup = () => {
-    setOpen(false);
+  
     axios
       .post("http://localhost:4000/user/signup", {
         user: signupUser,
       })
       .then((item) => {
+        setOpen(false);
         console.log("user signup successfully!");
       })
       .catch((error) => {
+        setOpen(true);
         console.log(error);
+        toast.error("Invalid Credentials!")
+
       });
   };
 
@@ -657,6 +656,13 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
 
   return (
     <>
+    <Toaster position="top-right" reverseOrder={false}
+       toastOptions={{
+        success:{
+          duration:2000,
+        }
+       }}
+       />
       <div
         style={{
           height: "100%",
