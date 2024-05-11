@@ -66,6 +66,7 @@
 .cart-product-quantity{
     height: 2rem;
     width: 2rem;
+    font-size: 16px;
     border: 1px solid gray;
     margin-top: 1.2rem;
     border-radius: 5px;
@@ -173,4 +174,67 @@
     background-color: #FF8F00;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+
+@media (max-width:786px){
+    .cart-item-product{
+        width: 70%;
+        margin-left: 3rem;
+        height: auto;
+    }
+    .cart-item-desc{
+        height:6rem;
+    }
+    .cart-product-desc-heading{
+        font-size: 14px;
+    }
+    .cart-product-desc-text{
+        font-size: 10px;
+    }
+    .cart-product-quantity{
+        width: 1rem;
+        height: 1rem;
+        margin-top: 0.5rem;
+    }
+    .cart-product-remove{
+        margin-top: 0.4rem;
+        font-size: 12px;
+    }
+    .cart-product-price-text{
+        font-size: 16px;
+     }
+     .cart-product-price-add, .cart-product-price-sub{
+        height: 1.5rem;
+        width: 2rem;
+        font-size: 18px;
+     }
+    .cart-payment{
+        height: 20rem;
+    }
+    .cart-payment-address{
+        width: 80%;
+    }
+    .cart-payment-address-heading{
+        font-size: 14px;
+        margin-top: 0.6rem;
+    }
+    .cart-payement-address-text{
+        margin-top: 0.2rem;
+    }
+    .cart-payment-section{
+        width: 80%;
+    }
+    .cart-payment-section-price{
+        gap: 4rem;
+    }
+    .cart-payment-section-price-text{
+        font-size: 10px;
+    }
+    .cart-payment-section-delivery{
+        gap:3.5rem;
+    }
+    .place-order-div .place-order{
+        font-size: 10px;
+    }
 }

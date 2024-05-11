@@ -82,10 +82,10 @@ function Cart() {
   return (
     <>
       <div className="cart-container">
-        <div className="cart-item">
+        <div className="cart-item" >
           {cart.map((item, i) => {
             return (
-              <div className="cart-item-product" key={`fjnvj-${i}`}>
+              <div className="cart-item-product" key={`fjnvj-${i}`} >
                 <div className="cart-product-image">
                   <img src={item.src} alt={item.alt} className="cart-p-image" />
                 </div>
@@ -96,7 +96,7 @@ function Cart() {
                   <div className="cart-product-remove"  onClick={() => deleteItem(item._id)}>REMOVE</div>
                 </div>
                 <div className="cart-product-price">
-                  <p className="cart-product-price-text">{item.price} /-</p>
+                  <p className="cart-product-price-text">{item.price}/-</p>
                   <button className="cart-product-price-add"
                    onClick={() => increaseQuantity(item._id,item.quantity)}
                   >
@@ -113,7 +113,7 @@ function Cart() {
             );
           })}
         </div>
-        <div className="cart-payment">
+        <div className="cart-payment" >
           <div className="cart-payment-address">
             <p className="cart-payment-address-heading">DELIVERY ADDRESS</p>
             <textarea
@@ -121,10 +121,10 @@ function Cart() {
               className="cart-payment-address-text"
             ></textarea>
           </div>
-          <div className="cart-payment-section">
-            <div className="cart-payment-section-price">
+          <div className="cart-payment-section" >
+            <div className="cart-payment-section-price" >
               <p className="cart-payment-section-price-text">Price (1 item)</p>
-              <p className="cart-product-price-text">₹ {sum} /-</p>
+              <p className="cart-product-price-text">₹ {sum}/-</p>
             </div>
             <div className="cart-payment-section-delivery">
               <p className="cart-payment-section-price-text">
