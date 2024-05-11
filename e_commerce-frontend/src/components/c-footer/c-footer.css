@@ -1,18 +1,17 @@
 .c-footer{
     height: 5rem;
-    width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #F0F8FF;
-    
+    background-color: #F0F8FF; 
 }
 .cart-name{
     height: 100%;
     width: 16%;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: end; 
 }
 .logo-image{
     height: 3.5rem;
@@ -42,4 +41,21 @@
     font-size: 17px;
     font-weight: 400;
     cursor: pointer;
+}
+
+@media (max-width:786px){
+  .c-footer{
+    height:4rem;
+  }
+  .logo-image{
+    height: 2.5rem;
+    width: 4.3rem;
+  }
+  .c-footer-li{
+    font-size: 10px;
+    gap: 15px;
+  }  
+  .footer-copyright{
+    font-size: 10px;
+  }
 }

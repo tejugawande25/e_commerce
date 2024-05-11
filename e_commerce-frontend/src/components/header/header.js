@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./header.css";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,7 +12,7 @@ import Logo from "./logo.png";
 import Modal from "@mui/material/Modal";
 import LoginImg from "./login.png";
 import styled from "@emotion/styled";
-import { TextField } from "@mui/material";
+import {  TextField } from "@mui/material";
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -29,6 +30,12 @@ const NumberDiv = styled(TextField)`
 `;
 const RoleDiv = styled(TextField)`
 `
+const LoginButton = styled(Button)`
+@media (max-width:786){
+  margin-right:20px;
+  color:white;
+}
+`
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [login, setLogin] = useState(true);
@@ -40,7 +47,7 @@ export default function Header() {
   };
   console.log(input);
   return (
-    <Box sx={{ flexGrow: 2, marginBottom: "40px" }}>
+    <Box sx={{ flexGrow: 2, marginBottom: "40px" }} >
       <AppBar
         position="static"
         style={{
@@ -132,7 +139,7 @@ export default function Header() {
                 Products
               </Link>
             </li>
-            <li style={{ marginRight: "60px" }}>
+            <li >
               <Link
                 to="contact"
                 style={{
@@ -145,21 +152,22 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-          <Button
+          <LoginButton
             style={{
               color: "#2C3539",
               display: "flex",
               alignItems: "center",
               background: "#9bddff",
-              marginRight: "40px",
               fontSize: "15px",
+              
             }}
             onClick={() => {
               setOpen(true);
             }}
+            
           >
             Login
-          </Button>
+          </LoginButton>
           <Link to="/cart">
             <ShoppingCartIcon
               style={{

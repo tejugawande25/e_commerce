@@ -81,7 +81,7 @@ function Cart() {
 
   return (
     <>
-      <div className="cart-container">
+      <div className="cart-container"   >
         <div className="cart-item" >
           {cart.map((item, i) => {
             return (
