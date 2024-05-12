@@ -9,6 +9,7 @@
     height: 450px;
     background-color: #fffafa;
     display: flex;
+    
 }
 .about-header-image{
     height: 100%;
@@ -18,9 +19,11 @@
     justify-content: center;
 }
 .about-header-img{
+    display: flex;
     height: 350px;
     width: 400px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
 }
 .about-header-description{
     height: 100%;
@@ -55,6 +58,7 @@
     height: 500px;
     display: flex;
     flex-direction: row;
+    border: 1px solid red;
 }
 .middle-desc{
     width: 60%;
@@ -64,6 +68,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    border: 1px solid black;
 }
 .middle-image{
     height: 100%;
@@ -71,11 +76,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid yellow;
 }
 .model-image{
     height: 400px;
     width: 400px;
     display: flex;
+    border: 1px solid green;
 
 }
 .learn-more{
@@ -86,4 +93,32 @@
     border: 0.5px solid black;
     border-radius: 5px;
     margin-top: 2rem;
+}
+
+/*media query for making the about responsive*/
+@media (max-width:786px){
+    .about-header-img{
+        height: 200px;
+        width: 275px;
+    }
+    .about-header-desc-heading{
+        font-size: 24px;
+        margin-top: 9rem;
+    }
+    .about-p{
+        font-size: 13px;
+    }
+    .about-button{
+        height: 8%;
+        width: 24%;
+        font-size: 12px;
+       margin-top: 1rem;
+    }
+    .middle-desc{
+        
+    }
+    .model-image{
+        height: 200px;
+        width: 300px;
+    }
 }
