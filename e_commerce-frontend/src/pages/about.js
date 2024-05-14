@@ -19,10 +19,10 @@ function About(){
         </div>
         <div className="about-middle"> 
             <div className="middle-desc">
-                <div style={{marginLeft:"100px"}}>
-                  <p style={{fontSize:"22px",fontWeight:"500",margin:"0px"}}>TECHNOLOGY AT CART</p>
-                  <p style={{fontSize:"36px",fontWeight:"500",color:"#494F55",margin:"0px"}}>FASHION INNOVATION</p>
-                  <p style={{fontSize:"20px"}}>Cart technology drives path-breaking, customer-focused innovation <br></br> that makes high quality products accessible to Indian shoppers,<br></br> besides making the online shopping experience convenient, intuitive <br></br>and seamless.</p>
+                <div className="middle-desc-inner">
+                  <p className="middle-desc-heading">TECHNOLOGY AT CART</p>
+                  <p className="middle-desc-subheading">FASHION INNOVATION</p>
+                  <p className="middle-desc-details">Cart technology drives path-breaking, customer-focused innovation <br></br> that makes high quality products accessible to Indian shoppers,<br></br> besides making the online shopping experience convenient, intuitive <br></br>and seamless.</p>
                   <button className="learn-more">READ MORE</button>
                   </div>
             </div>
