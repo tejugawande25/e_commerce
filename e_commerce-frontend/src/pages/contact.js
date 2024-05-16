@@ -47,19 +47,8 @@ function Contact() {
   }
   return (
     <>
-      <div className="contact">
-        <div
-          style={{
-            width: "40%",
-            height: "3rem",
-            marginLeft: "13.1rem",
-            fontSize: "22px",
-            display: "flex",
-            alignItems: "center",
-            fontWeight: "500",
-            color: "gray",
-          }}
-        >
+      <div className="contact" style={{border:"1px solid red"}}>
+        <div className="contact-heading" >
           Contact Us
         </div>
         <div className="contact-main">
