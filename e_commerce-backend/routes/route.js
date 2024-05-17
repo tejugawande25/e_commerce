@@ -9,12 +9,6 @@ const cookie = require("cookie");
 const { default: mongoose, Query } = require("mongoose");const assert = require('assert');
 
 
-router.get("/os" , (req, res) =>{
-   if(assert.equal(8 == 7))
-   res.send("ok");
-   else
-   res.send("not ok");
-})
 router.get("/items",async(req,res) =>{
     const {size} = req.query;
     await products.aggregate().sort({'views':-1}).limit(Number(size))
