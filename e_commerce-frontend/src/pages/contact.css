@@ -20,7 +20,6 @@
     justify-content: center;
     gap: 4rem;
     margin-bottom: 2rem;
-    border: 1px solid yellow;
 }
 .contact-freq{
     width: 40%;
@@ -104,4 +103,75 @@ label{
     margin-left: 1.8rem;
     font-size: 13px;
     color: rgb(73, 73, 73);
+}
+.contact-freq-innerquestions{
+    display: flex;
+    flex-direction: column;
+}
+.contact-checkbox-div{
+    display: flex;
+    align-items: center;
+}
+.checkbox-first{
+    margin-left: 20rem;
+    height: 18px;
+    width: 18px;
+}
+.checkbox-second{
+    margin-left: 16.8rem;
+    height: 18px;
+    width: 18px;
+}
+.checkbox-third{
+   margin-left: 16.7rem;
+   height: 18px;
+   width: 18px;
+}
+.checkbox-fourth{
+   margin-left: 19.7rem;
+   height: 18px;
+   width: 18px;
+}
+
+@media (max-width:786px){
+    .contact-heading{
+        font-size: 18px;
+        margin-left: 6rem;
+    }
+    .contact-freq-heading{
+        font-size: 14px;
+        margin-left: 1rem;
+    }
+    .upper-p{
+        font-size: 12px;
+        margin-left: 1rem;
+    }
+    .lower-p{
+        font-size: 10px;
+        margin-left: 1rem;
+    }
+    .checkbox-first{
+        margin-left: 7.5rem;
+        height: 12px;
+        width: 12px;
+        margin-bottom: 1rem;
+    }
+    .checkbox-second{
+        margin-left: 5.1rem;
+        height: 12px;
+        width: 12px;
+        margin-bottom: 1rem;
+    }
+    .checkbox-third{
+        margin-left: 4.6rem;
+        height: 12px;
+        width: 12px;
+        margin-bottom: 1rem;
+    }
+    .checkbox-fourth{
+        margin-left: 7.2rem;
+        height: 12px;
+        width: 12px;
+        margin-bottom: 1rem;
+    }
 }

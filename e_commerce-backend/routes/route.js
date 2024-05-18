@@ -6,7 +6,8 @@ const contacts = require("../models/contact.js");
 const cart = require("../models/cart.js");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
-const { default: mongoose, Query } = require("mongoose");const assert = require('assert');
+// const { default: mongoose, Query } = require("mongoose");const assert = require('assert');
+
 
 
 router.get("/items",async(req,res) =>{

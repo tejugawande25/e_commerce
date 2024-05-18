@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./contact.css";
 import CFooter from "../components/c-footer/c-footer";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Checkbox } from "@mui/material";
+// import { Checkbox } from "@mui/material";
 import axios from "axios";
 
 function Contact() {
@@ -58,38 +57,38 @@ function Contact() {
             </div>
             <div className="contact-freq-questions">
               <div className="contact-freq-subquestion">
-                <div style={{display:"flex",flexDirection:"column"}}>
+                <div className="contact-freq-innerquestions">
                 <p className="upper-p">I want to manage my order</p>
                 <p className="lower-p">View,cancel or return an order</p>
                 </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                <Checkbox style={{marginLeft:"20rem"}} defaultChecked={false} />
+                <div className ="contact-checkbox-div">
+                <input type="checkbox" className="checkbox-first" defaultChecked={false} />
                 </div>
               </div>
               <div className="contact-freq-subquestion">
-              <div style={{display:"flex",flexDirection:"column"}}>
+              <div className="contact-freq-innerquestions">
                 <p className="upper-p">I want help with returns & refunds</p>
                 <p className="lower-p">Manage and track returns</p>
                 </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                <Checkbox style={{marginLeft:"16.8rem"}}/>
+                <div className ="contact-checkbox-div">
+                <input type="checkbox" className="checkbox-second"/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
-              <div style={{display:"flex",flexDirection:"column"}}>
+              <div className="contact-freq-innerquestions">
                 <p className="upper-p">I want help with other issues</p>
                 <p className="lower-p">Offers,payment,Cart Plus & all other issues</p>
                 </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                <Checkbox style={{marginLeft:"16.7rem"}}/>
+                <div className ="contact-checkbox-div">
+                <input type="checkbox"  className="checkbox-third"/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
-              <div style={{display:"flex",flexDirection:"column"}}>
+              <div className="contact-freq-innerquestions">
                 <p className="upper-p">I want to contact with seller</p>
                 </div>
-                <div style={{display:"flex",alignItems:"center"}}>
-                <Checkbox style={{marginLeft:"19.7rem"}}/>
+                <div className ="contact-checkbox-div">
+                <input type="checkbox" className="checkbox-fourth"/>
                 </div>
               </div>
             </div>
