@@ -46,7 +46,7 @@ function Contact() {
   }
   return (
     <>
-      <div className="contact" style={{border:"1px solid red"}}>
+      <div className="contact">
         <div className="contact-heading" >
           Contact Us
         </div>
@@ -94,27 +94,27 @@ function Contact() {
             </div>
           </div>
           <div className="contact-form">
-            <label>Name: </label>
+            <label className="label">Name: </label>
             <input type="text" className="user-input" 
             name="name"
             value={userProblem.name}
             onChange={handleInput}
             />
-            <label>Contact: </label>
+            <label className="label">Contact: </label>
             <input type="text" className="user-input" 
             name="contact"
             value={userProblem.contact}
             onChange={handleInput}
             />
 
-            <label>Email: </label>
+            <label className="label">Email: </label>
             <input type="text" className="user-input" 
             name="email"
             value={userProblem.email}
             onChange={handleInput}
             />
 
-            <label>Enter your problem: </label>
+            <label className="label">Enter your problem: </label>
             <textarea type="text" className="problem-text" 
             name="problem"
             value={userProblem.problem}

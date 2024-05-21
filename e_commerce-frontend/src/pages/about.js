@@ -4,6 +4,8 @@ import peopleImage from "../images/people.jpg";
 import modelImage from "../images/model.jpg";
 import CFooter from "../components/c-footer/c-footer";
 
+
+
 function About(){
     return<>
     <div className="about">

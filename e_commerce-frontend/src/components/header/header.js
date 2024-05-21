@@ -11,14 +11,16 @@ import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import Modal from "@mui/material/Modal";
 import LoginImg from "./login.png";
-import styled from "@emotion/styled";
-import {  TextField } from "@mui/material";
+import {TextField } from "@mui/material";
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import axios from "axios";
 import toast,{Toaster} from "react-hot-toast";
+import "./header.css";
+import {styled} from "@mui/material/styles";
+
 
 const NumberDiv = styled(TextField)`
   height: 15%;
@@ -30,12 +32,28 @@ const NumberDiv = styled(TextField)`
 `;
 const RoleDiv = styled(TextField)`
 `
-const LoginButton = styled(Button)`
-@media (max-width:786){
-  margin-right:20px;
-  color:white;
-}
-`
+
+const Appbox = styled(Box)(({theme}) =>({
+  [theme.breakpoints.down('md')]:{
+    // border:"1px solid red"
+  }
+}))
+
+const AppBarMenu = styled(AppBar)(({theme}) =>({
+  [theme.breakpoints.down('md')]:{
+    border:"1px solid green",
+  }
+}))
+const LoginButton = styled(Button)(({theme}) =>({
+  [theme.breakpoints.down('md')]:{
+    border:"1px solid red",
+    fontSize:"5px",
+    marginLeft:"0.5rem"
+  }
+}))
+
+
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [login, setLogin] = useState(true);
@@ -47,15 +65,17 @@ export default function Header() {
   };
   console.log(input);
   return (
-    <Box sx={{ flexGrow: 2, marginBottom: "40px" }} >
-      <AppBar
+    <Appbox sx={{ flexGrow: 2, marginBottom: "40px" }} >
+      <AppBarMenu
         position="static"
         style={{
           background: "#d6d6f8",
           height: "80px",
           display: "flex",
           justifyContent: "center",
+          
         }}
+        className="appbar"
       >
         <Toolbar>
           <IconButton
@@ -69,7 +89,7 @@ export default function Header() {
             variant="h4"
             component="div"
             sx={{ flexGrow: 1 }}
-            style={{ color: "#2C3539", fontWeight: "600", marginLeft: "30px" }}
+            style={{ color: "#2C3539", fontWeight: "600", marginLeft: "auto" }}
           >
             <Link
               to="/"
@@ -147,6 +167,7 @@ export default function Header() {
                   color: "#2C3539",
                   fontSize: "19px",
                 }}
+                className="contact-li"
               >
                 Contacts
               </Link>
@@ -159,7 +180,7 @@ export default function Header() {
               alignItems: "center",
               background: "#9bddff",
               fontSize: "15px",
-              
+              marginLeft:"2.5rem"
             }}
             onClick={() => {
               setOpen(true);
@@ -175,6 +196,7 @@ export default function Header() {
                 marginRight: "10px",
                 cursor: "pointer",
                 fontSize: "24px",
+                marginLeft:"1.5rem"
               }}
             />
           </Link>
@@ -258,8 +280,8 @@ export default function Header() {
             )}
           </div>
         </Modal>
-      </AppBar>
-    </Box>
+      </AppBarMenu>
+    </Appbox>
   );
 }
 
