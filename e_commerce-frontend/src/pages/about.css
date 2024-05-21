@@ -9,7 +9,6 @@
     height: 450px;
     background-color: #fffafa;
     display: flex;
-    
 }
 .about-header-image{
     height: 100%;
@@ -149,4 +148,51 @@
     }
 }
 
+@media (min-width:481px) and (max-width:768px){
+    .about-header-img{
+         height: 125px;
+         width:150px;
+    }
+    .about-header{
+        height: 300px;
+    }
+    .about-header-desc-heading{
+        font-size: 20px;
+        margin-top: 5.5rem;
+    }
+    .about-p{
+        font-size: 10px;
+    }
+    .about-button{
+        height: 6%;
+        width: 20%;
+        font-size: 8px;
+        margin-top: 1rem;
+    }
+    .about-middle{
+        height: 300px;
+    }
+    .model-image{
+        height: 150px;
+        width: 175px;
+    }
+    .middle-desc-inner{
+        margin-left: 60px;
+    }
+    .middle-desc-heading{
+        font-size: 12px;
+    }
+    .middle-desc-subheading{
+        font-size: 19px;
+    }
+    .middle-desc-details{
+        font-size: 10px;
+    }
+    .learn-more{
+        width: 30%;
+        height: 20px;
+        font-size: 8px;
+    }
+
+}
 

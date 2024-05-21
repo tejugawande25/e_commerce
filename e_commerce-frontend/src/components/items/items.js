@@ -30,7 +30,7 @@ function Items() {
         <div className="items-heading">
           <p>Top Selling Items</p>
         </div>
-        <div style={{ display: "flex", gap: "75px" }}>
+        <div className="items-main">
           {items.map((item, i) => {
             return (
               <Link

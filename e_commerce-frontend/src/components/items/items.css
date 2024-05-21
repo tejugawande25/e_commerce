@@ -15,7 +15,7 @@
 .items-heading{
     display: flex;
     align-items: center;
-    height: 50px;
+    height: 15%;
     width: 100%;
     margin-top: 0;
 }
@@ -59,4 +59,34 @@
     margin: 0px;
     font-size:16px;
     font-weight: 600;
+}
+.items-main{
+    display: flex;
+    gap: 75px;
+}
+@media (min-width:769px) and (max-width:1024px){
+  .items-div{
+    height: 280px;
+  }
+  .items-heading p{
+    font-size: 22px;
+  }
+  .items-main{
+    gap: 30px;
+  }
+  .items{
+    height: 180px;
+    width: 120px;
+    gap: 2px; 
+  }
+  .item-image{
+    height: 60%;
+  }
+  .items .heading-p{
+    font-size: 15px;
+  }
+  .items .subheading-p{
+    font-size: 12px;
+  }
+    
 }
