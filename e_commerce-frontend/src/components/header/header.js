@@ -33,7 +33,8 @@ const NumberDiv = styled(TextField)`
 
 
 const Appbox = styled(Box)(({theme}) =>({
-  [theme.breakpoints.down('md')]:{
+  [theme.breakpoints.down('sm')]:{
+   maxwidth:"100%"
   }
 }))
 
@@ -43,7 +44,6 @@ const AppBarMenu = styled(AppBar)(({theme}) =>({
   display: "flex",
   justifyContent: "center",
   [theme.breakpoints.down('md')]:{
-    border:"1px solid green",
   }
 }))
 const LoginButton = styled(Button)(({theme}) =>({
@@ -52,12 +52,26 @@ const LoginButton = styled(Button)(({theme}) =>({
   display: "flex",
   alignItems: "center",
   fontSize: "15px",
-  marginLeft:"2.5rem",
+  marginLeft:"2.5%",
+  marginRight:"2%",
   [theme.breakpoints.down('md')]:{
    fontSize:"13px",
+  },
+  [theme.breakpoints.down("sm")]:{
+   fontSize:"10px",
   }
 }))
 
+const MyShoppingCart = styled(ShoppingCartIcon)(({theme}) =>({
+  color: "#2C3539",
+  marginRight: "2%",
+  cursor: "pointer",
+  fontSize: "24px", 
+
+  [theme.breakpoints.down("sm")]:{
+    fontSize:"20px"
+  }
+}))
 
 
 export default function Header() {
@@ -152,15 +166,7 @@ export default function Header() {
             Login
           </LoginButton>
           <Link to="/cart">
-            <ShoppingCartIcon
-              style={{
-                color: "#2C3539",
-                marginRight: "10px",
-                cursor: "pointer",
-                fontSize: "24px",
-                marginLeft:"1.5rem"
-              }}
-            />
+            <MyShoppingCart />
           </Link>
         </Toolbar>
         <Modal

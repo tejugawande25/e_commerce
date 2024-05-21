@@ -8,16 +8,30 @@
 }
 
 .list-items{
-    font-size: 19px;
+    font-size: 3vh;
     text-decoration: none;
     color: #2C3539;
 }
 .logo-image{
     height: 3.5rem;
     width: 6rem;
-    margin-left: 20px;
+    margin-left: 5%;
 }
-@media (max-width:786px){
+
+@media (min-width:481px) and (max-width:768px){
+    .list{
+        gap:15px;
+    }
+    .list-items{
+        font-size: 12px;
+    }
+    .logo-image{
+        height: 2rem;
+        width: 3rem;
+    }
+}
+
+@media (min-width:769px) and (max-width:1024px){
    .list{
     gap: 40px;
    }
@@ -27,6 +41,5 @@
    .logo-image{
     height: 2.5rem;
     width: 4rem;
-    margin-left: 10px;
    }
 }

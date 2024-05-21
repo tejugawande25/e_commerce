@@ -3,11 +3,12 @@
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+    border: 1px solid red;
 }
 .contact-heading{
     width: 40%;
     height: 3rem;
-    margin-left: 13.2rem;
+    margin-left: 14%;
     font-size: 22px;
     display: flex;
     align-items: center;
@@ -107,36 +108,24 @@
 .contact-freq-innerquestions{
     display: flex;
     flex-direction: column;
+    width: 70%;
 }
 .contact-checkbox-div{
     display: flex;
     align-items: center;
+    justify-content: end;
+    padding-right: 2rem;
+    width: 30%;
 }
-.checkbox-first{
-    margin-left: 20rem;
+.checkbox{
     height: 18px;
     width: 18px;
-}
-.checkbox-second{
-    margin-left: 16.8rem;
-    height: 18px;
-    width: 18px;
-}
-.checkbox-third{
-   margin-left: 16.7rem;
-   height: 18px;
-   width: 18px;
-}
-.checkbox-fourth{
-   margin-left: 19.7rem;
-   height: 18px;
-   width: 18px;
 }
 
-@media (max-width:786px){
+
+@media (min-width:769px) and (max-width:1024px){
     .contact-heading{
         font-size: 18px;
-        margin-left: 6rem;
     }
     .contact-freq-heading{
         font-size: 14px;
@@ -150,29 +139,9 @@
         font-size: 10px;
         margin-left: 1rem;
     }
-    .checkbox-first{
-        margin-left: 7.5rem;
+    .checkbox{
         height: 12px;
         width: 12px;
-        margin-bottom: 1rem;
-    }
-    .checkbox-second{
-        margin-left: 5.1rem;
-        height: 12px;
-        width: 12px;
-        margin-bottom: 1rem;
-    }
-    .checkbox-third{
-        margin-left: 4.6rem;
-        height: 12px;
-        width: 12px;
-        margin-bottom: 1rem;
-    }
-    .checkbox-fourth{
-        margin-left: 7.2rem;
-        height: 12px;
-        width: 12px;
-        margin-bottom: 1rem;
     }
     .contact-form{
     height: 26rem;
@@ -190,6 +159,47 @@
     }
     .submit-button{
         margin-left: 2rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width:481px) and (max-width:768px){
+    .contact-heading{
+        font-size: 14px;
+        margin-left: 10%;
+    }
+    .contact-freq-heading{
+        font-size: 11px;
+        margin-left: 1rem;
+    }
+    .upper-p{
+        font-size: 8px;
+        margin-left: 1rem;
+    }
+    .lower-p{
+        font-size: 7px;
+        margin-left: 1rem;
+    }
+    .checkbox{
+        height: 10px;
+        width: 10px;
+    }
+    .contact-form{
+        height: 24rem;
+    }
+    .label{
+       margin-left: 1rem;
+       margin-top: 10px;
+       font-size: 10px;
+    }
+    .user-input{
+        margin-left: 1rem;
+    }
+    .problem-text{
+        margin-left: 1rem;
+    }
+    .submit-button{
+        margin-left: 1rem;
         font-size: 0.8rem;
     }
 }

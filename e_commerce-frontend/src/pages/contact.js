@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./contact.css";
 import CFooter from "../components/c-footer/c-footer";
-// import { Checkbox } from "@mui/material";
 import axios from "axios";
 
 function Contact() {
@@ -62,7 +61,7 @@ function Contact() {
                 <p className="lower-p">View,cancel or return an order</p>
                 </div>
                 <div className ="contact-checkbox-div">
-                <input type="checkbox" className="checkbox-first" defaultChecked={false} />
+                <input type="checkbox" className="checkbox" defaultChecked={false} />
                 </div>
               </div>
               <div className="contact-freq-subquestion">
@@ -71,7 +70,7 @@ function Contact() {
                 <p className="lower-p">Manage and track returns</p>
                 </div>
                 <div className ="contact-checkbox-div">
-                <input type="checkbox" className="checkbox-second"/>
+                <input type="checkbox" className="checkbox"/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
@@ -80,7 +79,7 @@ function Contact() {
                 <p className="lower-p">Offers,payment,Cart Plus & all other issues</p>
                 </div>
                 <div className ="contact-checkbox-div">
-                <input type="checkbox"  className="checkbox-third"/>
+                <input type="checkbox"  className="checkbox"/>
                 </div>
               </div>
               <div className="contact-freq-subquestion">
@@ -88,7 +87,7 @@ function Contact() {
                 <p className="upper-p">I want to contact with seller</p>
                 </div>
                 <div className ="contact-checkbox-div">
-                <input type="checkbox" className="checkbox-fourth"/>
+                <input type="checkbox" className="checkbox"/>
                 </div>
               </div>
             </div>

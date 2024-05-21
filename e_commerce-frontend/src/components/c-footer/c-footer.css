@@ -43,7 +43,7 @@
     cursor: pointer;
 }
 
-@media (max-width:786px){
+@media (min-width:769px) and (max-width:1024px){
   .c-footer{
     height:4rem;
   }
@@ -52,10 +52,27 @@
     width: 4.3rem;
   }
   .c-footer-li{
-    font-size: 10px;
+    font-size: 12px;
     gap: 15px;
   }  
   .footer-copyright{
-    font-size: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width:481px) and (max-width:768px){
+  .c-footer{
+    height: 3rem;
+  }
+  .logo-image{
+    height: 1.5rem;
+    width: 3.5rem;
+  }
+  .c-footer-li{
+    font-size: 9px;
+    gap: 15px;
+  }  
+  .footer-copyright{
+    font-size: 8px;
   }
 }

@@ -108,7 +108,7 @@
 }
 
 /*media query for making the about responsive*/
-@media (max-width:786px){
+@media (min-width:769px) and (max-width:1024px){
     .about-header-img{
         height: 200px;
         width: 275px;
