@@ -1,8 +1,32 @@
+.list{
+    display: flex;
+    color: #2C3539;
+    gap: 50px;
+    text-decoration: none;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.list-items{
+    font-size: 19px;
+    text-decoration: none;
+    color: #2C3539;
+}
+.logo-image{
+    height: 3.5rem;
+    width: 6rem;
+    margin-left: 20px;
+}
 @media (max-width:786px){
-    .contact-li{
-        font-size: 5px;
-    }
-    .appbar{
-       
-    }
+   .list{
+    gap: 40px;
+   }
+   .list-items{
+    font-size: 16px;
+   }
+   .logo-image{
+    height: 2.5rem;
+    width: 4rem;
+    margin-left: 10px;
+   }
 }

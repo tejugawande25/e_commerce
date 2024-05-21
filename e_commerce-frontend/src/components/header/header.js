@@ -30,25 +30,31 @@ const NumberDiv = styled(TextField)`
   margin-left: 3.5rem;
   justify-content: center;
 `;
-const RoleDiv = styled(TextField)`
-`
+
 
 const Appbox = styled(Box)(({theme}) =>({
   [theme.breakpoints.down('md')]:{
-    // border:"1px solid red"
   }
 }))
 
 const AppBarMenu = styled(AppBar)(({theme}) =>({
+  background: "#d6d6f8",
+  height: "80px",
+  display: "flex",
+  justifyContent: "center",
   [theme.breakpoints.down('md')]:{
     border:"1px solid green",
   }
 }))
 const LoginButton = styled(Button)(({theme}) =>({
+  background:"#9bddff",
+  color: "#2C3539",
+  display: "flex",
+  alignItems: "center",
+  fontSize: "15px",
+  marginLeft:"2.5rem",
   [theme.breakpoints.down('md')]:{
-    border:"1px solid red",
-    fontSize:"5px",
-    marginLeft:"0.5rem"
+   fontSize:"13px",
   }
 }))
 
@@ -65,16 +71,9 @@ export default function Header() {
   };
   console.log(input);
   return (
-    <Appbox sx={{ flexGrow: 2, marginBottom: "40px" }} >
+    <Appbox sx={{ flexGrow: 2, marginBottom: "40px"}} >
       <AppBarMenu
         position="static"
-        style={{
-          background: "#d6d6f8",
-          height: "80px",
-          display: "flex",
-          justifyContent: "center",
-          
-        }}
         className="appbar"
       >
         <Toolbar>
@@ -102,35 +101,20 @@ export default function Header() {
               <img
                 src={Logo}
                 style={{
-                  height: "3.5rem",
-                  width: "6rem",
                   marginTop: "10px",
                   borderRadius: "5px",
-                  marginLeft: "20px",
                   boxShadow:
                     "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px",
                 }}
+                className="logo-image"
               />
             </Link>
           </Typography>
-          <ul
-            style={{
-              display: "flex",
-              color: "#2C3539",
-              gap: "50px",
-              textDecoration: "none",
-              listStyleType: "none",
-              cursor: "pointer",
-            }}
-          >
+          <ul className="list">
             <li>
               <Link
                 to="/"
-                style={{
-                  textDecoration: "none",
-                  color: "#2C3539",
-                  fontSize: "19px",
-                }}
+                className="list-items"
               >
                 Home
               </Link>
@@ -138,11 +122,7 @@ export default function Header() {
             <li>
               <Link
                 to="about"
-                style={{
-                  textDecoration: "none",
-                  color: "#2C3539",
-                  fontSize: "19px",
-                }}
+                className="list-items"
               >
                 About
               </Link>
@@ -150,11 +130,7 @@ export default function Header() {
             <li>
               <Link
                 to="product"
-                style={{
-                  textDecoration: "none",
-                  color: "#2C3539",
-                  fontSize: "19px",
-                }}
+                className="list-items"
               >
                 Products
               </Link>
@@ -162,30 +138,16 @@ export default function Header() {
             <li >
               <Link
                 to="contact"
-                style={{
-                  textDecoration: "none",
-                  color: "#2C3539",
-                  fontSize: "19px",
-                }}
-                className="contact-li"
+                className="list-items"
               >
                 Contacts
               </Link>
             </li>
           </ul>
           <LoginButton
-            style={{
-              color: "#2C3539",
-              display: "flex",
-              alignItems: "center",
-              background: "#9bddff",
-              fontSize: "15px",
-              marginLeft:"2.5rem"
-            }}
             onClick={() => {
               setOpen(true);
-            }}
-            
+            }} 
           >
             Login
           </LoginButton>
