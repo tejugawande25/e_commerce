@@ -108,3 +108,37 @@
     height: 80%;
     width: 100%;
 }
+
+@media (min-width:769px) and (max-width:1024px){
+    .main-item{
+        height: 400px;
+    }
+    .main-image-div{
+        gap: 10px;
+    }
+    .main-image-title{
+        margin-left: 8px;
+        gap: 10px;
+    }
+    .main-image-title p{
+        font-size: 24px;
+    }
+    .main-image-heading{
+        gap:1rem;
+    }
+    .heading-side p{
+        font-size: 20px;
+        margin-left: 20px;
+    }
+    .side-items{
+        margin-left: 18px;
+        height: 90%;
+        width: 80%;
+    }
+    .men-jacket{
+        width: 50%;
+    }
+    .women-jacket{
+        width: 50%;
+    }
+}
