@@ -35,7 +35,7 @@ function Items() {
             return (
               <Link
                 to={`products/${item._id}`}
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "black",width:"15%",height:"80%"}}
                 key={`yuggi-${i}`}
               >
                 <div className="items">
