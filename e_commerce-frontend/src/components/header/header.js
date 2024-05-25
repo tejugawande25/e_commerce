@@ -20,6 +20,8 @@ import axios from "axios";
 import toast,{Toaster} from "react-hot-toast";
 import "./header.css";
 import {styled} from "@mui/material/styles";
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const NumberDiv = styled(TextField)`
@@ -79,10 +81,16 @@ export default function Header() {
   const [login, setLogin] = useState(true);
   const [input, setInput] = useState("");
   const [activeScreen, setActiveScreen] = useState("ScreenOne");
+  const[clicked, setClicked] = useState(false);
   const handleClose = () => {
     setOpen(false);
     setActiveScreen("ScreenOne");
   };
+  
+  const handleMenuClick = () =>{
+    setClicked(!clicked);
+  }
+
   console.log(input);
   return (
     <Appbox sx={{ flexGrow: 2, marginBottom: "40px"}} >
@@ -102,7 +110,7 @@ export default function Header() {
             variant="h4"
             component="div"
             sx={{ flexGrow: 1 }}
-            style={{ color: "#2C3539", fontWeight: "600", marginLeft: "auto" }}
+            style={{ color: "#2C3539", fontWeight: "600", marginLeft: "auto"}}
           >
             <Link
               to="/"
@@ -124,6 +132,7 @@ export default function Header() {
               />
             </Link>
           </Typography>
+          <div id="list-div"  className={clicked ?"list-div active" :"list-div"}>
           <ul className="list">
             <li>
               <Link
@@ -165,9 +174,16 @@ export default function Header() {
           >
             Login
           </LoginButton>
-          <Link to="/cart">
+          <Link to="/cart" className="cartIcon">
             <MyShoppingCart />
           </Link>
+          
+          </div>
+          <div id="menu" onClick={handleMenuClick}> 
+            {
+              clicked ? <CloseIcon /> : <MenuIcon />
+            }
+          </div>
         </Toolbar>
         <Modal
           open={open}

@@ -21,6 +21,7 @@
     height: 25rem;
     width: 30%;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border: 1px solid yellow;
 }
 .cart-item-product{
     height: 10rem;
@@ -32,6 +33,7 @@
     align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px solid red;
 }
 .cart-product-image{
     height: 8rem;
@@ -138,6 +140,7 @@
 .cart-payment-section{
     height: 69%;
     width: 90%;
+    border: 1px solid red;
     margin-left: 2rem;
 }
 .cart-payment-section-price{
@@ -145,10 +148,12 @@
    display: flex;
    align-items: center;
    gap: 13rem;
+   border: 1px solid green;
 }
 .cart-payment-section-price-text{
     font-size: 18px;
     font-weight: 400;
+    border: 1px solid red;
 }
 .cart-payment-section-delivery{
     height: 20%;
@@ -177,13 +182,13 @@
 }
 
 
-@media (max-width:769px){
+@media (min-width:769px) and (max-width:1024px){
     .cart-item-product{
         width: 70%;
         margin-left: 3rem;
         height: auto;
     }
-    .cart-item-desc{
+    .cart-product-desc{
         height:6rem;
     }
     .cart-product-desc-heading{
@@ -236,5 +241,74 @@
     }
     .place-order-div .place-order{
         font-size: 10px;
+    }
+}
+
+@media (min-width:481px) and (max-width:768px){
+    .cart-container{
+        gap: 2.5rem;
+    }
+    .cart-item-product{
+        width: 80%;
+        margin-left: 1.2rem;
+        height: auto;
+    }
+    .cart-product-desc{
+        height:6rem;
+    }
+    .cart-product-desc-heading{
+        font-size: 12px;
+    }
+    .cart-product-desc-text{
+        font-size: 9px;
+    }
+    .cart-product-quantity{
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-top: 0.5rem;
+    }
+    .cart-product-remove{
+        margin-top: 0.4rem;
+        font-size: 10px;
+    }
+    .cart-product-price-text{
+        font-size: 10px;
+     }
+     .cart-product-price-add, .cart-product-price-sub{
+        height: 1.2rem;
+        width: 1.5rem;
+        font-size: 14px;
+     }
+    .cart-payment{
+        height: 20rem;
+    }
+    .cart-payment-address{
+        width: 80%;
+        margin-left: 1rem;
+    }
+    .cart-payment-address-heading{
+        font-size: 10px;
+        margin-top: 0.6rem;
+    }
+    .cart-payement-address-text{
+        margin-top: 0.2rem;
+    }
+    .cart-payment-section{
+        width: 80%;
+        margin-left: 1rem;
+    }
+    .cart-payment-section-price{
+        gap: 1rem;
+    }
+    .cart-payment-section-price-text{
+        font-size: 9px;
+    }
+    .cart-payment-section-delivery{
+        gap:1rem;
+    }
+    .place-order-div .place-order{
+        width: 70%;
+        height: 60%;
+        font-size: 8px;
     }
 }

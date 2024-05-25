@@ -17,6 +17,16 @@
     width: 6rem;
     margin-left: 5%;
 }
+.cartIcon{
+    display: flex;
+}
+#list-div{
+    display: flex;
+    align-items: center;
+}
+#menu{
+    display: none;
+}
 
 @media (min-width:481px) and (max-width:768px){
     .list{
@@ -42,4 +52,34 @@
     height: 2.5rem;
     width: 4rem;
    }
+}
+
+@media (min-width:320px) and (max-width:480px){
+    .list{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    #list-div{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        z-index: 1;
+        top: 90px;
+        right: -300px;
+        width: 200px;
+        height: 100vh;
+        background-color: rgb(231, 231, 231);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: 0.3s ease-in-out;
+    }
+    #list-div.active{
+        right: 0px;
+    }
+    #menu{
+        display: block;
+    }
 }
