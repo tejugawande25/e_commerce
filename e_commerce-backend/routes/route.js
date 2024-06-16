@@ -295,7 +295,7 @@ router.post("/cart/add/:id",async(req,res) =>{
 
 // displaying the cart item
 router.get("/cart/items",async(req,res) =>{
-   await cart.find({})
+    await cart.find({})
    .then((items) =>{
     res.json(items);
    })
@@ -305,7 +305,7 @@ router.get("/cart/items",async(req,res) =>{
 });
 
 //geting the sum aggregate for all the products in the cart
-router.get("/cart/items/sum",async(req,res) =>{
+router.get("/cart/items/sum", async(req,res) =>{
     await cart.aggregate([{
         $group:{
             _id:{},
