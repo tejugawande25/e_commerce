@@ -119,6 +119,7 @@ export default function Header() {
                 color: "#2C3539",
                 fontSize: "34px",
               }}
+              className="logo"
             >
               <img
                 src={Logo}

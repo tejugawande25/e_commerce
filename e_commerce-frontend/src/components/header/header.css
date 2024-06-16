@@ -55,6 +55,10 @@
 }
 
 @media (min-width:320px) and (max-width:480px){
+    .logo-image{
+        height: 2rem;
+        width: 3.5rem;
+    }
     .list{
         display: flex;
         flex-direction: column;
