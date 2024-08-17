@@ -210,33 +210,28 @@ export default function Header() {
                 width: "42%",
                 background: "#d6d6f8",
                 display: "flex",
+                // border:"1px solid red",
                 flexDirection: "column",
               }}
             >
               <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1rem",
-                  marginLeft: "3rem",
-                  marginTop: "3rem",
-                  width: "80%",
-                }}
+                className="heading-div"
               >
                 <p
-                  style={{ fontSize: "26px", fontWeight: "500", margin: "0px" }}
+                  // style={{ fontSize: "26px", fontWeight: "500", margin: "0px" }}
+                  className="modal-heading"
                 >
                   {login === true ? "Login" : "Look's like you're new here!"}
                 </p>
-                <p style={{ margin: "0px", fontSize: "17px" }}>
+                <p className="modal-subheading">
                   Get access to your <br />
                   Orders,Wishlist and <br /> Recommendations
                 </p>
               </div>
               <div>
                 <img
-                  src={LoginImg}
-                  style={{ height: "20rem", width: "20rem", marginTop: "1rem" }}
+                  src={LoginImg}  
+                  className="modal-logo-image"
                 />
               </div>
             </div>
