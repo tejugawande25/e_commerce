@@ -49,6 +49,82 @@
 #menu{
     display: none;
 }
+.authentication-div{
+    background: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    /* align-items: first baseline; */
+    border: 1px solid red;
+    justify-content: center;
+}
+.username-div{
+    margin-top: 3.5rem;
+}
+.role-div{
+    width: 8rem;
+    height: 2rem;
+    margin-left: 1rem;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    font-size: 17px;
+}
+.auth-guidelines{
+    height: 2rem;
+    width: 80%;
+    margin-left: 3.5rem;
+}
+.auth-guidelines-p{
+    font-size: 14px;
+}
+.auth-guidelines-button{
+    width: 75%;
+    height: 2.7rem;
+    margin-left: 3.5rem;
+    margin-top: 2.5rem;
+    font-size: 17px;
+    font-weight: 500;
+    background: #ffa500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,0.24) 0px 3px 8px;
+}
+.auth-newuser{
+    margin-top: 4rem;
+    margin-left: 6.5rem;
+    cursor: pointer;
+}
+.auth-guidelines-button-signup{
+    width: 75%;
+    height: 2.7rem;
+    margin-left: 3.5rem;
+    margin-top: 1.2rem;
+    font-size: 17px;
+    font-weight: 500;
+    background: #ffa500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: rgba(0,0,0,0.24) 0px 3px 8px;
+}
+.auth-signup-existing{
+    width: 75%;
+    height: 2rem;
+    margin-left: 3.5rem;
+    font-size: 16px;
+    font-weight: 500;
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 @media (min-width:481px) and (max-width:768px){
     .list{
@@ -88,6 +164,38 @@
     height: 10rem;
     width: 10rem;
     margin-top: 2rem;
+   }
+   .authentication-div{
+   }
+   .role-div{
+    width: 5rem;
+    margin-left: 0.5rem;
+    font-size: 12px;
+   }
+   .auth-guidelines{
+    margin-left: 1.7rem;
+   }
+   .auth-guidelines-p{
+    font-size: 12px;
+   }
+   .auth-guidelines-button{
+    margin-left: 1.8rem;
+    height: 2rem;
+   }
+   .auth-newuser{
+    margin-top: 2rem;
+    margin-left: 0.8rem;
+    text-align: center;
+   }
+   .auth-guidelines-button-signup{
+    margin-left: 1.8rem;
+    height: 2rem;
+    font-size: 14px;
+   }
+   .auth-signup-existing{
+    margin-left: 1.8rem;
+    height: 2rem;
+    font-size: 13px;
    }
 }
 

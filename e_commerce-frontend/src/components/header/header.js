@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import Logo from "./logo.png";
 import Modal from "@mui/material/Modal";
 import LoginImg from "./login.png";
-import {TextField } from "@mui/material";
+import {TextField, colors } from "@mui/material";
 import { useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -24,16 +24,30 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
 
-const NumberDiv = styled(TextField)`
-  height: 15%;
-  width: 75%;
-  border: 1xp solid black;
-  display: flex;
-  margin-left: 3.5rem;
-  justify-content: center;
-`;
+// const NumberDiv = styled(TextField)`
+//   height: 15%;
+//   width: 75%;
+//   border: 1xp solid black;
+//   display: flex;
+//   margin-left: 3.5rem;
+//   justify-content: center;
+// `;
 
-
+const NumberDiv = styled(TextField)(({theme}) =>({
+    height: "15%",
+    width: "75%",
+    display: "flex",
+    marginLeft:"3.5rem",
+    justifyContent: "center",
+    
+    [theme.breakpoints.down('md')]:{
+      background:"white",
+      justifyContent:"left",
+      alignItems:"first baseline",
+      marginLeft:"1.8rem",
+      width:"60%",
+    }
+}))
 const Appbox = styled(Box)(({theme}) =>({
   [theme.breakpoints.down('sm')]:{
    maxwidth:"100%"
@@ -73,6 +87,17 @@ const MyShoppingCart = styled(ShoppingCartIcon)(({theme}) =>({
   [theme.breakpoints.down("sm")]:{
     fontSize:"20px"
   }
+}))
+
+const RoleButton = styled(Button)(({theme}) =>({
+  color:"black",
+  marginLeft:"6rem",
+  
+  [theme.breakpoints.down('md')]:{
+  marginLeft:"1rem",
+  fontSize:"12px"
+  }
+  
 }))
 
 
@@ -342,32 +367,30 @@ const handleLogin = () =>{
          />
       {" "}
       <div
-        style={{
-          background: "white",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0px",
-          alignitems: "center",
-        }}
+        // style={{
+        //   background: "white",
+        //   width: "100%",
+        //   display: "flex",
+        //   flexDirection: "column",
+        //   gap: "0px",
+        //   alignitems: "center",
+        //   border:"1px solid red"
+        // }}
+        className="authentication-div"
       >
         <NumberDiv
+          className="username-div"
           required
           id="standard-basic"
           variant="standard"
-          sx={{ input: { color: "#fff" } }}
+          sx={{ input: { color: "#fff" }}}
           label="Enter Mobile number"
+          size="normal"
           name="mobileNo"
           value={loginUser.mobileNo}
           display="flex"
           alignitems="start"
-          inputProps={{
-            style: {
-              textAlign: "start",
-              color: "black",
-            },
-          }}
-          style={{ marginTop: "3.5rem" }}
+          // style={{ marginTop: "3.5rem" }}
           onChange={handleInput}
         ></NumberDiv>
         <NumberDiv
@@ -389,19 +412,19 @@ const handleLogin = () =>{
           onChange={handleInput}
         ></NumberDiv>
         <div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <Button
+          <div style={{ display: "flex", flexDirection: "row"}}>
+            <RoleButton
               id="basic-button"
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
-              style={{ color: "black", marginLeft: "6rem" }}
+              // style={{ color: "black", marginLeft: "6rem" }}
               required
             >
               Role
               <ArrowDropDownIcon />
-            </Button>
+            </RoleButton>
             <Menu
               id="basic-menu"
               anchorEl={anchorEl}
@@ -415,32 +438,34 @@ const handleLogin = () =>{
               <MenuItem onClick={handleSellerRole} name="role">Seller</MenuItem>
             </Menu>
             <div
-              style={{width: "8rem",height:"2rem",marginLeft:"1rem",border:"1px solid gray",display:"flex",justifyContent:"center",alignitems:"end",padding:"0px", fontSize:"17px"}}
+              // style={{width: "8rem",height:"2rem",marginLeft:"1rem",border:"1px solid gray",display:"flex",justifyContent:"center",alignitems:"end",padding:"0px", fontSize:"17px"}}
               value={role}
               name="role"
+              className="role-div"
             >{role}</div>
           </div>
         </div>
 
-        <div style={{ height: "2rem", width: "80%", marginLeft: "3.5rem" }}>
-          <p style={{ fontSize: "14px" }}>
+        <div className="auth-guidelines">
+          <p className="auth-guidelines-p">
             By continuing,you agree to Cart's Terms of Use and privacy policy.
           </p>
         </div>
         <button
-          style={{
-            width: "75%",
-            height: "2.7rem",
-            marginLeft: "3.5rem",
-            marginTop: "2.5rem",
-            fontSize: "17px",
-            fontWeight: "500",
-            background: "#FFA500",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          }}
+          // style={{
+          //   width: "75%",
+          //   height: "2.7rem",
+          //   marginLeft: "3.5rem",
+          //   marginTop: "2.5rem",
+          //   fontSize: "17px",
+          //   fontWeight: "500",
+          //   background: "#FFA500",
+          //   border: "none",
+          //   borderRadius: "5px",
+          //   cursor: "pointer",
+          //   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          // }}
+          className="auth-guidelines-button"
           onClick={() => {
             // setActiveScreen("ScreenTwo");
             handleLogin();
@@ -449,11 +474,13 @@ const handleLogin = () =>{
           Login
         </button>
         <div
-          style={{
-            marginTop: "4rem",
-            marginLeft: "6.5rem",
-            cursor: "pointer",
-          }}
+          // style={{
+          //   marginTop: "4rem",
+          //   marginLeft: "6.5rem",
+          //   cursor: "pointer",
+          //   border:"1px solid blue"
+          // }}
+          className="auth-newuser"
         >
           <Link
             style={{ textDecoration: "none" }}
@@ -759,22 +786,22 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
         ></NumberDiv>
         <div>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <Button
+          <RoleButton
             id="basic-button"
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             onClick={handleClick}
-            style={{
-              color: "black",
-              marginLeft: "7.2rem",
-              marginBottom: "0px",
-            }}
+            // style={{
+            //   color: "black",
+            //   marginLeft: "7.2rem",
+            //   marginBottom: "0px",
+            // }}
             required
           >
             Role
             <ArrowDropDownIcon />
-          </Button>
+          </RoleButton>
           <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -792,38 +819,35 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
             </MenuItem>
           </Menu>
           <div
-              style={{width: "8rem",height:"2rem",marginLeft:"1rem",border:"1px solid gray",display:"flex",justifyContent:"center",alignitems:"end",padding:"0px", fontSize:"17px"}}
+              // style={{width: "8rem",height:"2rem",marginLeft:"1rem",border:"1px solid gray",display:"flex",justifyContent:"center",alignitems:"end",padding:"0px", fontSize:"17px"}}
               value={role}
               name="role"
+              className="role-div"
             >{role}</div>
         </div>
         </div>
         <div
-          style={{
-            height: "2rem",
-            width: "80%",
-            marginLeft: "3.5rem",
-            marginTop: "0px",
-          }}
+          className="auth-guidelines"
         >
-          <p style={{ fontSize: "14px" }}>
+          <p className="auth-guidelines-p">
             By continuing,you agree to Cart's Terms of Use and privacy policy.
           </p>
         </div>
         <button
-          style={{
-            width: "75%",
-            height: "2.7rem",
-            marginLeft: "3.5rem",
-            marginTop: "1rem",
-            fontSize: "17px",
-            fontWeight: "500",
-            background: "#FFA500",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-          }}
+          // style={{
+          //   width: "75%",
+          //   height: "2.7rem",
+          //   marginLeft: "3.5rem",
+          //   marginTop: "1rem",
+          //   fontSize: "17px",
+          //   fontWeight: "500",
+          //   background: "#FFA500",
+          //   border: "none",
+          //   borderRadius: "5px",
+          //   cursor: "pointer",
+          //   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          // }}
+          className="auth-guidelines-button-signup"
           onClick={() => {
             // setActiveScreen("ScreenTwo");
             handleSignup();
@@ -832,19 +856,20 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
           Signup
         </button>
         <button
-          style={{
-            width: "75%",
-            height: "2.7rem",
-            marginLeft: "3.5rem",
-            fontSize: "16px",
-            fontWeight: "500",
-            background: "white",
-            boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            marginTop: "0.5rem",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
+          // style={{
+          //   width: "75%",
+          //   height: "2.7rem",
+          //   marginLeft: "3.5rem",
+          //   fontSize: "16px",
+          //   fontWeight: "500",
+          //   background: "white",
+          //   boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+          //   marginTop: "0.5rem",
+          //   border: "none",
+          //   borderRadius: "5px",
+          //   cursor: "pointer",
+          // }}
+          className="auth-signup-existing"
           onClick={() => {
             setActiveScreen("ScreenOne");
             setLogin(true);
