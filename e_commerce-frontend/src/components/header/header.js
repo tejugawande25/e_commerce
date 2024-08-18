@@ -39,6 +39,9 @@ const NumberDiv = styled(TextField)(({theme}) =>({
     display: "flex",
     marginLeft:"3.5rem",
     justifyContent: "center",
+    alignItems:"center",
+
+    
     
     [theme.breakpoints.down('md')]:{
       background:"white",
@@ -46,6 +49,12 @@ const NumberDiv = styled(TextField)(({theme}) =>({
       alignItems:"first baseline",
       marginLeft:"1.8rem",
       width:"60%",
+    },
+
+    [theme.breakpoints.up('xs')]:{
+      marginLeft:"3.5rem",
+      display:"flex",
+      alignItems:"top"
     }
 }))
 const Appbox = styled(Box)(({theme}) =>({
@@ -96,6 +105,13 @@ const RoleButton = styled(Button)(({theme}) =>({
   [theme.breakpoints.down('md')]:{
   marginLeft:"1rem",
   fontSize:"12px"
+  },
+  [theme.breakpoints.down('sm')]:{
+    marginLeft:"0.5rem",
+    fontSize:"10px"
+  },
+  [theme.breakpoints.up('xs')]:{
+    marginLeft:"3.5rem"
   }
   
 }))
@@ -221,23 +237,26 @@ export default function Header() {
           }}
         >
           <div
-            style={{
-              height: "75%",
-              width: "48%",
-              display: "flex",
-              borderRadius: "10px",
-              overflow: "hidden",
-            }}
+            // style={{
+            //   height: "75%",
+            //   width: "48%",
+            //   display: "flex",
+            //   borderRadius: "10px",
+            //   overflow: "hidden",
+            //   border:"1px solid blue"
+            // }}
+            className="modal-div"
           >
             <div
-              style={{
-                height: "100%",
-                width: "42%",
-                background: "#d6d6f8",
-                display: "flex",
-                // border:"1px solid red",
-                flexDirection: "column",
-              }}
+              // style={{
+              //   height: "100%",
+              //   width: "42%",
+              //   background: "#d6d6f8",
+              //   display: "flex",
+              //   border:"1px solid red",
+              //   flexDirection: "column",
+              // }}
+              className="modal-heading-div"
             >
               <div
                 className="heading-div"
@@ -388,8 +407,8 @@ const handleLogin = () =>{
           size="normal"
           name="mobileNo"
           value={loginUser.mobileNo}
-          display="flex"
-          alignitems="start"
+          // display="flex"
+          // alignitems="start"
           // style={{ marginTop: "3.5rem" }}
           onChange={handleInput}
         ></NumberDiv>
@@ -401,14 +420,14 @@ const handleLogin = () =>{
           label="Enter Password"
           name="password"
           value={loginUser.password}
-          display="flex"
-          alignitems="center"
-          inputProps={{
-            style: {
-              textAlign: "start",
-              color: "black",
-            },
-          }}
+          // display="flex"
+          // alignitems="center"
+          // inputProps={{
+          //   style: {
+          //     textAlign: "start",
+          //     color: "black",
+          //   },
+          // }}
           onChange={handleInput}
         ></NumberDiv>
         <div>
@@ -833,6 +852,7 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
             By continuing,you agree to Cart's Terms of Use and privacy policy.
           </p>
         </div>
+        <div className="signup-existing-user">
         <button
           // style={{
           //   width: "75%",
@@ -877,6 +897,7 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
         >
           Existing User? Log in
         </button>
+        </div>
       </div>
     </>
   );
