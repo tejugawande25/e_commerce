@@ -8,7 +8,7 @@ import CFooter from "../components/c-footer/c-footer";
 
 function About(){
     return<>
-    <div className="about">
+    <div className="about" style={{border:"1px solid red"}}>
         <div className="about-header">
             <div className="about-header-image">
                <img src={peopleImage} className="about-header-img" />

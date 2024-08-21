@@ -54,7 +54,8 @@ const NumberDiv = styled(TextField)(({theme}) =>({
     [theme.breakpoints.up('xs')]:{
       marginLeft:"3.5rem",
       display:"flex",
-      alignItems:"top"
+      alignItems:"top",
+      marginTop:"0px"
     }
 }))
 const Appbox = styled(Box)(({theme}) =>({
@@ -84,6 +85,9 @@ const LoginButton = styled(Button)(({theme}) =>({
   },
   [theme.breakpoints.down("sm")]:{
    fontSize:"10px",
+  },
+  [theme.breakpoints.up('xs')]:{
+    fontSize:"10px",
   }
 }))
 
@@ -95,7 +99,12 @@ const MyShoppingCart = styled(ShoppingCartIcon)(({theme}) =>({
 
   [theme.breakpoints.down("sm")]:{
     fontSize:"20px"
-  }
+  },
+  // [theme.breakpoints.up('xs')]:{
+  //   fontSize:"20px",
+  //   // marginLeft:"6rem",
+  //   // marginTop:"1rem"
+  // }
 }))
 
 const RoleButton = styled(Button)(({theme}) =>({
@@ -111,7 +120,8 @@ const RoleButton = styled(Button)(({theme}) =>({
     fontSize:"10px"
   },
   [theme.breakpoints.up('xs')]:{
-    marginLeft:"3.5rem"
+    marginLeft:"3rem",
+    marginTop:"0.5rem",
   }
   
 }))
@@ -210,14 +220,16 @@ export default function Header() {
             </li>
           </ul>
           <LoginButton
+            className="login-button-m"
             onClick={() => {
               setOpen(true);
             }} 
+            
           >
             Login
           </LoginButton>
           <Link to="/cart" className="cartIcon">
-            <MyShoppingCart />
+            <MyShoppingCart className="shoppingcart-button"/>
           </Link>
           
           </div>
@@ -234,6 +246,7 @@ export default function Header() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            
           }}
         >
           <div
@@ -268,8 +281,8 @@ export default function Header() {
                   {login === true ? "Login" : "Look's like you're new here!"}
                 </p>
                 <p className="modal-subheading">
-                  Get access to your <br />
-                  Orders,Wishlist and <br /> Recommendations
+                  Get access to your 
+                  Orders,Wishlist and Recommendations
                 </p>
               </div>
               <div>
@@ -724,7 +737,11 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
           height: "100%",
           width: "100%",
           background: "white",
+          // border:"1px solid red",
+          // position:"absolute",
+          // overflow:"scroll"
         }}
+        className="second-screen-div"
       >
         <NumberDiv
           multiline

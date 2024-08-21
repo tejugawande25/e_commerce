@@ -58,7 +58,7 @@
     gap: 0px;
     /* align-items: first baseline; */
     justify-content: center;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 .username-div{
     margin-top: 3.5rem;
@@ -270,12 +270,18 @@
     .logo-image{
         height: 2rem;
         width: 3.5rem;
+        margin-left: 1%;
     }
     .list{
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
+        margin-left: 2rem;
+    }
+    .list-items{
+        font-size: 2.5vh;
     }
     #list-div{
         display: flex;
@@ -298,7 +304,18 @@
     #menu{
         display: block;
     }
-    .modal-div{
+    .login-button-m{
+        border: 1px solid red;
+    } 
+    .shoppingcart-button{
+        margin-top: 1.5rem;
+        margin-left: 6rem;
+        /* border: 1px solid red; */
+    }
+
+
+    
+     .modal-div{
         display: flex;
         flex-direction: column;
     }
@@ -310,6 +327,7 @@
         margin-top: 1rem;
         display: flex;
         align-items: center;
+        justify-content: center;
         margin-left: 1.8rem;
         gap: 0.2rem;
     }
@@ -317,11 +335,15 @@
         font-size: 20px;
     }
     .modal-subheading{
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .second-screen-div{
+        display: flex;
+        flex-direction: column;
     }
     .modal-logo-image{
-        height: 5rem;
-        width: 5rem;
+        height: 4rem;
+        width: 4rem;
         margin-top: 0rem;
         margin-left: 6rem;
     }
@@ -330,9 +352,10 @@
         justify-content: start;
     }
     .role-div{
-        width: 5rem;
-        margin-left: 0.5rem;
+        width: 4.2rem;
+        margin-left: 0.1rem;
         font-size: 12px;
+        margin-top: 0.5rem;
     }
     .auth-guidelines{
         margin-left: 2.1rem;
@@ -342,30 +365,35 @@
     }
     .auth-guidelines-button{
         margin-left: 2.2rem;
+        font-size: 15px;
     }
     .auth-newuser{
        text-align: center;
        margin-left: 0rem;
+       margin-top: 1.1rem;
     }
     .auth-guidelines-button-signup{
-        width: 50%;
+        width: 40%;
         height: 1.5rem;
-        margin-top: 0.5rem;
+        margin-top: 1rem;
         font-size: 14px;
-        margin-left: 0.5rem;
+        margin-left: 1rem;
     }
     .auth-signup-existing{
-       width: 50%;
+       width: 40%;
        height: 1.5rem;
-       margin-top: 0.5rem;
+       margin-top: 1rem;
        font-size: 10px;
        margin-left: 0px;
        margin-right: 0.5rem;
     }
     .signup-existing-user{
-        border: 1px solid blue;
+        /* border: 1px solid blue; */
+        /* display: flex;
+        gap: 1rem; */
         display: flex;
         gap: 1rem;
+
        
-    }
+     } 
 }

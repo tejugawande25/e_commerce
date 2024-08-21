@@ -176,3 +176,37 @@
         width: 50%;
     }
 }
+
+@media (min-width:320px) and (max-width:480px){
+    .main-item{
+        height: 250px;
+    }
+    .main-image-div{
+        gap: 10px;
+    }
+    .main-image-title{
+        margin-left: 8px;
+        gap: 5px;
+    }
+    .main-image-title p{
+        font-size: 14px;
+    }
+    .main-image-heading{
+        gap:0.8rem;
+    }
+    .heading-side p{
+        font-size: 14px;
+        margin-left: 20px;
+    }
+    .side-items{
+        margin-left: 18px;
+        height: 90%;
+        width: 80%;
+    }
+    .men-jacket{
+        width: 50%;
+    }
+    .women-jacket{
+        width: 50%;
+    }
+}

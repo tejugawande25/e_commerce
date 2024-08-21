@@ -8,7 +8,7 @@ function MainCarousel() {
     <>
       <Carousel
         interval={3000}
-        autoPlay={false}
+        autoPlay={true}
         showThumbs={false}
         infiniteLoop={true}
         stopOnHover={false}
