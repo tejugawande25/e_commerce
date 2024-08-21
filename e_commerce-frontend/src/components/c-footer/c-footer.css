@@ -43,6 +43,19 @@
     cursor: pointer;
 }
 
+@media(min-width:320px) and (max-width:480px){
+  .c-footer{
+    height: 2.5rem;
+  }
+  .c-footer-li{
+    font-size: 8px;
+    gap: 10px;
+  }  
+  .footer-copyright{
+    font-size: 7px;
+  }
+}
+
 @media (min-width:769px) and (max-width:1024px){
   .c-footer{
     height:4rem;

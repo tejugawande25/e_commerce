@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    border: 1px solid red;
 }
 .contact-heading{
     width: 40%;
@@ -112,7 +111,7 @@
 }
 .contact-checkbox-div{
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: end;
     padding-right: 2rem;
     width: 30%;
@@ -201,5 +200,64 @@
     .submit-button{
         margin-left: 1rem;
         font-size: 0.8rem;
+    }
+}
+
+@media(min-width:320px) and (max-width:480px){
+    .contact-heading{
+        font-size: 12px;
+        margin-left: 6%;
+    }
+    .contact-main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-freq{
+        width: 90%;
+    }
+    .contact-freq-heading{
+        font-size: 8px;
+        margin-left: 1rem;
+    }
+    .upper-p{
+        font-size: 7px;
+        margin-left: 1rem;
+    }
+    .lower-p{
+        font-size: 7px;
+        margin-left: 1rem;
+    }
+    .contact-checkbox-div{
+        display: flex;
+        justify-content: end;
+        align-items: start;
+    }
+    .checkbox{
+        height: 8px;
+        width: 8px;
+    }
+    .contact-form{
+        height: 18rem;
+        width: 90%;
+    }
+    .label{
+       margin-left: 4.8rem;
+       margin-top: 10px;
+       font-size: 8px;
+    }
+    .user-input{
+        margin-left: 4.8rem;
+        width: 50%;
+    }
+    .problem-text{
+        margin-left: 4.8rem;
+        width: 50%;
+    }
+    .submit-button{
+        margin-left: 5rem;
+        font-size: 0.8rem;
+        width: 50%;
+        font-size: 10px;
     }
 }

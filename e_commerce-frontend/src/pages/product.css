@@ -143,3 +143,29 @@
        width: 100%;
     }
 }
+@media(min-width:320px) and (max-width:480px){
+    .products{
+        gap:4px; 
+     }
+     .product-section{
+        height: 10rem;
+     }
+     .product-section-heading{
+         height: 1rem;
+     }
+     .product-section-heading p{
+         font-size:14px;
+         margin-left: 4%;
+     }
+     .product-section-div{
+        height: 80%;
+     }
+     .product-section-item{
+        height: 80%;
+        width: 11.5%;
+     }
+     .product-section-image{
+        height: 100%;
+        width: 100%;
+     }
+}
