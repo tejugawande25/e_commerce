@@ -190,3 +190,118 @@
         font-size: 14px;
     }
 }
+
+@media(min-width:481px) and (max-width:768px){
+    .product-image{
+        height: 25rem;
+        width: 45%;
+    }
+    .product-description{
+        height: 30rem;
+    }
+    .product-image-upper{
+        height: 70%;
+    }
+    .product-image-lower{
+        height: 15%;
+    }
+    .product-add-cart{
+        font-size: 7px;
+    }
+    .product-desc-heading{
+        font-size: 18px;
+    }
+    .product-desc{
+        font-size: 12px;
+    }
+    .special{
+        font-size: 12px;
+    }
+    .product-price{
+        font-size: 18px;
+    }
+    .product-offers{
+        font-size: 11px;
+    }
+    .available-offers{
+        font-size: 14px;
+    }
+    .cash-delivery{
+        font-size: 14px;
+    }
+    .product-rating-review{
+        font-size: 14px;
+    }
+    .product-question{
+        font-size: 10px;
+    }
+    .rating-emoji{
+        height: 30%;
+        gap: 1rem;
+    }
+    .emoji{
+        font-size: 10px;
+        height: 50%;
+    }
+}
+
+@media(min-width:320px) and (max-width:480px){
+    .product-details-container{
+        flex-direction: column;
+        align-items: center;
+        gap: 0px;
+    }
+    .product-image{
+        height: 20rem;
+        width: 80%;
+    }
+    .product-description{
+        height: 30rem;
+        width: 70%;
+    }
+    .product-image-upper{
+        height: 90%;
+    }
+    .product-image-lower{
+        height: 10%;
+    }
+    .product-add-cart{
+        height: 90%;
+        font-size: 8px;
+    }
+    .product-desc-heading{
+        font-size: 18px;
+    }
+    .product-desc{
+        font-size: 12px;
+    }
+    .special{
+        font-size: 12px;
+    }
+    .product-price{
+        font-size: 18px;
+    }
+    .product-offers{
+        font-size: 11px;
+    }
+    .available-offers{
+        font-size: 14px;
+    }
+    .cash-delivery{
+        font-size: 14px;
+    }
+    .product-rating-review{
+        font-size: 14px;
+    }
+    .product-question{
+        font-size: 10px;
+    }
+    .rating-emoji{
+        height: 30%;
+        gap: 1rem;
+    }
+    .emoji{
+        font-size: 10px;
+        height: 50%;
+    }
+}
