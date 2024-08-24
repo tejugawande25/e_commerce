@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const router = express.Router();
 const products = require("../models/products.js");
@@ -6,6 +7,8 @@ const contacts = require("../models/contact.js");
 const cart = require("../models/cart.js");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
+const Axios = require("axios");
+
 // const { default: mongoose, Query } = require("mongoose");const assert = require('assert');
 
 
@@ -390,5 +393,64 @@ router.delete("/cart/deleteall", async(req,res) =>{
         console.log(error);
     })
 })
+
+
+
+//TRACKING API OF FEDEX
+//CREATING THE FUNCTION FOR THE ACCESS TOKEN
+const authFedex = async () => {
+    try {
+      // Input Data
+      const inputPayload = {
+        grant_type: 'client_credentials',
+        client_id: process.env.FEDEX_API_KEY,
+        client_secret: process.env.FEDEX_SECRET_KEY
+      }
+      // Headers
+      const headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+      const response = await Axios.post(`${process.env.FEDEX_BASE_API_URL}/oauth/token`, inputPayload, { headers: headers })
+      return response.data
+    } catch (error) {
+      console.error('Error authenticating with FedEx API:', error);
+      throw new Error('Failed to authenticate with FedEx API');
+    }
+  }
+  
+
+
+router.post("/trackorder",async(req,res) =>{
+    console.log(req.body.trackingNumber);
+    try{
+    const authRes = await authFedex();
+    const inputPayload = {
+        includeDetailedScans:true,
+        trackingInfo:[
+            {
+                trackingNumberInfo:{
+                    trackingNumber: req.body.trackingNumber,
+                }
+            }
+        ]
+    }
+    const headers ={
+        'Content-Type': 'application/json',
+        'X-locale': 'en_US',
+        'Authorization': `Bearer ${authRes.access_token}`
+    }
+    const response = await Axios.post(`${process.env.
+        FEDEX_BASE_API_URL}/track/v1/trackingnumbers`,inputPayload,
+        {headers:headers})
+        const trackingDetails = response.data.output.completeTrackResults[0].trackResults[0].scanEvents.map(item => ({
+            eventDescription: item.eventDescription,
+            city: item.scanLocation.city
+          }))
+        res.send(trackingDetails);  
+    }catch(error){
+     console.log(error);
+    }
+})
+
 
 module.exports = router;

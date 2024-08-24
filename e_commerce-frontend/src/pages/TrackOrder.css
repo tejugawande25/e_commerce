@@ -1,9 +1,9 @@
 .tracking-main-div{
-    height: 50rem;
+    height: 80rem;
     width: 100%;
 }
 .tracking-svg{
-    height: 25%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;

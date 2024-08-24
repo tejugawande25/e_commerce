@@ -41,6 +41,7 @@ function Cart() {
 
   const increaseQuantity = (id,pquantity) =>{
     console.log(id);
+    console.log(pquantity);
     axios
     .post(`http://localhost:4000/user/cart/items/increaseQuantity/${id}`,{
       quantity:pquantity+1,
