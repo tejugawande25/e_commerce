@@ -396,3 +396,18 @@
         font-size: 9px;
     }
 }
+
+@media(min-width:1024px){
+    .cart-payment-section-price{
+        gap: 6rem;
+    }
+    .cart-payment-section-delivery{
+        gap: 5rem;
+    }
+    .cart-product-desc-heading{
+        font-size: 18px;
+    }
+    .cart-product-desc-text{
+        font-size: 12px;
+    }
+}
