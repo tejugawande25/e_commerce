@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./cart.css";
 import CFooter from "../components/c-footer/c-footer";
 import axios from "axios";
+import {Link} from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 function Cart() {
   const [cart, setCart] = useState([]);
@@ -77,6 +80,23 @@ function Cart() {
   };
 
  
+  const orderPlaced = () =>{
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Your order placed successfully!",
+      showConfirmButton: false,
+      timer: 3000
+    });
+    axios
+    .delete("http://localhost:4000/user/cart/deleteall")
+    .then((items) =>{
+      console.log(items);
+    })
+    .catch((error) =>{
+      console.log(error);
+    });
+  }
 
 
   return (
@@ -139,7 +159,9 @@ function Cart() {
               <p className="cart-product-price-text">₹ {sum}/-</p>
             </div>
             <div className="place-order-div">
-              <button className="place-order">PLACE ORDER</button>
+              <Link to={`/trackorder`} style={{width:"50%",height:"70%"}}>
+              <button className="place-order" onClick={() =>{orderPlaced()}} >PLACE ORDER</button>
+              </Link>
             </div>
           </div>
         </div>

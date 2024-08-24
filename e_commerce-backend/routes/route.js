@@ -378,6 +378,17 @@ router.delete("/cart/items/:id",async(req,res) =>{
   
 })
 
-
+// deleting all items from the cart
+router.delete("/cart/deleteall", async(req,res) =>{
+    await cart.deleteMany({})
+    .then((items) =>{
+        res.status(200).json({
+            message:"cart deleted successfully",
+        })
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+})
 
 module.exports = router;
