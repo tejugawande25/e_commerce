@@ -9,27 +9,6 @@ import axios from "axios";
 function TrackOrder(){
     const [orderData , setOrderData] = useState([]);
     const trackingNumber = 122816215025810;
-        // {
-        //     eventDescription:'Order Confirmed',
-        //     city:'Delhi'
-        // },
-        // {
-        //     eventDescription:'Order Shipped',
-        //     city:'Mumbai'
-        // },
-        // {
-        //     eventDescription:'Order Delivered',
-        //     city:'Pune'
-        // }
-    // const getTrackingDetails = async() =>{
-    //     try{
-    //         const trackingDetails = await axios.post("http://localhost:3000/user/trackorder",{trackingNumber})
-    //         console.log(trackingDetails.data);
-            
-    //      }catch(error){
-    //         console.log(error);
-    //      }
-    // }
 
     useEffect(() =>{
         async function getTrackingDetails(){
@@ -43,23 +22,10 @@ function TrackOrder(){
         }
         getTrackingDetails()
     },[trackingNumber]);
-    // const getTrackingDetails = () =>{
-    //     const trackingNumber = 122816215025810;
-    //     axios
-    //     .post("http://localhost:4000/user/trackorder",
-    //     {trackingNumber}
-    //     )
-    //     .then((trackingDetails) =>{
-    //         setOrderData(trackingDetails.data);
-    //     })
-    //     .catch((error) =>{
-    //         console.log(error);
-    //     })
-    // }
+    
     return(
         <>
         <div className="tracking-main-div">  
-        {/* <button onClick={() =>{getTrackingDetails()}}>Click me</button>   */}
         <div className="tracking-svg">
             <img src={TrackingImage} className="tracking-logo"/>
             <p className="tracking-number">Tracking Number: {trackingNumber}</p>

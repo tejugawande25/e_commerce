@@ -173,10 +173,61 @@
     border: none;
     background-color: #FF8F00;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    box-shadow: rgba(225, 224, 224, 0.15) 1.95px 1.95px 2.6px;
 }
-
-
+.order-tracking{
+    height: 35rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* border:1px solid rgb(180, 178, 178); */
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.order-tracking::-webkit-scrollbar{
+    display: none;
+}
+.order-tracking-heading{
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    
+}
+.order-tracking-heading-p{
+    font-size: 22px;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+.order-tracking-items-div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+.order-tracking-items{
+    height: 10rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.track-order-link{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+.track-order-button{
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(91, 234, 91);
+    border: none;
+}
 @media (min-width:769px) and (max-width:1024px){
     .cart-item-product{
         width: 70%;
