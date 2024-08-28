@@ -5,6 +5,7 @@ const products = require("../models/products.js");
 const users = require("../models/users.js");
 const contacts = require("../models/contact.js");
 const cart = require("../models/cart.js");
+const ordercart = require("../models/orderedcart.js");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 const Axios = require("axios");
@@ -130,8 +131,9 @@ router.post("/signup",async(req,res) =>{
         return res.status(400).json({message:"Password dosen't match"});
        }
 
-      const saveUser =  await users.insertMany(req.body.users);
+      const saveUser = await users.insertMany([req.body.user]);
 
+      res.send(saveUser);
       if(!saveUser){
         return res.status(500).json({message:"Registrain failed"});
       }
@@ -287,6 +289,7 @@ router.post("/cart/add/:id",async(req,res) =>{
     }
     const product = await products.findById(id).exec();
     cart.insertMany(product);
+    ordercart.insertMany(product);
     res.status(200).json({
         product:product,
     })
@@ -294,6 +297,7 @@ router.post("/cart/add/:id",async(req,res) =>{
         console.log(error);
     }
 });
+
 
 
 // displaying the cart item
@@ -306,6 +310,16 @@ router.get("/cart/items",async(req,res) =>{
     console.log(error);
    })
 });
+
+router.get("/orderedcart/items",async(req,res) =>{
+    await ordercart.find({})
+    .then((items) =>{
+        res.json(items);
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+})
 
 //geting the sum aggregate for all the products in the cart
 router.get("/cart/items/sum", async(req,res) =>{

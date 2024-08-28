@@ -15,6 +15,7 @@ function Cart() {
     cartProduct();
     increaseQuantity();
     getTotalSum();
+    getOrderedCart();
   }, []);
 
   const cartProduct = () => {
@@ -77,6 +78,17 @@ function Cart() {
         console.log(error);
       });
   };
+  
+  const getOrderedCart = () =>{
+    axios
+    .get("http://localhost:4000/user/orderedcart/items")
+    .then((item) =>{
+      setOrderCart(item.data);
+    })
+    .catch((error) =>{
+      console.log(error);
+    })
+  }
 
   const scrollHandler = (elemRef) => {
     console.log(elemRef);
@@ -84,15 +96,8 @@ function Cart() {
   };
 
   const orderPlaced = () => {
-    axios
-        .delete("http://localhost:4000/user/cart/deleteall")
-        .then((items) => {
-          console.log(items);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-  
+    getOrderedCart();
+
     Swal.fire({
       position: "top-end",
       icon: "success",
@@ -100,8 +105,17 @@ function Cart() {
       showConfirmButton: false,
       timer: 3000,
     });
+
     setTimeout(() => {
-      
+      axios
+      .delete("http://localhost:4000/user/cart/deleteall")
+      .then((items) => {
+        console.log(items);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
       scrollHandler(orderSection);
     }, 4000);
   };

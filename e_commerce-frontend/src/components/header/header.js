@@ -712,6 +712,7 @@ function ScreenThree({ input, setInput, setActiveScreen, setLogin, setOpen}) {
       .then((item) => {
         setOpen(false);
         console.log("user signup successfully!");
+        console.log(item);
       })
       .catch((error) => {
         setOpen(true);
