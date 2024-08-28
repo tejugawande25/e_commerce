@@ -128,11 +128,12 @@ const RoleButton = styled(Button)(({theme}) =>({
 
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [login, setLogin] = useState(true);
   const [input, setInput] = useState("");
   const [activeScreen, setActiveScreen] = useState("ScreenOne");
   const[clicked, setClicked] = useState(false);
+
   const handleClose = () => {
     setOpen(false);
     setActiveScreen("ScreenOne");
@@ -330,6 +331,8 @@ function ScreenOne({ setActiveScreen, input, setInput, setLogin,setOpen }) {
     password: "",
   });
 
+  
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -371,18 +374,22 @@ function ScreenOne({ setActiveScreen, input, setInput, setLogin,setOpen }) {
  };
 
 const handleLogin = () =>{
+
   axios
   .post("http://localhost:4000/user/login",{
     user:loginUser,
   })
   .then((item) =>{
     setOpen(false);
-    console.log("user login successfully!")
+    console.log("user login successfully!");
+    console.log(item);
+    sessionStorage.setItem('jwtToken',item.data.jwtToken)
+
   })
   .catch((error) =>{
-    setOpen(true)
+    setOpen(true);
     console.log(error);
-    toast.error("Invalid Credentials!")
+    toast.error("Invalid Credentials!");
   })
 }
 

@@ -9,6 +9,8 @@ const ordercart = require("../models/orderedcart.js");
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie");
 const Axios = require("axios");
+const Razorpay = require("razorpay");
+
 
 // const { default: mongoose, Query } = require("mongoose");const assert = require('assert');
 
@@ -157,12 +159,12 @@ router.post("/login", async(req, res) =>{
       
     });
 
-       console.log(userExit);
+    //    console.log(userExit);
 
        if(!userExit){
         return res.status(400).json({message:"Invalid Credentials(username)."});
        }
-       console.log(userExit.password);
+    //    console.log(userExit.password);
        if(userExit.password !== parseInt(password)){
        return res.status(400).json({message:"Invalid credentials(password)"});
        }
@@ -174,17 +176,39 @@ router.post("/login", async(req, res) =>{
         const secreteKey = `ebhjbahbhibfuiwbf`;
         const expiresIn= '1d';
         
-        const token = jwt.sign(payload,secreteKey,{expiresIn});
-        console.log(token);
+        const jwtToken = jwt.sign(payload,secreteKey,{expiresIn});
+        const refreshToken = jwt.sign(payload, secreteKey,{expiresIn:'7d'});
+        // console.log(jwtToken);
+        // console.log(refreshToken);
         // res.status(200).json({
         //     message:token,
 
         // })
-        res.cookie("jwt",token,{
-            httpOnly:true,
-            secure:true,
-            maxAge:3600000
-        });
+        //  var cookies = cookie.serialize('refreshToken',refreshToken,{
+        //     secure:true,
+        //     httpOnly:true,
+        //     sameSite:'strict',
+        //     maxAge:7*24*60*60,
+        // });
+
+        // var cookies = res.cookie("refreshToken", refreshToken,{
+        //     secure:true,
+        //     httpOnly:true,
+        //     sameSite:'strict',
+        //     maxAge:7*24*60*60,
+        // })
+
+       res.setHeader('Set-Cookie',cookie.serialize("refreshToken", refreshToken,{
+        secure:true,
+        httpOnly:true,
+        sameSite:'strict',
+        maxAge:7*24*60*60,
+       }))
+       
+        // res.cookie(cookies);
+        res.status(200).json({jwtToken,refreshToken});
+
+        console.log(jwtToken);
         console.log(cookie);
     }catch(error){
         console.log(error);
@@ -466,5 +490,59 @@ router.post("/trackorder",async(req,res) =>{
     }
 })
 
+
+
+//payement gateway using the razorpay
+router.post("/orders",async(req, res) =>{
+    const razorpay = new Razorpay({
+         key_id:"rzp_test_GcZZFDPP0jHtC4",
+         key_secret:"6jdtQv2u7oUw7EWziYeyoewJ",
+    })
+
+
+    const options = {
+        amount : req.body.amount,
+        currency :req.body.currency,
+        receipt:"receipt#1",
+        payment_capture:1
+    }
+
+    try{
+        const response = await razorpay.orders.create(options)
+
+        res.json({
+            order_id:response.id,
+            currency : response.currency,
+            amount: response.amount,
+        })
+    }catch(error){
+        res.status(500).send("Internal service error.");
+    }
+})
+
+
+router.get("/payment/:paymentId", async(req,res) =>{
+    const {paymentId} = req.params;
+
+    const razorpay = new Razorpay({
+        key_id:"rzp_test_GcZZFDPP0jHtC4",
+        key_secret:"6jdtQv2u7oUw7EWziYeyoewJ",
+    })
+    try{
+        const payment = await razorpay.payments.fetch(paymentId)
+
+        if(!payment){
+         return res.status(500).send("Error at razorpay sending");
+        }
+        res.json({
+            status: payment.status,
+            method:payment.method,
+            amount: payment.amount,
+            currency: payment.currency
+        })
+    }catch(error){
+        res.status(500).send("fail to fetch");
+    }
+})
 
 module.exports = router;

@@ -10,6 +10,10 @@ function Cart() {
   const [sum, setSum] = useState([]);
   const [orderCart, setOrderCart] = useState([]);
   const orderSection = useRef();
+  const [responseId, setResponseId] = useState("");
+  const [responseState, setResponseState] = useState([]);
+
+
 
   useEffect(() => {
     cartProduct();
@@ -17,6 +21,98 @@ function Cart() {
     getTotalSum();
     getOrderedCart();
   }, []);
+
+
+  const loadScript = (src) =>{
+    return new Promise((resolve) =>{
+      const script = document.createElement("script");
+
+      script.src = src;
+
+      script.onload = function(){
+        resolve(true);
+      }
+      script.onerror = function(){
+        resolve(false);
+      }
+
+      document.appendChild(script);
+    })
+  }
+
+  const createRazorpayOrder = (amount) =>{
+    let data = JSON.stringify({
+      amount : amount * 100,
+      currency: "INR"
+    })
+
+    let config ={
+      method:"post",
+      maxBodyLength:Infinity,
+      url:"http://localhost:4000/orders",
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      data:data
+    }
+    axios.request(config)
+    .then((response) =>{
+      console.log(JSON.stringify(response.data))
+      // handleRazorpayScreen(response.data.amount)
+    })
+    .catch((error) =>{
+      console.log("Error at", error);
+    })
+  }
+  
+  const handleRazorpayScreen= async(amount) =>{
+    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
+
+    if(!res){
+      alert("some error at razorpay screen loading")
+      return;
+    }
+    const options={
+      key:'rzp_test_Ld8VJIKgd9spxQ',
+      amount:amount,
+      currency:'INR',
+      name:'tejas',
+      description:'payment to tejas',
+      // image:
+
+      handler: function(response){
+        setResponseId(response.razorpay_payment_id)
+      },
+      prefill:{
+        name:"tejas",
+        email:"tejugawande@gmail.com"
+      },
+      theme:{
+        color:"#F4C430"
+      }
+    }
+
+    const paymentObject =  new window.Razorpay(options)
+    paymentObject.open()
+  }
+
+  const fetchPayment = (e) =>{
+   e.preventDefault();
+
+
+   const paymentId = e.target.paymentId.value;
+   axios.get(`http://localhost:4000/user/payment/${paymentId}`)
+   .then((response) =>{
+    console.log(response.data);
+    setResponseState(response.data);
+   })
+   .catch((error) =>{
+      console.log("error occurs", error);
+   })
+  }
+
+
+
 
   const cartProduct = () => {
     axios
@@ -72,6 +168,7 @@ function Cart() {
     axios
       .get("http://localhost:4000/user/cart/items/sum")
       .then((item) => {
+        console.log(item.data.totalAmount);
         setSum(item.data.totalAmount);
       })
       .catch((error) => {
@@ -97,14 +194,15 @@ function Cart() {
 
   const orderPlaced = () => {
     getOrderedCart();
-
-    Swal.fire({
-      position: "top-end",
-      icon: "success",
-      title: "Your order placed successfully!",
-      showConfirmButton: false,
-      timer: 3000,
-    });
+    
+    createRazorpayOrder(100);
+    // Swal.fire({
+    //   position: "top-end",
+    //   icon: "success",
+    //   title: "Your order placed successfully!",
+    //   showConfirmButton: false,
+    //   timer: 3000,
+    // });
 
     setTimeout(() => {
       axios
