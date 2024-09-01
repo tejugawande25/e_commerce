@@ -494,9 +494,13 @@ router.post("/trackorder",async(req,res) =>{
 
 //payement gateway using the razorpay
 router.post("/orders",async(req, res) =>{
+    // res.json({
+    //     amount:req.body.amount,
+    //     currency:req.body.currency,
+    // })
     const razorpay = new Razorpay({
-         key_id:"rzp_test_GcZZFDPP0jHtC4",
-         key_secret:"6jdtQv2u7oUw7EWziYeyoewJ",
+         key_id:"rzp_test_uRlGboxzvG1DhF",
+         key_secret:"D7D14VSvvsihPHcjobNAUEGV",
     })
 
 
@@ -521,12 +525,12 @@ router.post("/orders",async(req, res) =>{
 })
 
 
-router.get("/payment/:paymentId", async(req,res) =>{
-    const {paymentId} = req.params;
-
+router.post("/payment", async(req,res) =>{
+    const {paymentId} = req.body;
+   
     const razorpay = new Razorpay({
-        key_id:"rzp_test_GcZZFDPP0jHtC4",
-        key_secret:"6jdtQv2u7oUw7EWziYeyoewJ",
+        key_id:"rzp_test_uRlGboxzvG1DhF",
+        key_secret:"D7D14VSvvsihPHcjobNAUEGV",
     })
     try{
         const payment = await razorpay.payments.fetch(paymentId)

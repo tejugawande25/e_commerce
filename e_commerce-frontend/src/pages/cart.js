@@ -12,6 +12,7 @@ function Cart() {
   const orderSection = useRef();
   const [responseId, setResponseId] = useState("");
   const [responseState, setResponseState] = useState([]);
+  const [payObject, setPayObject] = useState(false);
 
 
 
@@ -36,20 +37,20 @@ function Cart() {
         resolve(false);
       }
 
-      document.appendChild(script);
+      document.body.appendChild(script);
     })
   }
 
   const createRazorpayOrder = (amount) =>{
     let data = JSON.stringify({
       amount : amount * 100,
-      currency: "INR"
+      currency: 'INR',
     })
 
     let config ={
       method:"post",
       maxBodyLength:Infinity,
-      url:"http://localhost:4000/orders",
+      url:"http://localhost:4000/user/orders",
       headers:{
         'Content-Type': 'application/json'
       },
@@ -57,8 +58,8 @@ function Cart() {
     }
     axios.request(config)
     .then((response) =>{
-      console.log(JSON.stringify(response.data))
-      // handleRazorpayScreen(response.data.amount)
+      // console.log(JSON.stringify(response.data))
+      handleRazorpayScreen(response.data.amount)
     })
     .catch((error) =>{
       console.log("Error at", error);
@@ -73,13 +74,12 @@ function Cart() {
       return;
     }
     const options={
-      key:'rzp_test_Ld8VJIKgd9spxQ',
+      key:'rzp_test_uRlGboxzvG1DhF',
       amount:amount,
       currency:'INR',
       name:'tejas',
       description:'payment to tejas',
-      // image:
-
+  
       handler: function(response){
         setResponseId(response.razorpay_payment_id)
       },
@@ -93,17 +93,32 @@ function Cart() {
     }
 
     const paymentObject =  new window.Razorpay(options)
-    paymentObject.open()
+    paymentObject.open();
+    paymentScreen(paymentObject);
+    // console.log(payObject);
+    // if(paymentObject.close()){
+    //   Swal.fire({
+    //     position: "top-end",
+    //     icon: "success",
+    //     title: "Your order placed successfully!",
+    //     showConfirmButton: false,
+    //     timer: 3000,
+    //   });
+    // }
+
+   
+  }
+  const paymentScreen = (paymentObject) =>{
+  console.log(paymentObject.open().checkoutFrame.el.isOpen);
   }
 
   const fetchPayment = (e) =>{
-   e.preventDefault();
-
-
+  //  e.preventDefault();
    const paymentId = e.target.paymentId.value;
-   axios.get(`http://localhost:4000/user/payment/${paymentId}`)
+   axios.post(`http://localhost:4000/user/payment`,{
+    paymentId:responseId,
+   })
    .then((response) =>{
-    console.log(response.data);
     setResponseState(response.data);
    })
    .catch((error) =>{
@@ -188,22 +203,12 @@ function Cart() {
   }
 
   const scrollHandler = (elemRef) => {
-    console.log(elemRef);
     window.scrollTo({ top: elemRef.current.offsetTop, behavior: "smooth" });
   };
 
   const orderPlaced = () => {
     getOrderedCart();
-    
     createRazorpayOrder(100);
-    // Swal.fire({
-    //   position: "top-end",
-    //   icon: "success",
-    //   title: "Your order placed successfully!",
-    //   showConfirmButton: false,
-    //   timer: 3000,
-    // });
-
     setTimeout(() => {
       axios
       .delete("http://localhost:4000/user/cart/deleteall")
@@ -292,7 +297,13 @@ function Cart() {
               >
                 PLACE ORDER
               </button>
+              <button onClick={() => fetchPayment(responseId)}>Fetch Payment</button>
             </div>
+            
+          </div>
+          <div style={{height:"100px",border:"1px solid black"}}>
+            {<h5>{responseId}</h5>}
+            {<p>{responseState.data}</p>}
           </div>
         </div>
       </div>
