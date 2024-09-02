@@ -12,7 +12,7 @@ function Cart() {
   const orderSection = useRef();
   const [responseId, setResponseId] = useState("");
   const [responseState, setResponseState] = useState([]);
-  const [payObject, setPayObject] = useState(false);
+  const [payObject, setPayObject] = useState(true);
 
 
 
@@ -93,8 +93,8 @@ function Cart() {
     }
 
     const paymentObject =  new window.Razorpay(options)
-    paymentObject.open();
     paymentScreen(paymentObject);
+    paymentObject.open();
     // console.log(payObject);
     // if(paymentObject.close()){
     //   Swal.fire({
@@ -109,8 +109,21 @@ function Cart() {
    
   }
   const paymentScreen = (paymentObject) =>{
-  console.log(paymentObject.open().checkoutFrame.el.isOpen);
-  }
+   setPayObject(paymentObject.open().checkoutFrame.isOpen);
+   console.log(paymentObject.open().checkoutFrame.isOpen);
+  //  if(payObject == false){
+  //   console.log("tejas");
+  //   Swal.fire({
+  //         position: "top-end",
+  //         icon: "success",
+  //         title: "Your order placed successfully!",
+  //         showConfirmButton: false,
+  //         timer: 3000,
+  //       });
+   }
+  
+  
+
 
   const fetchPayment = (e) =>{
   //  e.preventDefault();
